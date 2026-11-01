@@ -1,0 +1,2 @@
+# Project boundaries
+This private repository represents an independent synthetic educational UI/3D game workflow. It is NOT the original collaborator's production mobile APP. Do not assume permission to use collaborators' actual imaging datasets, original code, user data, or research labels. Never commit API keys, database credentials or private person-level records.
