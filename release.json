@@ -1,0 +1,16 @@
+{
+  "version": "1.6.0-demo",
+  "date": "2026-11-05",
+  "public_site": "https://neurotrace-ui-demo.vercel.app",
+  "authoritative_source": "index.html + scene3d.js + assets",
+  "features": [
+    "boundary-clipped endpoint blocks connections",
+    "vertical orbit reversed; full rotation",
+    "demo account 四七 logout/login",
+    "WeChat and QQ placeholders pending app authorization",
+    "local-only reward store and order ledger"
+  ],
+  "database": "migration proposal only; not deployed",
+  "oauth": "UI placeholder only",
+  "fulfillment": "no real checkout or shipping"
+}
