@@ -1,0 +1,24 @@
+/* Registered J2000 sky plate. Its contrast is baked below the working fibers. */
+#game-screen {
+  --taurus-sky: url('assets/taurus18-field.webp');
+  background: #050b15 var(--taurus-sky) center / cover no-repeat;
+}
+#game-screen::before {
+  background: linear-gradient(180deg, #03091525, transparent 30%, transparent 73%, #02071055);
+  transform: none;
+  filter: none;
+  mask-image: none;
+}
+#game-screen .particle-layer { display: none; }
+.sky18-credit {
+  position: absolute;
+  right: 14px;
+  bottom: 146px;
+  z-index: 4;
+  padding: 5px 0 5px 7px;
+  color: #a4b4c7;
+  text-shadow: 0 1px 3px #030710;
+  font-size: 9px;
+  text-decoration: none;
+}
+.sky18-credit:focus-visible, .sky18-credit:hover { color: #f1e0b6; }

@@ -14,7 +14,7 @@ const app = {
   render:()=>{}, setPage:page=>{app.state.page=page;},
   taskSwitch:i=>{app.state.taskIndex=i;},
   persistDemo:()=>{prior=JSON.stringify({story17:app.state.story17, score:app.state.score});},
-  NeuroMail:{notify:m=>stars.push(m)},contentShell:x=>x,head:x=>x,embeddedAssets:{},embeddedThumbs:[]
+  resourceIcon:()=>'<svg></svg>',NeuroMail:{notify:m=>stars.push(m)},contentShell:x=>x,head:x=>x,embeddedAssets:{},embeddedThumbs:[]
 };
 app.window=app;
 vm.createContext(app);
@@ -37,7 +37,8 @@ const key=(index,answers)=>{
 const ab=['b:start','a:end'], ef=['f:start','e:end'], cd=['c:end','d:start'];
 story.init();
 assert.equal(st.score,0);assert.equal(story.completionCount(),0);
-assert.match(story.archiveHTML(),/第一束回声/);
+assert.match(story.archiveHTML(),/红岸之后/);
+for (const asset of ['station','receiver','strip','parallax']) assert.ok(fs.existsSync(path.join(root,'assets','archive18-'+asset+'.webp')));
 launch('tide');assert.equal(st.taskIndex,0);
 click('[data-story-side]',{storySide:'1'});assert.equal(st.taskIndex,0);
 click('#story-submit');assert.match(story.resultSheet(),/还缺 1 处/);assert.equal(st.score,0);
@@ -69,3 +70,34 @@ story.reset();assert.equal(st.score,0);assert.equal(story.taskCount(),0);assert.
 prior=JSON.stringify({score:78});st.score=78;st.taskIndex=4;story.init();
 assert.equal(st.score,78);assert.equal(st.taskIndex,0);
 console.log('Story, exact-match grading, locks, wallet, repeat, fragments, civilization, side records, migration and reload passed.');
+
+async function verifyOfficialScoring() {
+  let account={id:'staff-01',points:15}, calls=0, resolve, reject;
+  app.NeuroIdentity={session:()=>account,grade:(id,edges)=>{
+    calls++;
+    assert.equal(id,'dawn');
+    assert.deepEqual(Array.from(edges,p=>Array.from(p)),[ab]);
+    return new Promise((yes,no)=>{resolve=yes;reject=no;});
+  }};
+  const flush=()=>new Promise(done=>setImmediate(done));
+  story.reset();story.syncRemote(account,[]);
+  launch('dawn');key(0,[ab]);
+  click('#story-submit');click('#story-submit');
+  assert.equal(calls,1);assert.equal(st.score,15);assert.match(story.resultSheet(),/正在校验/);
+  reject(new Error('offline'));await flush();
+  assert.equal(st.score,15);assert.equal(story.completionCount(),0);assert.equal(stars.length,3);
+  assert.match(story.resultSheet(),/未取得校验回执/);
+  click('[data-story-dismiss]');click('#story-submit');
+  resolve({account:{id:'staff-01',points:75},awarded:60,cleared:['dawn']});await flush();
+  assert.equal(st.score,75);assert.equal(story.completionCount(),1);assert.equal(stars.length,4);
+  click('[data-story-dismiss]');click('#story-submit');
+  resolve({account:{id:'staff-01',points:12},awarded:0,cleared:['dawn']});await flush();
+  assert.equal(st.score,12);assert.equal(stars.length,4);assert.match(story.resultSheet(),/积分和碎片已领取/);
+  click('[data-story-dismiss]');click('#story-submit');
+  account={id:'staff-02',points:5};story.reset();story.syncRemote(account,[]);
+  resolve({account:{id:'staff-01',points:75},awarded:60,cleared:['dawn']});await flush();
+  assert.equal(st.score,5);assert.equal(story.completionCount(),0);assert.equal(stars.length,4);
+  // Discard local qualification when restoring a staff session from its service record.
+  st.taskIndex=4;story.syncRemote(account,[]);assert.equal(st.taskIndex,0);
+}
+verifyOfficialScoring().then(()=>console.log('Server-authoritative scoring, duplicate submissions, failed/offline receipts and account switching passed.')).catch(error=>{console.error(error);process.exitCode=1;});

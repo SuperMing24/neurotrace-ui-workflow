@@ -52,6 +52,17 @@ function connectionExists(taskIndex,edges,from,to){
  if(edges.some(e=>e.taskId===taskId&&((e.from===from&&e.to===to)||(e.from===to&&e.to===from))))return 'added';
  return null;
 }
+const THEMES={
+ cyan:    {line:'#68d9ff',soft:'#165b92',edge:'#ff9f48',selected:'#fa75d9',bg:'#051528'},
+ violet:  {line:'#bf9eff',soft:'#563c85',edge:'#48dfd6',selected:'#fadb62',bg:'#140e26'},
+ contrast:{line:'#f1f3ff',soft:'#525c70',edge:'#f78339',selected:'#27dfff',bg:'#03070c'},
+ mint:    {line:'#76e9b5',soft:'#215f59',edge:'#c39aff',selected:'#ffb148',bg:'#051a17'},
+ amber:   {line:'#ffd187',soft:'#825225',edge:'#63bbff',selected:'#99ff8b',bg:'#20140e'}
+};
+function visibility(value){
+ const level=Math.max(0,Math.min(1,((Number(value)||100)-55)/100));
+ return {signal:.40+.60*level,weak:.16+.66*level,shade:.10+.60*level};
+}
 function create(container,appState,onPick){
 if(!container)return null;const canvas=document.createElement('canvas');canvas.className='nerve-canvas';canvas.setAttribute('aria-label','三维合成神经骨架，点击端点连线，点击高亮的新增连边选中删除');container.appendChild(canvas);const ctx=canvas.getContext('2d');if(!ctx)return null;
 const task=taskAt(appState.taskIndex),endpoints=allEndpointsFor(appState.taskIndex),refs=Object.fromEntries(endpoints.map(e=>[e.id,e]));
@@ -78,27 +89,47 @@ function drawAxis(){
 function stroke(pts,color,width,blur=0,dash=[]){ctx.save();ctx.beginPath();pts.forEach((p,i)=>{let q=project(p);i?ctx.lineTo(q.x,q.y):ctx.moveTo(q.x,q.y);});ctx.lineWidth=width;ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle=color;ctx.shadowColor=color;ctx.shadowBlur=blur;ctx.setLineDash(dash);ctx.stroke();ctx.restore();}
 function dot(p,r,color,glow=0){ctx.save();ctx.beginPath();ctx.arc(p.x,p.y,r,0,2*Math.PI);ctx.fillStyle=color;ctx.shadowColor=color;ctx.shadowBlur=glow;ctx.fill();ctx.restore();}
 function draw(t){if(!active)return;const {w,h}=size;ctx.clearRect(0,0,w,h);
-const themes={cyan:{line:'#58d3ff',soft:'#157bc2',edge:'#ffcb80',bg:'#041830'},violet:{line:'#c69cff',soft:'#6f59bd',edge:'#ffd392',bg:'#140e35'},contrast:{line:'#f4faff',soft:'#3486c6',edge:'#ffbb40',bg:'#020911'},mint:{line:'#7ff1b8',soft:'#2c9d91',edge:'#f4cf8c',bg:'#031c18'},amber:{line:'#ffbd75',soft:'#92601c',edge:'#79eaff',bg:'#231409'}};
-const theme=themes[appState.palette]||themes.cyan;let contrast=(appState.contrast||100)/100;const imaging=appState.renderStyle==='imaging';
-let gradient=ctx.createRadialGradient(w*.5,h*.53,0,w*.5,h*.5,w*.74);gradient.addColorStop(0,theme.bg);gradient.addColorStop(1,'rgba(2,8,20,.18)');ctx.globalAlpha=Math.min(.43,.18+.13*contrast);ctx.fillStyle=gradient;ctx.fillRect(0,0,w,h);ctx.globalAlpha=1;
+const theme=THEMES[appState.palette]||THEMES.cyan;
+const gain=visibility(appState.contrast), imaging=appState.renderStyle==='imaging';
+let gradient=ctx.createRadialGradient(w*.5,h*.53,0,w*.5,h*.5,w*.74);gradient.addColorStop(0,theme.bg);gradient.addColorStop(1,'rgba(2,8,20,.3)');ctx.globalAlpha=gain.shade;ctx.fillStyle=gradient;ctx.fillRect(0,0,w,h);ctx.globalAlpha=1;
 const box=[[-3.7,-2.4,-2.3],[3.7,-2.4,-2.3],[3.7,2.4,-2.3],[-3.7,2.4,-2.3],[-3.7,-2.4,2.3],[3.7,-2.4,2.3],[3.7,2.4,2.3],[-3.7,2.4,2.3]];
 if(!imaging)[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]].forEach(([a,b])=>stroke([box[a],box[b]],'rgba(56,172,240,.28)',1));
 if(imaging){for(let j=0;j<130;j++){const x=((j*91.31)%w),y=((j*71.13)%h);dot({x,y},.35+((j*7)%4)*.24,'rgba(76,190,246,.13)',1.4);}}
 if(task.id==='D-537')for(let i=0;i<44;i++){const z=(i*.618%1)*3.4-1.7,x=(i*1.417%1)*7-3.5,y=(i*.729%1)*4-2;dot(project([x,y,z]),.95,'rgba(45,145,227,.35)',4)}
-segments.sort((a,b)=>project(a.p[Math.floor(a.p.length/2)]).z-project(b.p[Math.floor(b.p.length/2)]).z).forEach(s=>{let weak=task.id==='V-426'&&['c','e','f'].includes(s.id);let alpha=weak?(.16+.20*contrast):Math.min(1,.43+.42*contrast);ctx.globalAlpha=alpha;
-if(imaging){stroke(s.p,theme.soft,s.main?23:14,28);stroke(s.p,theme.line,s.main?5.8:3.8,17);stroke(s.p,'rgba(211,241,255,.54)',s.main?1.9:.9,8);}else{stroke(s.p,theme.soft,s.main?8:4,7);stroke(s.p,theme.line,s.main?3.5:2,3);stroke(s.p,'rgba(237,251,255,.85)',s.main?1:.5,0);}
-if(appState.selectedOriginalSegmentId===s.id){ctx.globalAlpha=1;stroke(s.p,'#ffe0a0',5.2,14);stroke(s.p,'#fff4d6',1.5,0);}ctx.globalAlpha=1;});
-const lookup=projectedEndpoints();const currentEdges=appState.addedEdges.filter(e=>e.taskId===task.id);currentEdges.forEach(e=>{const a=refs[e.from],b=refs[e.to];if(!a||!b)return;const sel=appState.selectedEdgeId===e.id;stroke([a.xyz,b.xyz],sel?'#fff1ad':theme.edge,sel?6.5:4.5,sel?20:12);stroke([a.xyz,b.xyz],sel?'#f3faff':'#fff5d9',1.25,4);let aP=lookup[e.from],bP=lookup[e.to];dot({x:(aP.x+bP.x)/2,y:(aP.y+bP.y)/2},sel?5:3,sel?'#fff3b0':theme.edge,9);});
-if(appState.selectedNodes.length===1){const a=refs[appState.selectedNodes[0]];if(a)dot(lookup[a.id],11,'rgba(255,205,124,.28)',16);}
+segments.sort((a,b)=>project(a.p[Math.floor(a.p.length/2)]).z-project(b.p[Math.floor(b.p.length/2)]).z).forEach(s=>{
+ const weak=task.id==='V-426'&&['c','e','f'].includes(s.id);
+ ctx.globalAlpha=weak?gain.weak:gain.signal;
+ if(imaging){stroke(s.p,theme.soft,s.main?18:11,17);stroke(s.p,theme.line,s.main?5.2:3,10);}
+ else{stroke(s.p,theme.soft,s.main?6.6:3.8,4);stroke(s.p,theme.line,s.main?3.1:1.8,2);}
+ stroke(s.p,'rgba(240,252,255,.56)',s.main?1:.45);
+});
+ctx.globalAlpha=1;
+const lookup=projectedEndpoints(), currentEdges=appState.addedEdges.filter(e=>e.taskId===task.id);
+const activeSegment=segments.find(s=>s.id===appState.selectedOriginalSegmentId);
+if(activeSegment){
+ stroke(activeSegment.p,'#061019',8.5);
+ stroke(activeSegment.p,theme.selected,5.4,6);
+ stroke(activeSegment.p,'rgba(255,255,255,.88)',1.1);
+}
+for(const edge of currentEdges){
+ const a=refs[edge.from], b=refs[edge.to];if(!a||!b)continue;
+ const selected=appState.selectedEdgeId===edge.id, color=selected?theme.selected:theme.edge;
+ const pts=[a.xyz,b.xyz], dash=[6,4];
+ stroke(pts,'#051019',selected?8.5:6.5);
+ stroke(pts,color,selected?5.4:3.4,selected?6:2,dash);
+ const pa=lookup[a.id],pb=lookup[b.id],x=(pa.x+pb.x)/2,y=(pa.y+pb.y)/2,r=selected?6:4;
+ ctx.save();ctx.beginPath();ctx.moveTo(x,y-r);ctx.lineTo(x+r,y);ctx.lineTo(x,y+r);ctx.lineTo(x-r,y);ctx.lineTo(x,y-r);
+ ctx.fillStyle=color;ctx.fill();ctx.lineWidth=1.2;ctx.strokeStyle=selected?'#fff':'#101b26';ctx.stroke();ctx.restore();
+}
 endpoints.forEach((e,i)=>{
  const p=lookup[e.id],boundary=e.boundary, selected=appState.selectedNodes.includes(e.id),hoverBoundary=appState.selectedBoundaryEndpointId===e.id;
- const linked=currentEdges.some(x=>x.from===e.id||x.to===e.id);
+ 
  const revealed=(boundary&&appState.endpointsVisible)||selected||hoverBoundary;
- const baseColor=boundary?'#ff7e86':selected?'#ffd784':'rgba(129,231,255,.72)';
+ const baseColor=boundary?'#ff7e86':selected?theme.selected:theme.line;
  dot(p,selected?7.5:boundary&&appState.endpointsVisible?5.2:3.2,baseColor,selected?14:5);
  if(revealed){
-  dot(p,hoverBoundary?12:8,boundary?'rgba(244,91,109,.20)':linked?'rgba(112,247,174,.34)':'rgba(65,218,250,.3)',14);
-  ctx.save();ctx.strokeStyle=boundary?'#ff8f96':selected?'#ffda8d':'#86e7ff';ctx.lineWidth=selected?3:1.8;
+  dot(p,hoverBoundary?12:8,boundary?'rgba(244,91,109,.20)':theme.selected+'44',14);
+  ctx.save();ctx.strokeStyle=boundary?'#ff8f96':theme.selected;ctx.lineWidth=selected?3:1.8;
   ctx.beginPath();ctx.arc(p.x,p.y,selected?13:11,0,Math.PI*2);ctx.stroke();
   if(boundary){ctx.beginPath();ctx.moveTo(p.x-6,p.y+6);ctx.lineTo(p.x+6,p.y-6);ctx.stroke();}
   if(!boundary){
@@ -116,6 +147,16 @@ function pick(x,y){
  let node=null;for(const e of endpoints){const p=pts[e.id],dist=Math.hypot(p.x-x,p.y-y);
  const radius=(appState.selectedOriginalSegmentId===e.segment||appState.selectedNodes.includes(e.id))?26:21;
  if(dist<radius&&(!node||dist<node.dist))node={type:'node',id:e.id,dist};}
+ // A short proposed edge still needs a selectable handle between its endpoints.
+ let handle=null;
+ for(const edge of current){
+  const a=pts[edge.from],b=pts[edge.to];
+  if(!a||!b)continue;
+  const radius=Math.min(8,Math.hypot(a.x-b.x,a.y-b.y)/3);
+  const dist=Math.hypot(x-(a.x+b.x)/2,y-(a.y+b.y)/2);
+  if(dist<radius&&(!handle||dist<handle.dist))handle={type:'edge',id:edge.id,dist};
+ }
+ if(handle&&(!node||handle.dist<node.dist))return handle;
  if(node&&node.dist<16)return node;
  let edge=null;for(const e of current){const a=pts[e.from],b=pts[e.to];if(!a||!b)continue;
  const dist=pointSegmentDistance(x,y,a.x,a.y,b.x,b.y);
@@ -136,5 +177,5 @@ listen('pointercancel',canvas,e=>pointers.delete(e.pointerId));listen('wheel',ca
 const observer=typeof ResizeObserver!=='undefined'?new ResizeObserver(resize):null;observer?.observe(container);resize();frameId=requestAnimationFrame(draw);
 return {canvas,task,endpoints,projectedEndpoints,projectPoint:project,camera:cam,pick,reset(){Object.assign(cam,{yaw:preset[0],pitch:preset[1],panX:0,panY:0,zoom:1});},dispose(){active=false;cancelAnimationFrame(frameId);observer?.disconnect();listeners.forEach(x=>x());canvas.remove();}};
 }
-window.NeuroTrace3D={TASKS,taskAt,endpointsFor,allEndpointsFor,endpointData,isBoundaryTerminal,originalConnected,connectionExists,pointSegmentDistance,create};
+window.NeuroTrace3D={TASKS,THEMES,visibility,taskAt,endpointsFor,allEndpointsFor,endpointData,isBoundaryTerminal,originalConnected,connectionExists,pointSegmentDistance,create};
 })();

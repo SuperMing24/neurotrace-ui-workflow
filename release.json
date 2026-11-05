@@ -1,16 +1,16 @@
 {
-  "version": "1.7.0-demo",
+  "version": "1.8.0",
   "date": "2026-11-06",
   "public_site": "https://neurotrace-ui-demo.vercel.app",
   "features": [
-    "three reference-keyed synthetic training chapters",
-    "one-time chapter rewards, research fragments and station construction",
-    "two gated side assignments with uncertain or candidate records",
-    "local system mail and player conversations",
-    "Taurus backdrop and dismissible boundary marker notice"
+    "coordinate-aligned ground-based Taurus photography",
+    "five selection palettes and live model contrast",
+    "shared point and energy iconography",
+    "Three-Body-inspired listening station archive",
+    "two verified-role cloud accounts and server-graded ledger"
   ],
-  "storage": "browser localStorage",
-  "database": "not deployed",
-  "oauth": "UI placeholder only",
-  "fulfillment": "no real shipping"
+  "storage": "Neon Postgres for cloud accounts, session hashes and official points; browser for guest saves, private demo mail and draft geometry",
+  "database": "migrations 003 and 004 applied in production and isolated preview branch",
+  "oauth": "WeChat and QQ placeholders; developer accounts use operator-issued activation codes",
+  "fulfillment": "simulated redemptions only"
 }

@@ -1,7 +1,7 @@
 /* Local postbox for the single supported V1.6 demo identity. */
 window.NeuroMail = (() => {
-  const storageKey = 'neurotrace-mail-v17:demo-siqi';
-  const contacts = ['小王'];
+  let storageKey = 'neurotrace-mail-v17:demo-siqi', player='四七';
+  let contacts = ['小王'];
   let cache;
   let tab = 'system', view = 'list', selected = '', flash = '';
   let persistenceUnavailable = false;
@@ -11,8 +11,8 @@ window.NeuroMail = (() => {
   function seed() {
     const time = Date.now();
     return {
-      notices: [{id:'welcome', title:'第一份观测邀请', body:'四七，欢迎来到观测站。第一份教学样本已经就绪。打开回声档案，跟随记录员进入三维样本。每完成一章，观测站都会把校验回执寄到这里。', action:'archive', read:false, time}],
-      letters: [{peer:'小王', outgoing:false, read:false, time, text:'我是小王。观察一个缺口时，我习惯先绕到侧面看一眼。从正面看起来相接的两段纤维，在深度上可能离得很远。你发现了什么？'}]
+      notices: [{id:'welcome', title:'第一份观测邀请', body:player+'，欢迎来到观测站。第一份教学样本已经就绪。打开回声档案，跟随记录员进入三维样本。每完成一章，观测站都会把校验回执寄到这里。', action:'archive', read:false, time}],
+      letters: [{peer:contacts[0], outgoing:false, read:false, time, text:'我是'+contacts[0]+'。观察一个缺口时，我习惯先绕到侧面看一眼。从正面看起来相接的两段纤维，在深度上可能离得很远。你发现了什么？'}]
     };
   }
   function data() {
@@ -76,7 +76,7 @@ window.NeuroMail = (() => {
         row(last.peer,last.peer,(last.outgoing?'我：':'')+last.text,last.time,unread,true)).join('');
     }
     return '<header class="nm-banner"><span class="nm-kicker">ECHO POST &nbsp;/&nbsp; 047</span>'+
-      '<div class="nm-title">四七的信箱</div><p>观测站的来信与队友留言</p><span class="nm-stamp" aria-hidden="true">'+icon('mail')+'</span></header>'+
+      '<div class="nm-title">'+safe(player)+'的信箱</div><p>观测站的来信与队友留言</p><span class="nm-stamp" aria-hidden="true">'+icon('mail')+'</span></header>'+
       '<div class="nm-tabs">'+navTab('system','系统通知',sys)+navTab('private','玩家私信',priv)+'</div>'+
       '<div class="nm-list-head"><span>'+(tab==='system'?'档案局来信':'我的会话')+'</span>'+
       (tab==='private'?'<button data-nm-compose>写私信 ＋</button>':'<small>按收信时间</small>')+'</div>'+
@@ -98,7 +98,7 @@ window.NeuroMail = (() => {
   function conversation() {
     const letters=data().letters.filter(l=>l.peer===selected);
     return '<div class="nm-thread-title"><span class="nm-kicker">本机私信</span><h2>'+safe(selected)+'</h2></div>'+
-      '<div class="nm-thread">'+letters.map(l=>'<article class="nm-bubble '+(l.outgoing?'nm-out':'')+'"><small>'+safe(l.outgoing?'四七 · 我':l.peer+' · 演示来信')+'</small><p>'+safe(l.text)+'</p><time>'+safe(when(l.time))+'</time></article>').join('')+'</div>'+editor(selected);
+      '<div class="nm-thread">'+letters.map(l=>'<article class="nm-bubble '+(l.outgoing?'nm-out':'')+'"><small>'+safe(l.outgoing?player+' · 我':l.peer+' · 演示来信')+'</small><p>'+safe(l.text)+'</p><time>'+safe(when(l.time))+'</time></article>').join('')+'</div>'+editor(selected);
   }
   function page() {
     const top = view==='list'?head('信箱'):'<div class="subpage-head"><button class="subpage-back" data-nm-list aria-label="返回信箱">'+icon('back')+'</button><span>'+({detail:'系统通知',thread:'私信会话',compose:'写私信'})[view]+'</span></div>';
@@ -134,8 +134,8 @@ window.NeuroMail = (() => {
     const form=event.target;
     const peer=(view==='thread'?selected:form.elements.peer.value).trim().slice(0,18);
     const message=form.elements.message.value.trim().slice(0,500);
-    if (!peer || peer==='四七' || !message) {
-      const badField=!peer||peer==='四七'?form.elements.peer:form.elements.message;
+    if (!peer || peer===player || !message) {
+      const badField=!peer||peer===player?form.elements.peer:form.elements.message;
       badField.setCustomValidity(badField===form.elements.peer?'请输入其他玩家的昵称':'请填写私信内容');
       badField.reportValidity();badField.addEventListener('input',()=>badField.setCustomValidity(''),{once:true});return;
     }
@@ -147,5 +147,10 @@ window.NeuroMail = (() => {
   function reset() {
     cache=seed();tab='system';view='list';selected='';flash='';save();
   }
-  return {entry,page,notify,reset};
+  function switchPlayer(account){
+    storageKey='neurotrace-mail-v17:'+(account?'account:'+account.id:'demo-siqi');
+    player=account?.name||'四七';contacts=[player==='小王'?'四七':'小王'];
+    cache=null;view='list';tab='system';selected='';flash='';
+  }
+  return {entry,page,notify,reset,switchPlayer};
 })();
