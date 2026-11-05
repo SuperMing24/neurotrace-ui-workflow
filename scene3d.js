@@ -80,7 +80,7 @@ function dot(p,r,color,glow=0){ctx.save();ctx.beginPath();ctx.arc(p.x,p.y,r,0,2*
 function draw(t){if(!active)return;const {w,h}=size;ctx.clearRect(0,0,w,h);
 const themes={cyan:{line:'#58d3ff',soft:'#157bc2',edge:'#ffcb80',bg:'#041830'},violet:{line:'#c69cff',soft:'#6f59bd',edge:'#ffd392',bg:'#140e35'},contrast:{line:'#f4faff',soft:'#3486c6',edge:'#ffbb40',bg:'#020911'},mint:{line:'#7ff1b8',soft:'#2c9d91',edge:'#f4cf8c',bg:'#031c18'},amber:{line:'#ffbd75',soft:'#92601c',edge:'#79eaff',bg:'#231409'}};
 const theme=themes[appState.palette]||themes.cyan;let contrast=(appState.contrast||100)/100;const imaging=appState.renderStyle==='imaging';
-let gradient=ctx.createRadialGradient(w*.5,h*.53,0,w*.5,h*.5,w*.74);gradient.addColorStop(0,theme.bg);gradient.addColorStop(1,'rgba(2,8,20,.18)');ctx.globalAlpha=Math.min(1,.6+.22*contrast);ctx.fillStyle=gradient;ctx.fillRect(0,0,w,h);ctx.globalAlpha=1;
+let gradient=ctx.createRadialGradient(w*.5,h*.53,0,w*.5,h*.5,w*.74);gradient.addColorStop(0,theme.bg);gradient.addColorStop(1,'rgba(2,8,20,.18)');ctx.globalAlpha=Math.min(.43,.18+.13*contrast);ctx.fillStyle=gradient;ctx.fillRect(0,0,w,h);ctx.globalAlpha=1;
 const box=[[-3.7,-2.4,-2.3],[3.7,-2.4,-2.3],[3.7,2.4,-2.3],[-3.7,2.4,-2.3],[-3.7,-2.4,2.3],[3.7,-2.4,2.3],[3.7,2.4,2.3],[-3.7,2.4,2.3]];
 if(!imaging)[[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]].forEach(([a,b])=>stroke([box[a],box[b]],'rgba(56,172,240,.28)',1));
 if(imaging){for(let j=0;j<130;j++){const x=((j*91.31)%w),y=((j*71.13)%h);dot({x,y},.35+((j*7)%4)*.24,'rgba(76,190,246,.13)',1.4);}}
@@ -94,15 +94,18 @@ endpoints.forEach((e,i)=>{
  const p=lookup[e.id],boundary=e.boundary, selected=appState.selectedNodes.includes(e.id),hoverBoundary=appState.selectedBoundaryEndpointId===e.id;
  const linked=currentEdges.some(x=>x.from===e.id||x.to===e.id);
  const revealed=(boundary&&appState.endpointsVisible)||selected||hoverBoundary;
- const baseColor=boundary?'#ffbb85':selected?'#ffd784':'rgba(129,231,255,.72)';
+ const baseColor=boundary?'#ff7e86':selected?'#ffd784':'rgba(129,231,255,.72)';
  dot(p,selected?7.5:boundary&&appState.endpointsVisible?5.2:3.2,baseColor,selected?14:5);
  if(revealed){
-  dot(p,hoverBoundary?12:8,boundary?'rgba(242,150,99,.28)':linked?'rgba(112,247,174,.34)':'rgba(65,218,250,.3)',14);
-  ctx.save();ctx.strokeStyle=boundary?'#ffab72':selected?'#ffda8d':'#86e7ff';ctx.lineWidth=selected?3:1.8;
+  dot(p,hoverBoundary?12:8,boundary?'rgba(244,91,109,.20)':linked?'rgba(112,247,174,.34)':'rgba(65,218,250,.3)',14);
+  ctx.save();ctx.strokeStyle=boundary?'#ff8f96':selected?'#ffda8d':'#86e7ff';ctx.lineWidth=selected?3:1.8;
   ctx.beginPath();ctx.arc(p.x,p.y,selected?13:11,0,Math.PI*2);ctx.stroke();
   if(boundary){ctx.beginPath();ctx.moveTo(p.x-6,p.y+6);ctx.lineTo(p.x+6,p.y-6);ctx.stroke();}
-  ctx.font='bold 10px sans-serif';ctx.textAlign='center';ctx.fillStyle=boundary?'#ffc28d':'#e4faff';
-  ctx.fillText(boundary?'BOUNDARY':(e.terminal==='start'?'S':'E'),p.x,p.y-18);ctx.restore();
+  if(!boundary){
+   ctx.font='bold 10px sans-serif';ctx.textAlign='center';ctx.fillStyle='#e4faff';
+   ctx.fillText(e.terminal==='start'?'S':'E',p.x,p.y-18);
+  }
+  ctx.restore();
  }
 });
 

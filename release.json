@@ -1,16 +1,16 @@
 {
-  "version": "1.6.0-demo",
-  "date": "2026-11-05",
+  "version": "1.7.0-demo",
+  "date": "2026-11-06",
   "public_site": "https://neurotrace-ui-demo.vercel.app",
-  "authoritative_source": "index.html + scene3d.js + assets",
   "features": [
-    "boundary-clipped endpoint blocks connections",
-    "vertical orbit reversed; full rotation",
-    "demo account 四七 logout/login",
-    "WeChat and QQ placeholders pending app authorization",
-    "local-only reward store and order ledger"
+    "three reference-keyed synthetic training chapters",
+    "one-time chapter rewards, research fragments and station construction",
+    "two gated side assignments with uncertain or candidate records",
+    "local system mail and player conversations",
+    "Taurus backdrop and dismissible boundary marker notice"
   ],
-  "database": "migration proposal only; not deployed",
+  "storage": "browser localStorage",
+  "database": "not deployed",
   "oauth": "UI placeholder only",
-  "fulfillment": "no real checkout or shipping"
+  "fulfillment": "no real shipping"
 }
