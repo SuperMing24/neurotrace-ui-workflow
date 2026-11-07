@@ -1,0 +1,38 @@
+# Local secrets and provider state
+.env
+.env.*
+!.env.example
+.vercel/
+.neon/
+*.pem
+*.key
+*.p12
+*.pfx
+*activation-card*
+*login-card*
+# Local dependencies, verification output and disposable builds
+node_modules/
+__pycache__/
+*.pyc
+build/
+dist/
+test-results/
+playwright-report/
+screenshots/
+*.log
+.DS_Store
+Thumbs.db
+# Existing audio is retained locally; redistribution evidence is missing.
+assets/music/
+history/*/assets/music/
+# Recovered server-side private letter templates and their content-specific test.
+# Keep local overlay unchanged; moving templates needs a separate reviewed change.
+api/letters.js
+tests/verify_private20.cjs
+# Never commit database dumps or browser profiles
+*.dump
+*.backup
+*.sqlite
+*.sqlite3
+storage-state*.json
+browser-profile/

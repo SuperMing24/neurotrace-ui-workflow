@@ -1,0 +1,37 @@
+/* Field notebook controls. The transparent space between tools belongs to the canvas. */
+.research-bar,.research-files,.lens-tools{position:absolute;z-index:6}
+.research-bar{top:8px;left:15px;right:15px;height:45px;display:flex;align-items:center;justify-content:space-between;pointer-events:none}
+.research-bar button,.research-files button,.lens-tools button{appearance:none;border:0;cursor:pointer;touch-action:manipulation}
+.research-bar>*,.research-files,.lens-tools{pointer-events:auto}
+.operator-pass{display:flex;align-items:center;gap:9px;min-width:0;height:44px;padding:0 12px 0 0;text-align:left;color:#e4eff1;background:transparent}
+.operator-seal{display:grid;place-items:center;width:32px;height:32px;flex:none;background:radial-gradient(circle at 38% 27%,#28434a,#11252f);color:#e4c28b;border:1px solid #ad9165;border-radius:50%;box-shadow:inset 0 0 0 2px #102431,0 2px 8px #0005;font:600 14px Georgia,serif}
+.operator-seal svg{width:29px;height:29px}.operator-details{display:grid;gap:2px}.operator-details>strong{font-size:12px;line-height:1.25;max-width:128px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.operator-wallet{display:flex;align-items:center;gap:8px;font-size:10px;line-height:1.1}.operator-wallet>span,.operator-wallet .resource-amount{display:inline-flex;align-items:center}.operator-wallet .resource-icon{width:12px;height:12px}
+.station-tools,.research-files,.lens-tools{display:flex;align-items:center;isolation:isolate}
+.station-tools{gap:3px}
+#game-screen .station-tools button,.research-files button,.lens-tools button{position:relative;display:inline-flex;align-items:center;justify-content:center;margin:0;min-height:44px;padding:0;background:transparent!important;border:0!important;box-shadow:none!important;filter:none!important;color:#c4d5d3;line-height:1}
+#game-screen .station-tools button{width:42px;height:44px;border-radius:8px}
+.station-tools button::before,.research-files button::before,.lens-tools::before{content:"";position:absolute;pointer-events:none;z-index:-1;border:1px solid #70878388;background:linear-gradient(145deg,#203842da,#10232edd);box-shadow:inset 0 1px #b6d5c51b,0 2px 6px #0311194d}
+.station-tools button::before{inset:5px 3px;border-radius:8px}.station-tools button{isolation:isolate}
+#game-screen .station-tools svg{width:18px;height:18px;stroke-width:1.6;color:inherit}
+.station-tools .nm-badge{top:8px;right:6px;width:5px;height:5px;background:#dab87e;outline:1px solid #172b34;box-shadow:none}
+.research-files{top:53px;left:15px;gap:12px}
+.research-files button{isolation:isolate;gap:7px;padding:0 12px;color:#c6d9d9;font:640 12px/1 system-ui;letter-spacing:.06em}
+.research-files button::before{inset:5px 0;border-radius:5px}
+.research-files .echo-tab{color:#ead2a5}
+.research-files .echo-tab::before{border:1px solid #ae946ac2;border-left:3px double #d2b682;background:linear-gradient(100deg,#3b3d32e8,#27352dda)}
+.research-files #open-task::before{border-color:#63838d9c;background:linear-gradient(150deg,#213945d9,#10232ee0);border-radius:8px}
+.research-files svg{height:15px;width:15px}
+.sample-line{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.sample-caption{display:flex;align-items:center;gap:7px;color:#c3d4d5;font-size:11px;text-shadow:0 1px 4px #031019}
+.sample-caption strong{color:#a5d9d2;font:660 12px/1.2 ui-monospace,monospace;letter-spacing:.06em}
+.sample-caption span{border-left:1px solid #728d8b88;padding-left:7px;line-height:1.25}
+.lens-tools{position:relative;right:auto;bottom:auto;pointer-events:auto}
+.lens-tools::before{inset:5px 0;border-radius:6px}
+.lens-tools button{width:46px;gap:3px;font:600 10px system-ui}
+.lens-tools button+button::after{content:"";position:absolute;left:0;top:15px;height:14px;width:1px;background:#6c878355}
+.lens-tools svg{width:13px;height:13px}
+#game-screen .selection-note{position:absolute;z-index:5;right:16px;bottom:150px;max-width:70%;font:12px/1.5 system-ui;color:#ebd0ae;text-shadow:0 1px 4px #000;pointer-events:none;background:#14242cdd;border:1px solid #67807988;border-radius:6px;padding:3px 8px}
+.research-bar button:focus-visible,.research-files button:focus-visible,.lens-tools button:focus-visible{outline:2px solid #f3cf8f;outline-offset:-2px}
+@media(hover:hover){#game-screen .station-tools button:hover,.lens-tools button:hover,.research-files button:hover,.operator-pass:hover{color:#ffdfac}}
+#game-screen .scene-readout{top:100px;left:16px;right:16px;gap:3px}

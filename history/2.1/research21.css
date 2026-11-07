@@ -1,0 +1,24 @@
+/* Field notebook controls. The transparent space between tools belongs to the canvas. */
+.research-bar,.research-files,.lens-tools{position:absolute;z-index:6}
+.research-bar{top:8px;left:15px;right:15px;height:45px;display:flex;align-items:center;justify-content:space-between;pointer-events:none}
+.research-bar button,.research-files button,.lens-tools button{appearance:none;border:0;cursor:pointer;touch-action:manipulation}
+.research-bar>*,.research-files,.lens-tools{pointer-events:auto}
+.operator-pass{display:flex;align-items:center;gap:9px;min-width:0;height:44px;padding:0 12px 0 0;text-align:left;color:#e4eff1;background:transparent}
+.operator-seal{display:grid;place-items:center;width:32px;height:32px;flex:none;background:radial-gradient(circle at 38% 27%,#28434a,#11252f);color:#e4c28b;border:1px solid #ad9165;border-radius:50%;box-shadow:inset 0 0 0 2px #102431,0 2px 8px #0005;font:600 14px Georgia,serif}
+.operator-seal svg{width:29px;height:29px}.operator-details{display:grid;gap:2px}.operator-details>strong{font-size:12px;line-height:1.25;max-width:128px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+.operator-wallet{display:flex;align-items:center;gap:8px;font-size:10px;line-height:1.1}.operator-wallet>span,.operator-wallet .resource-amount{display:inline-flex;align-items:center}.operator-wallet .resource-icon{width:12px;height:12px}
+.station-tools,.research-files,.lens-tools{isolation:isolate;display:flex;align-items:center}
+.station-tools::before,.research-files::before,.lens-tools::before{content:"";pointer-events:none;position:absolute;z-index:-1;inset:5px 0;border:1px solid #63808a66;background:linear-gradient(125deg,#172c36ee,#081720e6);border-radius:7px;box-shadow:0 2px 9px #02091055}
+.station-tools{position:relative;gap:0}
+#game-screen .station-tools button,.lens-tools button,.research-files button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;position:relative;margin:0;padding:0;color:#bdd6d9;background:transparent!important;box-shadow:none!important;filter:none!important;border-radius:5px;font-size:12px;line-height:1}
+#game-screen .station-tools button{width:44px;height:44px;min-width:44px;border:none!important}
+#game-screen .station-tools svg{width:17px;height:17px;stroke-width:1.5}
+.station-tools button+button::after,.lens-tools button+button::after,.research-files button+button::after{content:"";position:absolute;left:0;top:16px;bottom:16px;width:1px;background:#627a7855;pointer-events:none}
+.station-tools .nm-badge{top:10px;right:9px;width:5px;height:5px;outline:1px solid #182c36;box-shadow:none}
+.research-files{top:53px;left:15px}.research-files::before{inset:5px 0;background:linear-gradient(100deg,#39352be8,#1b2b2ee8 63%);border-color:#ac906650;border-radius:5px}
+.research-files button{gap:6px;padding:0 12px;font-weight:640;letter-spacing:.045em}.research-files .echo-tab{color:#f2d8aa}.research-files svg{width:15px;height:15px;stroke-width:1.5}
+.research-files .echo-tab::after{content:"";position:absolute;bottom:5px;left:13px;width:21px;height:2px;background:#d1ac76}
+.lens-tools{right:14px;bottom:155px}.lens-tools::before{border-color:#60858a77}.lens-tools button{width:48px;flex-direction:column;gap:3px;font-size:10px;letter-spacing:.06em}.lens-tools svg{width:15px;height:15px}.lens-tools::before{inset:1px 0}
+.research-bar button:focus-visible,.research-files button:focus-visible,.lens-tools button:focus-visible{outline:2px solid #f3cf8f;outline-offset:-2px}
+@media(hover:hover){#game-screen .station-tools button:hover,.lens-tools button:hover,.research-files button:hover,.operator-pass:hover{color:#ffdfac}}
+#game-screen .scene-readout{top:100px;left:16px;right:16px;gap:3px}

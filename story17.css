@@ -115,3 +115,31 @@
 .e18-colophon b{color:#d8d9bf}.e18-colophon p{line-height:1.7;margin:5px 0}
 .e18-colophon a{display:inline-block;color:#e2c3a0;padding:4px 10px 4px 0;text-underline-offset:3px}
 .e18-archive button:focus-visible,.e18-archive summary:focus-visible,.e18-colophon a:focus-visible{outline:2px solid #d2935d;outline-offset:-2px}
+
+.e17-sheet .nt-main-task{display:flex;align-items:center;gap:12px;width:100%;padding:11px 12px;border:1px solid #42625e;background:#132c2e;color:#eff4df;text-align:left;margin:5px 0;border-radius:8px}
+.nt-main-task>i{font:600 17px ui-monospace,monospace;color:#d7b185}.nt-main-task span{display:grid;gap:4px}.nt-main-task small,.nt-main-task em{font:11px system-ui;color:#b7c9bd}.nt-main-task em{margin-left:auto;white-space:nowrap}.nt-main-task:disabled{opacity:.64}.e17-sheet .e17-section{margin:16px 0 4px}
+
+/* A field index of four illustrated, numbered tickets. */
+.e18-archive .e21-index-head{display:flex;align-items:baseline;justify-content:space-between;margin:14px 1px 6px;color:#f0dfc3}
+.e21-index-head strong{font:700 14px/1.4 'Noto Serif SC','Songti SC',SimSun,serif;letter-spacing:.14em}
+.e21-index-head small,.e21-ticket small,.e21-edition{font:600 9px/1.4 ui-monospace,Consolas,monospace;letter-spacing:.08em}
+.e21-index{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+.e21-index .e21-ticket{position:relative;display:flex;align-items:center;text-align:left;gap:7px;min-height:50px;color:#e6dfcc;background:#19342e;border:1px solid #627568;border-radius:2px;padding:0 6px 0 0;overflow:hidden;cursor:pointer;transform:none;box-shadow:none}
+.e21-ticket img{width:26%;max-width:55px;height:48px;object-fit:cover;object-position:73% 50%;align-self:stretch;opacity:.84;border-right:1px solid #567166}
+.e21-ticket span{min-width:0;flex:1}
+.e21-ticket small{font-size:8px;color:#bcc8b6;display:block;white-space:nowrap}
+.e21-ticket strong{display:block;margin:3px 0 0;font:700 clamp(11px,3.2vw,14px)/1.35 'Noto Serif SC','Songti SC',SimSun,serif;white-space:nowrap;letter-spacing:.04em}
+.e21-ticket i{font:14px/1 Georgia,serif;color:#c7b68e}
+.e21-index .e21-ticket[aria-pressed=true]{background:#ebdbbf url(assets/archive18-paper.webp) repeat;border-color:#e4c699;color:#19372f}
+.e21-ticket[aria-pressed=true] small{color:#5b634d}.e21-ticket[aria-pressed=true] i{color:#805334}
+.e21-index .e21-ticket:hover{border-color:#d0b38d}
+.e18-cover-image[style]{isolation:isolate;background:#333d36;overflow:hidden}
+.e18-cover-image[style]::before,.e18-cover-image[style]::after{content:"";position:absolute;inset:0;z-index:-1}
+.e18-cover-image[style]::before{background:var(--plate) 50% 38%/cover no-repeat}
+.e21-margin .e18-cover-image::before,.e21-register .e18-cover-image::before{transform:scaleX(-1)}
+.e18-cover-image[style]::after{background:linear-gradient(100deg,#ebdec5e0,#eedec49e 32%,#e9d7b920 54%,transparent 67%)}
+.e21-relay .e18-cover-caption{background:#244740}.e21-margin .e18-cover-caption{background:#51473b}.e21-register .e18-cover-caption{background:#384844}
+.e21-relay .e18-file-head img,.e21-margin .e18-file-head img,.e21-register .e18-file-head img{object-position:55% center}
+.e21-margin .e18-stamp{color:#804c39}.e21-relay .e18-stamp{color:#416354}.e21-register .e18-stamp{color:#545c56}
+.e21-edition{border-top:1px solid #bba88b;padding:7px 0;color:#655d49;letter-spacing:.06em}
+@media(max-width:345px){.e21-index .e21-ticket{gap:4px}.e21-ticket img{width:21%}.e21-ticket small{font-size:7px}.e21-ticket i{display:none}}

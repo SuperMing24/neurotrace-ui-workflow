@@ -14,14 +14,34 @@ const T=[
 {id:'V-426',name:'低信噪比片段',condition:'弱信号 / 局部缺失',hint:'弱信号区域仅作为视觉模拟。观察亮度差异及邻近拓扑，不要仅凭亮度判断连通。',camera:[-.58,.23],segments:[
 ['a',[[-3.0,-.7,-.7],[-2.1,-.42,-.5],[-1.3,-.2,-.21],[-.68,.04,.1]]],['b',[[.4,.12,.18],[1.1,.45,.26],[2.1,.75,.45],[3,1,.63]]],['c',[[-1.3,-.2,-.21],[-1.54,.48,.28],[-1.8,1.18,.7]]],['d',[[1.1,.45,.26],[1.38,-.4,.12],[1.55,-1.2,-.05]]],['e',[[-3,1.6,1.5],[-2.1,1.35,1.4],[-1.2,1.08,1.1]]],['f',[[.1,1.22,1.02],[.9,1.4,.9],[1.7,1.6,.7]]],['g',[[-.8,-1.6,-1.0],[-.25,-1.1,-.72],[.28,-.65,-.45]]]],candidates:['a:end','b:start','c:end','d:end','e:end','f:start','g:end']},
 {id:'D-537',name:'致密神经末梢',condition:'高密度 / 多重干扰',hint:'背景纤维密集、候选端点多。建议先调整对比度再绕转三维视角，不要求把所有端点两两连接。',camera:[-.3,.45],segments:[
-['a',[[-3,-.4,-1],[-2.15,-.3,-.55],[-1.35,-.2,-.1],[-.52,-.02,.25]]],['b',[[.18,.12,.42],[1,.42,.68],[1.7,.85,.83],[2.62,1.22,1.0]]],['c',[[-2.1,1.8,-1.25],[-1.42,1.3,-.94],[-.7,.92,-.58]]],['d',[[.23,.67,-.42],[.85,.3,-.6],[1.66,-.36,-.92],[2.58,-.95,-1.3]]],['e',[[-2.6,-1.7,1.38],[-1.8,-1.1,.95],[-.88,-.72,.7]]],['f',[[.18,-.42,.85],[.85,-.98,.9],[1.53,-1.62,.96]]],['g',[[-2.82,.8,.75],[-2.05,.62,.46],[-1.42,.55,.13]]],['h',[[1.5,1.9,-.6],[2,1.55,-.5],[2.65,1.15,-.3]]],['i',[[-.8,-1.88,-1.35],[.1,-1.53,-1.2],[1.03,-1.3,-1.09]]]],candidates:['a:end','b:start','c:end','d:start','e:end','f:start','g:end','h:start','i:end']}
+['a',[[-3,-.4,-1],[-2.15,-.3,-.55],[-1.35,-.2,-.1],[-.52,-.02,.25]]],['b',[[.18,.12,.42],[1,.42,.68],[1.7,.85,.83],[2.62,1.22,1.0]]],['c',[[-2.1,1.8,-1.25],[-1.42,1.3,-.94],[-.7,.92,-.58]]],['d',[[.23,.67,-.42],[.85,.3,-.6],[1.66,-.36,-.92],[2.58,-.95,-1.3]]],['e',[[-2.6,-1.7,1.38],[-1.8,-1.1,.95],[-.88,-.72,.7]]],['f',[[.18,-.42,.85],[.85,-.98,.9],[1.53,-1.62,.96]]],['g',[[-2.82,.8,.75],[-2.05,.62,.46],[-1.42,.55,.13]]],['h',[[1.5,1.9,-.6],[2,1.55,-.5],[2.65,1.15,-.3]]],['i',[[-.8,-1.88,-1.35],[.1,-1.53,-1.2],[1.03,-1.3,-1.09]]]],candidates:['a:end','b:start','c:end','d:start','e:end','f:start','g:end','h:start','i:end']},
+// The new archive plates each have their own authored 3D scene and reference pairs.
+{id:'R-608',name:'镜湖双路',condition:'平行走向 / 深度分层',hint:'两路的正面投影靠得很近。绕到侧面，把同一深度上的断口配对。',camera:[.06,.12],segments:[
+ ['a',[[-3.7,-1.05,-1.15],[-2,-.75,-1.12],[-1,-.43,-1.05],[-.42,-.22,-.99]]],['b',[[.42,.05,-.94],[1.28,.4,-.89],[2.32,.9,-.83],[3.7,1.35,-.8]]],
+ ['c',[[-3.7,-1.4,1.03],[-2.18,-1,1.06],[-1.16,-.6,1.12],[-.52,-.31,1.15]]],['d',[[.38,.08,1.19],[1.3,.5,1.23],[2.25,.76,1.26],[2.98,.95,1.31]]],
+ ['e',[[-2,-.75,-1.12],[-2.06,-1.42,-1.32],[-2.3,-2.12,-1.52]]]],candidates:['a:end','b:start','c:end','d:start','e:end']},
+{id:'M-712',name:'潮尺上的缺口',condition:'绕行转弯 / 采样边界',hint:'显示边界末端。沿弯曲纤维追到框内，比较缺口前后方向。',camera:[-.26,.24],segments:[
+ ['a',[[-3.7,-1.47,.42],[-2.6,-1.33,.39],[-1.73,-.85,.35],[-1.16,-.1,.28],[-.86,.53,.21]]],
+ ['b',[[-.41,1.14,.15],[.23,1.58,.11],[1.04,1.66,.10],[2.16,1.25,.14],[3.7,.65,.22]]],
+ ['c',[[-3.7,.65,-.91],[-2.9,.82,-.89],[-2.36,1.16,-.83],[-2.12,1.75,-.79]]],
+ ['d',[[2.16,1.25,.14],[2.33,.47,.16],[2.67,-.43,.24],[3.7,-.88,.28]]],
+ ['e',[[.46,-2.21,1.1],[.23,-1.62,1.02],[.13,-.92,.91]]]],candidates:['a:end','b:start','c:end','b:end','d:end','e:end']},
+{id:'J-834',name:'山脊分岔',condition:'真实分叉 / 投影近邻',hint:'先找 Y 形共同起点。按两支离开分叉时的方向分别追踪，核对各自的延续。',camera:[-.34,.22],segments:[
+ ['a',[[-3.7,-.81,-.33],[-2.49,-.46,-.26],[-1.36,-.11,-.12],[-.35,.43,.24]]],
+ ['b',[[.45,.93,.49],[1.12,1.31,.64],[2.17,1.55,.88],[3.05,1.94,1.07]]],
+ ['c',[[-1.36,-.11,-.12],[-.94,-.49,-.36],[-.39,-.94,-.58]]],
+ ['d',[[.36,-1.38,-.82],[1.17,-1.68,-1.04],[2.11,-1.97,-1.18],[3.07,-2.4,-1.33]]],
+ ['e',[[.36,.83,-1.35],[1.06,.55,-1.17],[1.94,.13,-.98],[3.7,-.45,-.73]]]],candidates:['a:end','b:start','c:end','d:start','e:start']},
 ];
 const boundaryTerminalMap={
   'C-101':['a:start','b:end','e:end'],
   'H-204':['a:start','b:end','c:end'],
   'T-315':['a:start','c:start','d:end'],
   'V-426':['a:start','b:end','e:start'],
-  'D-537':['a:start','b:end','e:start','h:end']
+  'D-537':['a:start','b:end','e:start','h:end'],
+  'R-608':['a:start','b:end','c:start'],
+  'M-712':['a:start','b:end','c:start','d:end'],
+  'J-834':['a:start','d:end','e:end']
 };
 const TASKS=T.map(o=>({...o,segments:o.segments.map(([id,p])=>({id,p})),gap:[o.candidates[0],o.candidates[1]],boundaryTerminals:boundaryTerminalMap[o.id]||[]}));
 function isBoundaryTerminal(taskIndex,endpointId){return taskAt(taskIndex).boundaryTerminals.includes(endpointId);}
@@ -177,5 +197,7 @@ listen('pointercancel',canvas,e=>pointers.delete(e.pointerId));listen('wheel',ca
 const observer=typeof ResizeObserver!=='undefined'?new ResizeObserver(resize):null;observer?.observe(container);resize();frameId=requestAnimationFrame(draw);
 return {canvas,task,endpoints,projectedEndpoints,projectPoint:project,camera:cam,pick,reset(){Object.assign(cam,{yaw:preset[0],pitch:preset[1],panX:0,panY:0,zoom:1});},dispose(){active=false;cancelAnimationFrame(frameId);observer?.disconnect();listeners.forEach(x=>x());canvas.remove();}};
 }
-window.NeuroTrace3D={TASKS,THEMES,visibility,taskAt,endpointsFor,allEndpointsFor,endpointData,isBoundaryTerminal,originalConnected,connectionExists,pointSegmentDistance,create};
+const api={TASKS,THEMES,visibility,taskAt,endpointsFor,allEndpointsFor,endpointData,isBoundaryTerminal,originalConnected,connectionExists,pointSegmentDistance,create};
+if(typeof module!=='undefined' && module.exports) module.exports=api;
+else window.NeuroTrace3D=api;
 })();

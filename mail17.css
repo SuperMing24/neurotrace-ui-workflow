@@ -57,3 +57,5 @@
 .nm-editor input:focus,.nm-editor textarea:focus {outline:1px solid #8bd8ce;}
 .nm-editor-foot {display:flex;justify-content:space-between;align-items:center;gap:8px;}
 .nm-feedback {font-size:12px;color:#b2e4cf;margin:12px 3px;}
+
+.nm-empty{padding:20px 14px;line-height:1.8;color:#c9d3c7;font-size:14px}.nt-peer-paper p{line-height:1.95;margin:1em 0}.nt-peer-paper p:last-child{text-align:right}.nt-letter-retry{margin:12px 0 0;border:1px solid #45666c;border-radius:5px;background:#18353a;color:#e9e2cc;padding:8px 12px}.nm-tabs button{white-space:nowrap}

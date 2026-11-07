@@ -1,0 +1,23 @@
+{
+  "version": "1.4",
+  "publicData": false,
+  "meta": {
+    "label": "金牛星空",
+    "summary": "查看早期金牛背景和三维神经纤维。",
+    "kind": "release",
+    "original": "https://neurotrace-ui-demo-1wauzeswj-superming96-9947.vercel.app",
+    "sourceDeployment": "dpl_8gJSY7y4LK34zmWNRpvSggd5eSjc",
+    "sourceDate": "2026-11-02T05:51:07.217000+08:00"
+  },
+  "files": {
+    "screen.txt": "dc6d31855d2ea47a0485330dac2cfdf7d0c2e728ecfdab8098295f9d6e149716",
+    "workflow.html": "b4101e55a8e703a4c94c63326e69039a90cde64d8d9054c004d98bd58cc623f7",
+    "index.html": "d4c42dd6c47b28f20cc9c6382d4e5cc37dffedc80621ca5cf21b47dc54688ee3"
+  },
+  "changes": {
+    "workflow.html": {
+      "originalSHA256": "23591ce6f0a4fe2ae8d317216d8a620a550ecc8176e0ecb4ccb3f49b105953d2",
+      "reason": "返回链接指向本版。"
+    }
+  }
+}

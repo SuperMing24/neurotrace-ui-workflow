@@ -1,0 +1,17 @@
+{
+  "version": "0.1",
+  "publicData": false,
+  "meta": {
+    "label": "三屏视觉原型",
+    "summary": "初版任务页、视图工具与排行榜设计稿。",
+    "kind": "design",
+    "original": null,
+    "sourceArchive": "libfile_e2cff3ea47488191a889bf9c6954a060",
+    "sourceEntry": "preview.html"
+  },
+  "files": {
+    "screen.txt": "e4bc8f32df7f54ceb2943c7a69c417a207775dfccc186ae9c302b786bc8733d0",
+    "index.html": "d4c42dd6c47b28f20cc9c6382d4e5cc37dffedc80621ca5cf21b47dc54688ee3"
+  },
+  "changes": {}
+}

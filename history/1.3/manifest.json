@@ -1,0 +1,23 @@
+{
+  "version": "1.3",
+  "publicData": false,
+  "meta": {
+    "label": "骨架选取",
+    "summary": "查看原始骨架选取、视图及底部操作。",
+    "kind": "release",
+    "original": "https://neurotrace-ui-demo-7yq1bj69j-superming96-9947.vercel.app",
+    "sourceDeployment": "dpl_89syZLSK14WVJKWwtBY7mQzy5tim",
+    "sourceDate": "2026-11-02T05:06:42.524000+08:00"
+  },
+  "files": {
+    "screen.txt": "4a081567bbc19c120606d24ff093d50aa9464ac7dbf3d7bb3d529519df420c4c",
+    "workflow.html": "0e7f088c4b7cf88204b83eafed03f6a9844c4786d833f6141cd99df862435cef",
+    "index.html": "d4c42dd6c47b28f20cc9c6382d4e5cc37dffedc80621ca5cf21b47dc54688ee3"
+  },
+  "changes": {
+    "workflow.html": {
+      "originalSHA256": "12f9cebf59a9eae7479c20a7f731e9716c6f51fe6212dde8a534ab3034d3f5ee",
+      "reason": "返回链接指向本版。"
+    }
+  }
+}

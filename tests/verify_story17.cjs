@@ -5,7 +5,7 @@ const path = require('node:path');
 const assert = require('node:assert/strict');
 const root = path.join(__dirname,'..');
 const ids = ['dawn','tide','parallax'];
-const stars = [];
+const stars = [], letters=[];
 let prior = null;
 const app = {
   window:null, state:{page:'game',loggedIn:true,taskIndex:0,addedEdges:[],score:68,selectedNodes:[]},
@@ -14,7 +14,7 @@ const app = {
   render:()=>{}, setPage:page=>{app.state.page=page;},
   taskSwitch:i=>{app.state.taskIndex=i;},
   persistDemo:()=>{prior=JSON.stringify({story17:app.state.story17, score:app.state.score});},
-  resourceIcon:()=>'<svg></svg>',NeuroMail:{notify:m=>stars.push(m)},contentShell:x=>x,head:x=>x,embeddedAssets:{},embeddedThumbs:[]
+  resourceIcon:()=>'<svg></svg>',NeuroMail:{notify:m=>stars.push(m),guestMilestone:id=>letters.push(id)},contentShell:x=>x,head:x=>x,embeddedAssets:{},embeddedThumbs:[]
 };
 app.window=app;
 vm.createContext(app);
@@ -37,7 +37,27 @@ const key=(index,answers)=>{
 const ab=['b:start','a:end'], ef=['f:start','e:end'], cd=['c:end','d:start'];
 story.init();
 assert.equal(st.score,0);assert.equal(story.completionCount(),0);
-assert.match(story.archiveHTML(),/红岸之后/);
+// Three independent field volumes may be read and played from a fresh account.
+for (const [volume,id,index,title,pairs] of [
+  [1,'relay',5,'镜湖双城电台',[ab,cd]],
+  [2,'margin',6,'退潮后的来信',[ab]],
+  [3,'register',7,'山脊校片室',[ab,cd]]
+]){
+  click('[data-story-volume]',{storyVolume:String(volume)});
+  assert.match(story.archiveHTML(),new RegExp(title));
+  assert.match(story.archiveHTML(),new RegExp('data-story-launch="'+id+'"'));
+  for(const type of ['cover','record']) assert.ok(fs.existsSync(path.join(root,'assets','archive22-'+id+'-'+type+'.webp')));
+  launch(id);assert.equal(st.taskIndex,index);assert.equal(st.page,'game');
+  key(index,[]);click('#story-submit');assert.match(story.resultSheet(),/再看一眼/);
+  click('[data-story-dismiss]');key(index,pairs);click('#story-submit');
+  assert.equal(st.score,0);assert.equal(story.completionCount(),0);assert.match(story.resultSheet(),/首次收藏/);
+  app.persistDemo();story.init();assert.ok(st.story17.sampleCleared[id]);
+  launch(id);click('#story-submit');assert.match(story.resultSheet(),/已收藏/);
+  click('[data-story-return]');click('[data-story-tab]',{storyTab:'fragments'});
+  assert.match(story.archiveHTML(),/is-found/);
+}
+story.reset();st.page='game';st.taskIndex=0;st.addedEdges=[];prior=null;
+assert.match(story.archiveHTML(),/留给下一班的底片/);
 for (const asset of ['station','receiver','strip','parallax']) assert.ok(fs.existsSync(path.join(root,'assets','archive18-'+asset+'.webp')));
 launch('tide');assert.equal(st.taskIndex,0);
 click('[data-story-side]',{storySide:'1'});assert.equal(st.taskIndex,0);
@@ -50,21 +70,21 @@ for (const [n,[index,pairs]] of [[0,[ab]],[3,[ab,ef]],[2,[ab,cd,ef]]].entries())
   launch(ids[n]);assert.equal(st.taskIndex,index);
   key(index,pairs);click('#story-submit');
   assert.equal(story.completionCount(),n+1);
-  assert.equal(st.score,[60,140,240][n]);
-  assert.match(story.resultSheet(),/回声已归档/);
+  assert.equal(st.score,[600,1400,2400][n]);
+  assert.match(story.resultSheet(),n===2?/外景 01 已归档/:/观察记录已归档/);
   click('[data-story-return]');assert.equal(st.page,'archive');
   launch(ids[n]);click('#story-submit');
   assert.match(story.resultSheet(),/积分和碎片已领取/);
-  assert.equal(st.score,[60,140,240][n]);click('[data-story-dismiss]');
+  assert.equal(st.score,[600,1400,2400][n]);click('[data-story-dismiss]');
 }
-assert.equal(stars.length,3);assert.match(story.civilHTML(),/联合测绘台已上线/);
+assert.equal(stars.length,3);assert.deepEqual(letters,[]);assert.match(story.taskSheet(),/观察委托 · 双样本复核/);
 click('[data-story-tab]',{storyTab:'fragments'});assert.match(story.archiveHTML(),/微光底片/);
 click('[data-story-side]',{storySide:'1'});assert.equal(st.taskIndex,1);assert.equal(st.camera3d.yaw,Math.PI/2);
 click('#story-submit');assert.match(story.resultSheet(),/登记为证据不足/);
 click('[data-story-record]',{storyRecord:'uncertain'});assert.equal(story.taskCount(),1);assert.match(story.resultSheet(),/观察记录已保存/);
 click('[data-story-side]',{storySide:'4'});assert.equal(st.palette,'contrast');assert.equal(st.contrast,130);
 key(4,[ab]);click('#story-submit');click('[data-story-record]',{storyRecord:'candidate'});
-assert.equal(story.taskCount(),2);assert.equal(st.score,240);
+assert.equal(story.taskCount(),2);assert.equal(st.score,2400);assert.deepEqual(letters,[]);
 app.persistDemo();story.init();assert.equal(story.taskCount(),2);assert.equal(story.completionCount(),3);
 story.reset();assert.equal(st.score,0);assert.equal(story.taskCount(),0);assert.equal(story.completionCount(),0);
 prior=JSON.stringify({score:78});st.score=78;st.taskIndex=4;story.init();
@@ -88,15 +108,23 @@ async function verifyOfficialScoring() {
   assert.equal(st.score,15);assert.equal(story.completionCount(),0);assert.equal(stars.length,3);
   assert.match(story.resultSheet(),/未取得校验回执/);
   click('[data-story-dismiss]');click('#story-submit');
-  resolve({account:{id:'staff-01',points:75},awarded:60,cleared:['dawn']});await flush();
-  assert.equal(st.score,75);assert.equal(story.completionCount(),1);assert.equal(stars.length,4);
+  resolve({account:{id:'staff-01',points:615},awarded:600,cleared:['dawn']});await flush();
+  assert.equal(st.score,615);assert.equal(story.completionCount(),1);assert.equal(stars.length,4);
   click('[data-story-dismiss]');click('#story-submit');
   resolve({account:{id:'staff-01',points:12},awarded:0,cleared:['dawn']});await flush();
   assert.equal(st.score,12);assert.equal(stars.length,4);assert.match(story.resultSheet(),/积分和碎片已领取/);
   click('[data-story-dismiss]');click('#story-submit');
   account={id:'staff-02',points:5};story.reset();story.syncRemote(account,[]);
-  resolve({account:{id:'staff-01',points:75},awarded:60,cleared:['dawn']});await flush();
+  resolve({account:{id:'staff-01',points:615},awarded:600,cleared:['dawn']});await flush();
   assert.equal(st.score,5);assert.equal(story.completionCount(),0);assert.equal(stars.length,4);
+  // Restored official sample stamps are visible on a fresh device and successful replays never double-award.
+  app.NeuroQuality={cloudCleared:c=>c.id==='relay',observe:()=>{},bind:()=>{},feedback:()=>''};
+  click('[data-story-volume]',{storyVolume:'1'});
+  assert.match(story.archiveHTML(),/1 \/ 1 份归档/);
+  launch('relay');key(5,[ab,cd]);click('#story-submit');
+  assert.match(story.resultSheet(),/复习校验通过/);assert.doesNotMatch(story.resultSheet(),/首次收藏/);
+  assert.equal(st.score,5);assert.equal(calls,4);
+  app.NeuroQuality=null;
   // Discard local qualification when restoring a staff session from its service record.
   st.taskIndex=4;story.syncRemote(account,[]);assert.equal(st.taskIndex,0);
 }

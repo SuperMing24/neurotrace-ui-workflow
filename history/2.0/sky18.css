@@ -1,0 +1,23 @@
+/* A single co-registered photographic plate lives below the picked fibers. */
+#game-screen {
+  --taurus-sky: url('assets/sky20-hubei.webp');
+  background: #050b15 var(--taurus-sky) center / cover no-repeat;
+}
+#game-screen::before {
+  background: linear-gradient(180deg, #03091530, transparent 27%, transparent 71%, #02071065);
+  transform: none;
+  filter: none;
+  mask-image: none;
+}
+#game-screen .particle-layer { display: none; }
+.sky-photo-sources { margin-top: 15px; font-size: .72rem; color: #92a9be; line-height: 1.6; }
+.sky-photo-sources a { color: #b5d3e3; text-underline-offset: .2em; }
+
+html[data-sky-view="taurus"] #game-screen{--taurus-sky:url('assets/sky20-taurus.webp')}
+.sky20-tools{display:grid;grid-template-columns:1fr auto;gap:7px;margin:16px 0 0;padding-top:12px;border-top:1px solid #355264;color:#c8dce2}
+.sky20-tools small{align-self:center;color:#aec4cc;font-size:10px}
+.sky20-tools div,.sky20-tools p{grid-column:1/-1}
+.sky20-tools div{display:flex;gap:6px}
+.sky20-tools button{flex:1;padding:9px 3px;border:1px solid #446477;border-radius:7px;background:#102d3e;color:#c4dbe2;font-size:12px}
+.sky20-tools button[aria-pressed=true]{border-color:#d2b581;background:#443d31;color:#f5e5c3}
+.sky20-tools p{font-size:11px;margin:0;line-height:1.5;color:#b0c6ca}

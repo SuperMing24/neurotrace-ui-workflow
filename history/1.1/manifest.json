@@ -1,0 +1,23 @@
+{
+  "version": "1.1",
+  "publicData": false,
+  "meta": {
+    "label": "三维连线现场",
+    "summary": "查看三维骨架、相机与端点选择。",
+    "kind": "release",
+    "original": "https://neurotrace-ui-demo-6nj8jn149-superming96-9947.vercel.app",
+    "sourceDeployment": "dpl_4zYgjTEJmEeq1hhx3CP6fURB2EsG",
+    "sourceDate": "2026-11-02T01:23:15.226000+08:00"
+  },
+  "files": {
+    "screen.txt": "c5653bc833131cf42bd265307b0ba14fbe64d03af0c626789febb88e2507beb4",
+    "workflow.html": "4cec41a0bc6ca243e79aa6cc78c748ce7e6dfee976cbef12e1c851a334459931",
+    "index.html": "d4c42dd6c47b28f20cc9c6382d4e5cc37dffedc80621ca5cf21b47dc54688ee3"
+  },
+  "changes": {
+    "workflow.html": {
+      "originalSHA256": "94bc0bf2b9de66706a605e23ab2747c3e45b06309b38b12f697d8998bee8e5ca",
+      "reason": "返回链接指向本版。"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "version": "1.5",
+  "publicData": false,
+  "meta": {
+    "label": "研究视图",
+    "summary": "查看当时的研究页与视图设置。原部署未附授权音轨。",
+    "kind": "release",
+    "original": "https://neurotrace-ui-demo-3rdf7j3yq-superming96-9947.vercel.app",
+    "sourceDeployment": "dpl_HLpiusTi8TmfTRhfhCynCignktVd",
+    "sourceDate": "2026-11-02T06:23:56.260000+08:00"
+  },
+  "files": {
+    "screen.txt": "8c1e8ff937a443893f922eaebd17be16657444143c14937952c2cf6ce7162654",
+    "workflow.html": "540c100f5c90f98c6a07f0c4465ecf5c0c134822e1a75d6a3da95ed25b10ba0d",
+    "index.html": "d4c42dd6c47b28f20cc9c6382d4e5cc37dffedc80621ca5cf21b47dc54688ee3"
+  },
+  "changes": {
+    "workflow.html": {
+      "originalSHA256": "7594ee1238fe9052e0bb410b2ac86a09a0f13f243ebbb58e789ac5767b31edbb",
+      "reason": "返回链接指向本版。"
+    }
+  }
+}

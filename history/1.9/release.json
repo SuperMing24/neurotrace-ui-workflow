@@ -1,0 +1,8 @@
+{
+ "version":"1.9.0","date":"2026-11-06","public_site":"https://neurotrace-ui-demo.vercel.app",
+ "atlas":"Allen CCFv3 reference anatomy. Five synthetic tasks without registered coordinates.",
+ "milestones":{"exterior01":["C-101","V-426","T-315"],"fieldpair":["H-204","D-537"]},
+ "roster":"Two developer accounts with opening balances imported from the V1.6 total board; 18 named archive simulation characters.",
+ "storage":"Neon Postgres stores official balances, training completions, field reports and milestone letters with read receipts.",
+ "oauth":"Server-side website flows. Each channel requires an approved application and credentials on the canonical HTTPS domain."
+}

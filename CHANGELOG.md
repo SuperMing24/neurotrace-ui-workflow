@@ -1,0 +1,14 @@
+# 变更记录
+
+## 未发布 · 2026-11-07 工程整理
+
+- 从既有 `NeuroTrace_V2.3.zip` 恢复 GitHub 缺少的 V1.9–V2.3 源码、迁移、测试、设计资料和 24 版归档。原件 SHA-256 与逐文件来源见 [恢复记录](docs/engineering/RECOVERY.md)。这是既有交付的恢复，不创建 V2.4 或其他版本。
+- 把共享“版本回看”控件放入“从设计到上线”的流程列表，窄屏也由同一流程入口展开；游戏和交互状态仍是动态区域。
+- 增加资产、迁移、种子夹具、阶段交付、版本治理、构建维护和缺口登记。音乐缺少明确再分发依据，原件保留在本机且排除出 Git。
+- 增加不联网、不迁移、不发布的本地检查／构建流程。保持 `release.json` 为取回交付中的 `2.3.0`，不改写历史清单。
+
+本条目不是 Release、Git tag、Vercel 发布或生产数据库验收。测试结果见 [本轮验证](docs/engineering/VALIDATION.md)。
+
+## 既有版本记录
+
+完整的 24 版对照表在 [版本索引](docs/engineering/VERSION_INDEX.md)。每版的摘要与原始部署线索来自已有 `review/catalog.json` 和 `history/<版本>/manifest.json`。审计时 GitHub 只有 37 个历史提交、没有 tag 或 GitHub Release；不能按展示编号倒造 tag 或补写过去的发布时间。V1.3–V1.5.1 原说明仍保存在 `docs/RELEASE_NOTES_*.md`。

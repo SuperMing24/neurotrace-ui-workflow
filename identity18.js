@@ -3,7 +3,17 @@ window.NeuroIdentity = (() => {
   const roles={player:'玩家',reviewer:'复核员',developer_admin:'开发者管理员'};
   let directory={status:'loading',accounts:[]}, me=null, service='loading';
   let cleared=[], generation=0, ledgerBusy=false, initialSync=false, rosterVersion=0;
+  let channels={available:{},linked:[]}, channelStatus='loading', channelSeq=0;
   let mode='', pendingKey='', staff=[], busy=false, message='';
+  let practiceStaff=[], practiceStatus='idle', readyOnly=false, minimumPoints='';
+  const quickNames={siqi:'四七',xiaowang:'小王'};
+  let invite=null, selectedHandle='siqi', quickBusy=false;
+  if(typeof location!=='undefined'){
+    const raw=new URLSearchParams((location.hash||'').slice(1)).get('pair');
+    const match=/^(siqi|xiaowang)[.]([a-f0-9]{64})$/.exec(raw||'');
+    if(match){selectedHandle=match[1];invite={handle:match[1],token:match[2]};history.replaceState(null,'',location.pathname+location.search);}
+    else{try{const saved=localStorage.getItem('nt-last-operator');if(Object.hasOwn(quickNames,saved))selectedHandle=saved;}catch{}}
+  }
   const safe=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   async function request(view,body) {
     const response=await fetch('/api/identity'+(view?'?view='+view:''),{
@@ -12,7 +22,7 @@ window.NeuroIdentity = (() => {
     });
     if (!response.ok) {
       const data=await response.json().catch(()=>({}));
-      const messages={sign_in_required:'云端会话已结束，请重新登录。',credentials_rejected:'凭据未获接受，请检查密钥或激活码。',forbidden:'此云端账户没有管理权限。',chapter_locked:'请先通过上一章训练。',wrong_answer:'本次连线与训练答案不一致。',insufficient_points:'云端积分不足。',request_conflict:'该兑换请求已用于另一件商品。',invalid_order:'兑换信息有误。'};
+      const messages={device_required:'这台浏览器尚未授权，或入口已过期。请先打开本账号的专属首次登录卡。',pin_rejected:'密码不正确，请再输入一次。',pin_throttled:'尝试次数已达上限，请在 15 分钟后重试。',invalid_pin:'请输入四位数字。',provider_unavailable:'此渠道尚未开放。',already_signed_in:'请在个人中心关联当前账号。',sign_in_required:'云端会话已结束，请重新登录。',credentials_rejected:'凭据未获接受，请检查密钥或激活码。',forbidden:'此云端账户没有管理权限。',chapter_locked:'请先通过上一章训练。',wrong_answer:'本次连线与训练答案不一致。',insufficient_points:'云端积分不足。',request_conflict:'该兑换请求已用于另一件商品。',invalid_order:'兑换信息有误。',price_changed:'积分价格已更新，请刷新补给站后重新确认。'};
       throw Object.assign(new Error(messages[data.error]||'账户服务暂时不可用，请重试。'),{status:response.status,code:data.error});
     }
     return response.json();
@@ -23,7 +33,7 @@ window.NeuroIdentity = (() => {
     }
   }
   function refreshPage() {
-    if(typeof state!=='undefined' && ['rank','profile'].includes(state.page) && typeof render==='function')render();
+    if(typeof state!=='undefined' && ['rank','profile','login','social'].includes(state.page) && typeof render==='function')render();
     else renderAccount();
   }
   function acceptSession(snapshot) {
@@ -33,25 +43,59 @@ window.NeuroIdentity = (() => {
     if(changed){
       initialSync=true;
       generation++;
-      staff=[];pendingKey='';mode='';
-      window.syncNeuroAccount?.(me,cleared.slice());
+      staff=[];practiceStaff=[];practiceStatus='idle';readyOnly=false;minimumPoints='';pendingKey='';mode='';
     }
+    if(changed||me)window.syncNeuroAccount?.(me,cleared.slice());
+    if (changed) window.NeuroQuality?.switchAccount?.(me);
+    window.dispatchEvent?.(new CustomEvent('nt-account-sync',{detail:{...snapshot,account:me,cleared:cleared.slice()}}));
   }
   async function refreshRoster(){
     const seq=++rosterVersion;
-    try{const r=await request('roster');if(seq===rosterVersion)directory={status:'ready',accounts:r.accounts};}
+    try{const r=await request('roster');if(seq===rosterVersion)directory={status:'ready',accounts:r.accounts,fieldReady:r.fieldReady};}
     catch{if(seq===rosterVersion)directory={status:'error',accounts:[]};}
+  }
+  async function refreshChannels(){
+    const seq=++channelSeq;
+    try{
+      const r=await request('providers');
+      if(seq===channelSeq){channels=r;channelStatus='ready';}
+    }catch{if(seq===channelSeq){channels={available:{},linked:[]};channelStatus='error';}}
   }
   async function init() {
     const epoch=generation;
-    await Promise.all([refreshRoster(),request('session').then(snapshot=>{
+    await Promise.all([refreshRoster(),refreshChannels(),request('session').then(snapshot=>{
       if(epoch===generation){service='ready';acceptSession(snapshot);}
     }).catch(()=>{if(epoch===generation)service='error';})]);
-    refreshPage();
+    const status=new URLSearchParams(location.hash.slice(1)).get('nt-auth');
+    if(status){
+      const labels={signed_in:'授权登录成功。',linked:'账号关联成功。',expired:'授权已过期，请重新开始。',conflict:'这个身份已有其他关联，请使用原登录方式。',cancelled:'已取消本次授权。',unavailable:'该登录渠道尚未开放。',failed:'授权未完成，请稍后重试。'};
+      history.replaceState(null,'',location.pathname+location.search);
+      if(typeof state!=='undefined')state.page=me?'social':'login';
+      const confirmed=status==='signed_in'?Boolean(me):status==='linked'?Boolean(me&&channels.linked.length):true;
+      message=confirmed?(labels[status]||'请查看账号状态。'):'尚未从服务器确认账号状态，请重新查询。';
+    }
+    if(!document.activeElement?.closest?.('#nt-quick-login'))refreshPage();
+  }
+  const providerName={wechat:'微信',qq:'QQ'};
+  function socialControls(){
+    const markup=Object.keys(providerName).map(p=>{
+      const linked=me&&channels.linked.includes(p), available=channels.available[p], disabled=linked||!available||service!=='ready';
+      const label=linked?'已关联':(channelStatus==='error'?'暂不可用':(channelStatus==='loading'?'正在查询':(available?(me?'关联':'登录'):'待开放')));
+      const mark=p==='qq'&&available?'<img width="16" height="16" alt="" referrerpolicy="no-referrer" src="https://wiki.connect.qq.com/wp-content/uploads/2016/12/Connect_logo_1.png"> ':'';
+      return '<button type="button" data-oauth="'+p+'" '+(disabled?'disabled':'')+'><b>'+mark+providerName[p]+'</b><small>'+label+'</small></button>';
+    }).join('');
+    return '<div class="auth-social nt-social">'+markup+'</div>';
+  }
+  async function beginOAuth(provider){
+    if(busy)return;
+    busy=true;
+    try{const {url}=await request('',{action:'oauth',provider,intent:me?'bind':'login'});location.assign(url);}
+    catch(e){if(typeof toast==='function')toast(e.message);}
+    finally{busy=false;}
   }
   async function logout(){
     const snapshot=await request('',{action:'logout'});
-    acceptSession(snapshot);return snapshot;
+    acceptSession(snapshot);await refreshChannels();return snapshot;
   }
   async function transact(payload){
     const epoch=generation;
@@ -61,7 +105,7 @@ window.NeuroIdentity = (() => {
     try {
       const result=await request('',payload);
       if(epoch!==generation||me?.id!==result.account?.id)throw new Error('云端账户已切换，请重新查看状态。');
-      me=result.account;cleared=Array.isArray(result.cleared)?result.cleared.slice():cleared;
+      acceptSession(result);
       await refreshRoster();
       if(epoch!==generation||me?.id!==result.account?.id)throw new Error('云端账户已切换，请重新查看状态。');
       if(typeof state!=='undefined' && state.page==='rank')refreshPage();
@@ -72,19 +116,51 @@ window.NeuroIdentity = (() => {
     }finally{ledgerBusy=false;}
   }
   function button(label,action,alt=false){return '<button type="button" data-identity="'+action+'" class="'+(alt?'nt-id-sub':'nt-id-cta')+'">'+label+'</button>';}
+  async function refreshPracticeStaff(){
+    const owner=me?.id, epoch=generation;
+    if (!owner || me.role!=='developer_admin') return;
+    practiceStatus='loading';practiceStaff=[];
+    try {
+      const res=await fetch('/api/practice?view=staff',{credentials:'same-origin',cache:'no-store'});
+      if (!res.ok) throw new Error('staff_scores');
+      const snapshot=await res.json();
+      if (!Array.isArray(snapshot.players)) throw new Error('staff_scores');
+      if (owner===me?.id && epoch===generation) {practiceStaff=snapshot.players;practiceStatus='ready';}
+    } catch {
+      if (owner===me?.id && epoch===generation) practiceStatus='error';
+    }
+  }
+  function practiceList(){
+    const num=n=>Number.isFinite(n)?String(Math.round(n)):'—';
+    const rows=practiceStaff.filter(r=>(!readyOnly || r.ready===true) && (minimumPoints==='' || r.points>=Number(minimumPoints)));
+    if(!practiceStaff.length)return '<p>暂无可显示的正式成绩。</p>';
+    if(!rows.length)return '<p>没有符合当前条件的玩家。</p>';
+    return '<p>符合条件 '+rows.length+' / '+practiceStaff.length+' 位</p><ol>'+rows.map(row=>'<li><div><strong>'+safe(row.name)+'</strong> <small>'+(row.ready===true?'已达复核练习门槛':'训练中')+'</small></div>'+
+      '<span>已测 '+num(row.tested)+' 份 · 达标 '+num(row.qualified)+' 份 · 积分 '+num(row.points)+'</span>'+
+      '<span>首次均分 '+num(row.firstMean)+' · 最佳均分 '+num(row.bestMean)+'</span></li>').join('')+'</ol>';
+  }
+  function practiceStaffPanel(){
+    return '<section class="q21-shortlist"><h3>训练表现</h3><p>按不同样本的表现筛选复核练习候选人。积分为账户当前余额。</p>'+
+      button('刷新成绩','practice-staff',true)+
+      (practiceStatus==='error'?'<p role="status">训练成绩暂不可用，请稍后刷新。</p>':
+        practiceStatus==='loading'?'<p role="status">正在查询…</p>':
+        '<div class="q21-filters"><label>练习资格<select data-practice-filter="ready"><option value="all">全部玩家</option><option value="ready"'+(readyOnly?' selected':'')+'>已达复核门槛</option></select></label>'+
+        '<label>最低账户积分<input type="number" min="0" step="1" inputmode="numeric" placeholder="不限" value="'+safe(minimumPoints)+'" data-practice-filter="points"></label></div>'+
+        '<div data-practice-list aria-live="polite">'+practiceList()+'</div>')+'</section>';
+  }
   function settings() {
     let content='';
     if(me){
-      content='<strong class="nt-id-name">'+safe(me.name)+' <small>'+safe(roles[me.role]||me.role)+'</small></strong><p>云端身份已验证。训练首通和模拟兑换使用这个账号的云端积分。</p><div class="nt-id-actions">'+
+      content='<strong class="nt-id-name">'+safe(me.name)+' <small>'+safe(roles[me.role]||me.role)+'</small></strong><p>云端身份已验证。当前账户积分 '+Number(me.points).toLocaleString('zh-CN')+'。</p><div class="nt-id-actions">'+
         (me.role==='developer_admin'?button(mode==='staff'?'收起控制台':'打开管理控制台',mode==='staff'?'close':'staff'):'')+button('退出云端会话','logout',true)+'</div>';
-      if(mode==='staff')content+='<div class="nt-id-staff"><b>账户会话管理</b>'+staff.map(a=>'<div><span>'+safe(a.name)+' · '+safe(roles[a.role]||a.role)+'<small>'+(a.activated?'已激活':'待本人激活')+' · '+Number(a.active_sessions)+' 个在线会话</small></span>'+
-        (a.active_sessions?'<button type="button" class="nt-id-sub" data-revoke="'+safe(a.id)+'">退出该账号全部设备</button>':'')+'</div>').join('')+'</div>';
+      if(mode==='staff')content+='<div class="nt-id-staff"><b>账户会话管理</b>'+staff.map(a=>'<div><span>'+safe(a.name)+' · '+safe(roles[a.role]||a.role)+'<small>'+(a.activated?'长密钥已启用':'长密钥未启用')+' · '+Number(a.active_sessions)+' 个在线会话</small></span>'+
+        (a.active_sessions?'<button type="button" class="nt-id-sub" data-revoke="'+safe(a.id)+'">退出该账号全部设备</button>':'')+'</div>').join('')+'</div>'+practiceStaffPanel();
     } else if(mode==='activate') {
       content='<form id="nt-id-form" autocomplete="off"><p>向项目负责人领取 30 分钟有效的专属激活码。保存下方新密钥后，使用激活码开通云端账户。</p><label>本机生成的登录密钥<input name="personal" type="password" readonly value="'+pendingKey+'"></label><div class="nt-id-actions">'+button('查看 / 隐藏','reveal',true)+button('复制登录密钥','copy',true)+'</div><label>激活码<input name="code" type="password" minlength="64" maxlength="64" pattern="[a-f0-9]{64}" required autocomplete="off"></label><label class="nt-id-check"><input type="checkbox" required>我已将登录密钥保存在密码管理器中</label><div class="nt-id-actions"><button class="nt-id-cta" type="submit">激活并登录</button>'+button('取消','close',true)+'</div></form>';
     } else if(mode==='login') {
       content='<form id="nt-id-form"><label>开发者登录密钥<input name="key" type="password" autocomplete="current-password" minlength="64" maxlength="64" pattern="[a-f0-9]{64}" required></label><div class="nt-id-actions"><button class="nt-id-cta" type="submit">验证并登录</button>'+button('取消','close',true)+'</div></form>';
     } else {
-      content='<p>试玩身份用于本机游戏。两位开发者使用各自的登录密钥进入云端控制台。</p><div class="nt-id-actions">'+button('开发者登录','login')+button('首次激活','activate',true)+'</div>';
+      content='<p>已有四七或小王账号？用自己的密钥登录，恢复积分与训练记录。</p><div class="nt-id-actions">'+button('开发者登录','login')+button('首次激活','activate',true)+'</div>';
     }
     return '<section class="settings-group nt-id-panel" id="nt-id-panel"><div class="group-label">开发者账号</div>'+content+(service==='error'?'<p>会话查询暂不可用。</p>'+button('重新连接','retry',true):'')+'<p class="nt-id-status" role="status">'+safe(message)+'</p></section>';
   }
@@ -108,7 +184,12 @@ window.NeuroIdentity = (() => {
     if(action==='revoke' && !confirm('确定退出该开发者的全部后台会话？此账号可再次使用登录密钥登录。'))return;
     busy=true;
     try {
-      if(action==='staff'){staff=(await request('admin')).accounts;mode='staff';}
+      if(action==='staff'){
+        const owner=me?.id,epoch=generation;
+        const [accounts]=await Promise.all([request('admin'),refreshPracticeStaff()]);
+        if(me?.id===owner && epoch===generation && me?.role==='developer_admin'){staff=accounts.accounts;mode='staff';}
+      }
+      else if(action==='practice-staff'){await refreshPracticeStaff();}
       else if(action==='logout'){await logout();message='云端会话已退出。';}
       else if(action==='revoke'){await request('',{action:'revoke',id});acceptSession(await request('session'));staff=me?(await request('admin')).accounts:[];mode=me?'staff':'';message='已退出该账号的云端会话。';}
       else if(action==='submit'){
@@ -116,17 +197,58 @@ window.NeuroIdentity = (() => {
         const data=mode==='activate'?{action:'activate',key:pendingKey,code:f.elements.code.value}:{action:'login',key:f.elements.key.value};
         acceptSession(await request('',data));mode='';pendingKey='';message='云端身份已验证。';
       }
+      if(['submit','revoke'].includes(action))await refreshChannels();
       service='ready';
     } catch(e){if(e.status===401 && e.code==='sign_in_required')acceptSession({account:null});message=e.message;}
-    finally{busy=false;renderAccount();}
+    finally{busy=false;refreshPage();}
+  }
+  function quickPicker(){
+    return '<form class="nt-quick" id="nt-quick-login"><fieldset><legend>选择正式账号</legend><div class="nt-quick-cards">'+
+      Object.entries(quickNames).map(([handle,name],i)=>'<label><input type="radio" name="handle" value="'+handle+'" '+(selectedHandle===handle?'checked':'')+'><span><small>OP. 0'+(i+1)+'</small><b>'+name+'</b><em>'+(i?'面壁者':'破壁人')+'</em></span></label>').join('')+
+      '</div></fieldset><label class="nt-pin-label">四位密码<input type="password" name="pin" pattern="[0-9]{4}" maxlength="4" inputmode="numeric" autocomplete="off" required aria-label="四位密码"></label>'+
+      '<button class="nt-quick-enter" type="submit">登录观测站</button><p role="status" class="nt-quick-status">'+(invite?'已打开'+quickNames[invite.handle]+'的首次设备授权入口。':'新设备首次登录，请打开该账号的专属登录卡。')+'</p></form>';
+  }
+  function bindQuick(){
+    const form=document.getElementById('nt-quick-login');if(!form||form.dataset.bound)return;
+    form.dataset.bound='1';
+    form.addEventListener('change',e=>{
+      if(e.target.name!=='handle')return;
+      selectedHandle=e.target.value;form.elements.pin.value='';form.elements.pin.focus();
+    });
+    form.addEventListener('submit',async e=>{
+      e.preventDefault();if(quickBusy)return;
+      const handle=form.elements.handle.value,pin=form.elements.pin.value,status=form.querySelector('[role=status]');
+      if(!Object.hasOwn(quickNames,handle)||!/^[0-9]{4}$/.test(pin))return;
+      const button=form.querySelector('[type=submit]');quickBusy=true;button.disabled=true;form.elements.pin.value='';
+      status.textContent='正在验证账号…';
+      try{
+        const payload={action:'quick_login',handle,pin};
+        if(invite?.handle===handle)payload.invite=invite.token;
+        const snap=await request('',payload);
+        if(snap.account?.handle!==handle)throw new Error('请重新选择账号。');
+        invite=null;try{localStorage.setItem('nt-last-operator',handle);localStorage.setItem('nt-launch22','formal');}catch{}
+        acceptSession(snap);state.loggedIn=true;state.page=state.mainPage=state.previous='game';
+        render();await refreshChannels();
+      }catch(err){status.textContent=err.message||'暂时无法登录，请稍后重试。';form.elements.pin.focus();}
+      finally{quickBusy=false;button.disabled=false;}
+    });
   }
   function bind(){
+    bindQuick();
     const p=document.getElementById('nt-id-panel');
     if(!p || p.dataset.bound)return;p.dataset.bound='1';
     p.addEventListener('click',e=>{const b=e.target.closest('[data-identity],[data-revoke]');if(b)change(b.dataset.identity||'revoke',b.dataset.revoke);});
+    p.addEventListener('input',e=>{
+      const filter=e.target.dataset.practiceFilter;
+      if (!filter || me?.role!=='developer_admin' || mode!=='staff') return;
+      if(filter==='ready')readyOnly=e.target.value==='ready';
+      if(filter==='points')minimumPoints=e.target.validity.valid?e.target.value:'';
+      const list=p.querySelector('[data-practice-list]');
+      if(list)list.innerHTML=practiceList();
+    });
     p.addEventListener('submit',e=>{e.preventDefault();change('submit');});
   }
-  return {init,settings,bind,logout,session:()=>me,cleared:()=>cleared.slice(),roster:()=>directory,
+  return {init,settings,quickPicker,hasInvite:()=>!!invite,bind,logout,refreshRoster,refreshPage,socialControls,beginOAuth,accountNotice:()=>safe(message),session:()=>me,cleared:()=>cleared.slice(),roster:()=>directory,
     grade:(chapter,edges)=>transact({action:'grade',chapter,edges}),
-    redeem:(item,requestId)=>transact({action:'redeem',item,requestId})};
+    redeem:(item,requestId,quote)=>transact({action:'redeem',item,requestId,quote})};
 })();

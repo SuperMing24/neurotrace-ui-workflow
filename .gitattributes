@@ -1,0 +1,9 @@
+# Use deterministic bytes for source; preserve every frozen historical byte.
+* text=auto eol=lf
+*.webp binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.zip binary
+*.flac binary
+history/** -text

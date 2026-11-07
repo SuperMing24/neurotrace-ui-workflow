@@ -1,29 +1,44 @@
-# NeuroTrace V1.8 · 回声档案
+# NeuroTrace · 工程入口
 
-[进入观测站](https://neurotrace-ui-demo.vercel.app) · [界面概念图与三章设计](docs/ECHO_ARCHIVE_V18.md) · [开发者首次激活](docs/DEVELOPER_ACCOUNTS.md) · [金牛座摄影来源](docs/TAURUS_SKY.html)
+后续同步：本轮工程整理现按用户授权提交至 GitHub；Git 自动部署已在仓库配置中禁用。首次本地验收阶段与本次同步的边界见 [GitHub 同步说明](docs/engineering/GITHUB_SYNC.md)。不创建新版本或 tag，线上继续使用既有部署。
 
-从主页进入回声档案，按顺序挑战三份合成训练样本。每次校验比较当前新增边与教学答案，忽略端点先后顺序。首次通过解锁研究碎片、文明设施和系统回执。三章全部完成后，任务页解锁两种工具委托。通讯录的玩家私信仍保存于本设备。
+当前工作基线为既有 **V2.3（2.3.0）**。2026-11-07 这轮恢复工程资料、调整评审栏并补齐资产治理，尚未发布、推送或创建新版本。
 
-| 章节 | 样本 | 训练 | 首通 |
-| --- | --- | --- | --- |
-| 红岸之后 | C-101 | 识别主干断口 | 60 积分 |
-| 迟到的回信 | V-426 | 检查弱信号 | 80 积分 |
-| 沉默的坐标 | T-315 | 核对投影交叉 | 100 积分 |
+[工程资料总入口](docs/engineering/README.md) · [本轮未发布变更](CHANGELOG.md) · [当前状态](docs/PROJECT_STATUS.md) · [验证结果](docs/engineering/VALIDATION.md) · [未解决缺口](docs/engineering/GAPS.md)
 
-## 账号与积分
+## 本轮整理
 
-首次访问可直接以四七试玩。试玩存档、余额与模拟订单保存在本机。进入系统设置可以验证正式云端账号。实名持有人由项目负责人线下核验，并从项目控制台签发一次性激活码。云端四七和小王均为开发者管理员，称号分别是破壁人和面壁者。
+“版本回看”已作为折叠条目移入左侧“从设计到上线”的流程列表，同宽、同间距。桌面中间仍为实时交互原型，右侧仍为交互状态。窄屏在统一的“从设计到上线”入口展开流程与版本工具。
 
-正式账号的首通与模拟兑换由服务器校验并写入同一积分明细。群星总榜和个人余额来自这份账本。周榜、月榜按北京时间自然周、自然月的积分净增排序。公开试玩无法代替任何正式账号提交。商店仍为模拟兑换，不涉及实物交付。
+从原有 `NeuroTrace_V2.3.zip` 恢复 GitHub 缺失的 V2.x 源码、003–009 迁移、测试、工具和 24 版历史。605 个部署源文件已与 Vercel 源清单逐字节校验。GitHub 基线仍为 `afda85250f14ee7c8bd2fec26691c13bc3464fc9`；本轮恢复和维护改动留在本地，未自动同步到远端。
 
-## 运行
+[原包与恢复来源](docs/engineering/RECOVERY.md) · [24 版索引](docs/engineering/VERSION_INDEX.md) · [版本治理](docs/engineering/VERSION_GOVERNANCE.md) · [资产保管](docs/engineering/ASSET_POLICY.md) · [设计与阶段交付](docs/engineering/DESIGN_AND_DELIVERABLES.md)
 
-前端为根目录静态网页，后端为 Vercel Node Function，使用服务端环境变量 `NEUROTRACE_DATABASE_URL` 连接 Neon Postgres。数据库结构与权限见 `db/migrations/003_cloud_accounts.sql` 和 `004_training_ledger.sql`。预览与生产各自使用独立分支。
+## 运行与验证
 
-可用 `python -m http.server 8000` 运行本地前端试玩。验证云端账号功能时需运行带有受限数据库角色的服务端。原站音乐沿用部署内的 `assets/music/check1.flac`。
+前端为静态 HTML/CSS/JavaScript，后端为 Vercel Node Functions；普通运行和测试无需 npm 包安装。
 
-- `scene3d.js` 包含五套配色、两种成像风格、三维投影和几何拾取。新增边以虚线和中点菱形标出。
-- `ui18.js` 与 `ui18.css` 包含资源图标、排行榜、视图工具和游戏标题区域。
-- `story17.js`、`story17.css` 及 `assets/archive18-*.webp` 提供听站故事与独立美术。
-- `identity18.js` 与 `api/identity.js` 管理正式账号会话和积分操作。浏览器代码不包含数据库凭据。
-- 运行 `node --test tests/*.cjs` 检查账号权限、计分与账本回执、选线、对比度及信箱行为。
+```text
+node --test tests/*.cjs
+python -X utf8 tools/check_engineering.py
+python -X utf8 tests/verify_release_lifecycle23.py
+python -X utf8 tools/build_local.py
+```
+
+本机构建输出位置由工具打印，再用只绑定 `127.0.0.1` 的静态服务器预览。详细命令、运行环境、遗留测试限制和未来部署边界见 [构建说明](docs/engineering/BUILD_AND_DEPLOY.md)。本地工具不联网部署、不跑迁移、不改版本、不打 tag。
+
+私人服务模板及其内容测试、许可待确认的音轨是本机保管覆盖，已被 Git 忽略；公共 Git 本身尚不能重建完整生产服务。不要将原包或本机完整构建直接作为公开 Release。[恢复清单](docs/engineering/recovery-manifest.json) 记录这些文件的哈希与保管类别。
+
+## 数据与玩法边界
+
+根 `scene3d.js` 的八份任务是教学合成几何，六份剧情训练与两份开放观察分别处理；当前离线几何 seed 在 `db/seeds/`。真实显微数据、专家校准答案、科研贡献和实物履约不由演示页面推定。
+
+正式服务使用 Neon Postgres；本轮只读核对了表名和列结构，发现生产与旧预览分支不同，未修库。[数据库工程说明](docs/engineering/DATABASE.md) 区分旧提案、恢复的迁移和实际观察，不提供生产自动初始化脚本。
+
+## 资料与维护
+
+原游戏说明保留在 [V2.3 原交付 README](docs/history/V2.3_DELIVERY_README.md)。V1.x 发布说明、概念图、原设计 ZIP、旧数据和 Git 历史继续保留。
+
+[当前设计说明](docs/DESIGN_BRIEF.md) · [接手说明](docs/CODEX_HANDOFF.md) · [贡献规范](CONTRIBUTING.md) · [敏感资料边界](SECURITY.md) · [第三方署名与许可线索](THIRD_PARTY_NOTICES.md)
+
+项目尚未指定整体 LICENSE；public 仓库可见性不代替授权。本轮没有修改 [现有正式站](https://neurotrace-ui-demo.vercel.app) 的服务、数据或访问权限。

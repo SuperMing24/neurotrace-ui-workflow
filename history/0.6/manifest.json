@@ -1,0 +1,17 @@
+{
+  "version": "0.6",
+  "publicData": false,
+  "meta": {
+    "label": "导航调整",
+    "summary": "查看早期游戏操作与导航布局。",
+    "kind": "release",
+    "original": "https://neurotrace-ui-demo-94ka19bx4-superming96-9947.vercel.app",
+    "sourceDeployment": "dpl_Eqge9mepGaQqgbjkPwGuJPUdUWXJ",
+    "sourceDate": "2026-11-01T22:47:29.654000+08:00"
+  },
+  "files": {
+    "screen.txt": "4951617b8e27683a5f9009aab02b9cce70def490b093a908c345ec9c7a8bde08",
+    "index.html": "d4c42dd6c47b28f20cc9c6382d4e5cc37dffedc80621ca5cf21b47dc54688ee3"
+  },
+  "changes": {}
+}

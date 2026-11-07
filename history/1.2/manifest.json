@@ -1,0 +1,23 @@
+{
+  "version": "1.2",
+  "publicData": false,
+  "meta": {
+    "label": "多样本工作台",
+    "summary": "多样本三维现场与连线编辑工具。",
+    "kind": "release",
+    "original": "https://neurotrace-ui-demo-80bfbnfyn-superming96-9947.vercel.app",
+    "sourceDeployment": "dpl_DLU69UtDh6ZhdCPd7MEZjeNz4g9r",
+    "sourceDate": "2026-11-02T04:04:39.169000+08:00"
+  },
+  "files": {
+    "screen.txt": "9ad9731297cc3b40c053e972054b5b8336bd2c2893141b7bd2a9d8d4940745f5",
+    "workflow.html": "8a37323268f989b6c873d23b7a6835762e488d992f6f2fe05d4695488b764dcc",
+    "index.html": "d4c42dd6c47b28f20cc9c6382d4e5cc37dffedc80621ca5cf21b47dc54688ee3"
+  },
+  "changes": {
+    "workflow.html": {
+      "originalSHA256": "7ab0d64a203b9dcddd428f3fcc76e00988ce2e97031e997c6eee791f0fbf835d",
+      "reason": "返回链接指向本版。"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "version": "2.1.0",
+  "date": "2026-11-07",
+  "public_site": "https://neurotrace-ui-demo.vercel.app",
+  "features": [
+    "Taurus photographic sky crop above the horizon",
+    "Compact research controls",
+    "Four playable story chapters, six graded training samples",
+    "Per-account server-graded first and best scores with a staff shortlist",
+    "Two-view practice review for filed observations"
+  ],
+  "milestones": {
+    "exterior01": [
+      "C-101",
+      "V-426",
+      "T-315"
+    ],
+    "fieldpair": [
+      "H-204",
+      "D-537"
+    ]
+  },
+  "economy": {
+    "salmon": 600,
+    "chapterRewards": [
+      600,
+      800,
+      1000
+    ],
+    "openingBalances": {
+      "siqi": 56328,
+      "xiaowang": 40584
+    }
+  },
+  "database": "Migrations 005 and 006 applied 2026-11-06. Additive migration 007 applied 2026-11-07 for per-account practice scores and a staff-only summary.",
+  "oauth": "Implementation available. Public WeChat and QQ sign-in require approved platform credentials.",
+  "archive": {
+    "exterior01": [
+      "C-101",
+      "V-426",
+      "T-315"
+    ],
+    "exterior02": [
+      "R-608"
+    ],
+    "exterior03": [
+      "M-712"
+    ],
+    "exterior04": [
+      "J-834"
+    ]
+  },
+  "practice": {
+    "gate": {
+      "exterior01": "completed",
+      "distinct_samples": 4,
+      "minimum_best": 85
+    },
+    "sample_type": "synthetic authored training",
+    "review_notes": "account-scoped browser storage"
+  }
+}

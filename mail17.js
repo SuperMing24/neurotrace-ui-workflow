@@ -1,7 +1,8 @@
-/* Local postbox for the single supported V1.6 demo identity. */
+/* Local outbox drafts and authenticated, server-delivered private messages. */
 window.NeuroMail = (() => {
-  let storageKey = 'neurotrace-mail-v17:demo-siqi', player='四七';
-  let contacts = ['小王'];
+  let storageKey = 'neurotrace-mail-v17:demo-siqi', player='试玩观测员';
+  let received=[];
+  let cloudId=null, fieldRevision=0, fieldError='', localOnly=false;
   let cache;
   let tab = 'system', view = 'list', selected = '', flash = '';
   let persistenceUnavailable = false;
@@ -11,15 +12,20 @@ window.NeuroMail = (() => {
   function seed() {
     const time = Date.now();
     return {
-      notices: [{id:'welcome', title:'第一份观测邀请', body:player+'，欢迎来到观测站。第一份教学样本已经就绪。打开回声档案，跟随记录员进入三维样本。每完成一章，观测站都会把校验回执寄到这里。', action:'archive', read:false, time}],
-      letters: [{peer:contacts[0], outgoing:false, read:false, time, text:'我是'+contacts[0]+'。观察一个缺口时，我习惯先绕到侧面看一眼。从正面看起来相接的两段纤维，在深度上可能离得很远。你发现了什么？'}]
+      notices:[{id:'welcome',title:'第一份观测邀请',body:'观测站的第一份教学样本已就绪。打开回声档案，读完记录后进入三维现场。',action:'archive',read:false,time}],
+      letters:[]
     };
   }
   function data() {
     if (cache) return cache;
     try {
       const value = JSON.parse(localStorage.getItem(storageKey));
-      if (Array.isArray(value?.notices) && Array.isArray(value?.letters)) cache = value;
+      if (Array.isArray(value?.notices) && Array.isArray(value?.letters)){
+        const welcome=seed().notices[0];
+        cache={notices:value.notices.map(n=>n.id==='welcome'?{...n,body:welcome.body}:n.id?.startsWith('story-')?{...n,body:'本份观察记录已归档，可在回声档案中重温样本。'}:n),
+          letters:value.letters.filter(l=>l.outgoing===true)};
+        if(value.fieldLetters||value.letters.length!==cache.letters.length)save();
+      }
     } catch {}
     if (!cache) {cache = seed(); save();}
     return cache;
@@ -30,7 +36,7 @@ window.NeuroMail = (() => {
   }
   function counts() {
     const {notices, letters} = data();
-    return [notices.filter(n => !n.read).length, letters.filter(l => !l.outgoing && !l.read).length];
+    return [notices.filter(n => !n.read).length, received.filter(l => !l.read).length];
   }
   function entry() {
     const total = counts().reduce((a,b) => a+b,0);
@@ -51,6 +57,26 @@ window.NeuroMail = (() => {
     }
     if (state.page==='mail' && tab==='system' && view==='list') render();
   }
+  async function refreshField(payload){
+    const owner=cloudId;
+    if(!owner)return;
+    const revision=++fieldRevision;
+    try{
+      const response=await fetch('/api/letters',{credentials:'same-origin',cache:'no-store',...(payload?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}:{})});
+      if(!response.ok)throw new Error('field service');
+      const snapshot=await response.json();
+      if(owner!==cloudId || snapshot.accountId!==owner || revision!==fieldRevision)return;
+      localOnly=Boolean(snapshot.localOnly);
+      if(localOnly){received=[];return;}
+      received=(snapshot.letters||[]).map(l=>({...l,time:Date.parse(l.time)}));
+      state.story17.sideRecords=snapshot.reports||{};
+      fieldError='';
+      if(state.page==='mail'||state.page==='game'&&!payload)render();
+    }catch(e){
+      if(owner===cloudId && revision===fieldRevision){fieldError='暂未同步，可重新收信。';if(state.page==='mail')render();}
+      if(payload)throw e;
+    }
+  }
   function when(time) {
     const d = new Date(time);
     return d.getMonth()+1+'月'+d.getDate()+'日 '+[d.getHours(),d.getMinutes()].map(n=>String(n).padStart(2,'0')).join(':');
@@ -68,19 +94,19 @@ window.NeuroMail = (() => {
       rows=data().notices.map(n=>row(n.id,n.title,n.body,n.time,!n.read,false)).join('');
     } else {
       const peers = new Map();
-      for (const letter of data().letters) {
+      for (const letter of [...received,...data().letters].sort((a,b)=>a.time-b.time)) {
         const prev=peers.get(letter.peer);
         peers.set(letter.peer, {last:letter, unread:(!letter.outgoing && !letter.read) || !!prev?.unread});
       }
       rows = Array.from(peers.values()).reverse().sort((a,b)=>b.last.time-a.last.time).map(({last,unread})=>
-        row(last.peer,last.peer,(last.outgoing?'我：':'')+last.text,last.time,unread,true)).join('');
+        row(last.peer,last.peer,(last.outgoing?'我：':'')+(last.title||last.text),last.time,unread,true)).join('') || '<p class="nm-empty">暂无私信。</p>';
     }
     return '<header class="nm-banner"><span class="nm-kicker">ECHO POST &nbsp;/&nbsp; 047</span>'+
       '<div class="nm-title">'+safe(player)+'的信箱</div><p>观测站的来信与队友留言</p><span class="nm-stamp" aria-hidden="true">'+icon('mail')+'</span></header>'+
-      '<div class="nm-tabs">'+navTab('system','系统通知',sys)+navTab('private','玩家私信',priv)+'</div>'+
-      '<div class="nm-list-head"><span>'+(tab==='system'?'档案局来信':'我的会话')+'</span>'+
+      '<div class="nm-tabs">'+navTab('system','系统通知',sys)+navTab('private','私信',priv)+'</div>'+
+      '<div class="nm-list-head"><span>'+(tab==='system'?'训练回执':'我的会话')+'</span>'+
       (tab==='private'?'<button data-nm-compose>写私信 ＋</button>':'<small>按收信时间</small>')+'</div>'+
-      '<div class="nm-rows">'+rows+'</div>'+ (tab==='private'?'<p class="nm-local">本机会话演示。来信为示例，写下的私信仅保存在当前浏览器。</p>':'');
+      '<div class="nm-rows">'+rows+'</div>'+ (tab==='private'?'<p class="nm-local">手写留言保存为本机草稿。</p>':'');
   }
   function detail() {
     const letter=data().notices.find(n=>n.id===selected);
@@ -91,27 +117,37 @@ window.NeuroMail = (() => {
   function editor(recipient) {
     return '<form class="nm-editor" id="nm-editor"><label>收件人'+
       (recipient?'<b>'+safe(recipient)+'</b>':'<input name="peer" placeholder="输入玩家昵称" maxlength="18" required list="nm-recipients" autocomplete="off"/><datalist id="nm-recipients">'+
-        Array.from(new Set([...contacts,...data().letters.map(l=>l.peer)])).map(p=>'<option value="'+safe(p)+'"></option>').join('')+'</datalist>')+'</label>'+
+        Array.from(new Set([...received.map(l=>l.peer),...data().letters.map(l=>l.peer)])).map(p=>'<option value="'+safe(p)+'"></option>').join('')+'</datalist>')+'</label>'+
       '<label>内容<textarea name="message" rows="4" maxlength="500" required placeholder="写下你的观察或问候…"></textarea></label>'+
       '<div class="nm-editor-foot"><small>仅在此浏览器保存</small><button class="nm-primary" type="submit">保存'+(recipient?'回复':'私信')+' <span>↗</span></button></div></form>';
   }
   function conversation() {
-    const letters=data().letters.filter(l=>l.peer===selected);
-    return '<div class="nm-thread-title"><span class="nm-kicker">本机私信</span><h2>'+safe(selected)+'</h2></div>'+
-      '<div class="nm-thread">'+letters.map(l=>'<article class="nm-bubble '+(l.outgoing?'nm-out':'')+'"><small>'+safe(l.outgoing?player+' · 我':l.peer+' · 演示来信')+'</small><p>'+safe(l.text)+'</p><time>'+safe(when(l.time))+'</time></article>').join('')+'</div>'+editor(selected);
+    const letters=[...received,...data().letters].filter(l=>l.peer===selected).sort((a,b)=>a.time-b.time);
+    return '<div class="nm-thread-title"><span class="nm-kicker">私信会话</span><h2>'+safe(selected)+'</h2></div><div class="nm-thread">'+letters.map(l=>
+      '<article class="nm-bubble '+(l.outgoing?'nm-out':'')+'"><small>'+safe(l.outgoing?player+' · 本机草稿':l.peer+' · 自动私信')+'</small>'+(l.title?'<h3>'+safe(l.title)+'</h3>':'')+l.text.split('\n\n').map(t=>'<p>'+safe(t)+'</p>').join('')+'<time>'+safe(when(l.time))+'</time></article>').join('')+'</div>'+editor(selected);
+  }
+  async function markThreadRead(peer){
+    const owner=cloudId;
+    for(const item of received.filter(l=>l.peer===peer&&!l.read)){
+      if(owner!==cloudId||state.page!=='mail'||view!=='thread'||selected!==peer)return;
+      try{await refreshField({action:'read',id:item.id});}catch{return;}
+    }
+    if(owner===cloudId&&state.page==='mail')render();
   }
   function page() {
     const top = view==='list'?head('信箱'):'<div class="subpage-head"><button class="subpage-back" data-nm-list aria-label="返回信箱">'+icon('back')+'</button><span>'+({detail:'系统通知',thread:'私信会话',compose:'写私信'})[view]+'</span></div>';
     const content = view==='list'?list():view==='detail'?detail():view==='thread'?conversation():editor('');
     return contentShell(top+'<div class="nm-page">'+content+
+      (fieldError&&cloudId?'<button class="nt-letter-retry" data-field-refresh>重新同步信箱</button>':'')+
       (flash?'<p class="nm-feedback" role="status">'+safe(flash)+'</p>':'')+
       (persistenceUnavailable?'<p class="nm-local" role="status">浏览器存储暂不可用，本次记录仅在当前页面保留。</p>':'')+'</div>','mail');
   }
   document.addEventListener('click',event=>{
-    if (event.target.closest('[data-page="mail"]')) {view='list';tab='system';flash='';}
+    if (event.target.closest('[data-page="mail"]')) {view='list';tab=received.some(l=>!l.read)?'private':'system';flash='';if(cloudId)refreshField();}
   }, true);
   document.addEventListener('click',event=>{
     if (!state.loggedIn || state.page!=='mail') return;
+    if(event.target.closest('[data-field-refresh]')?.hasAttribute?.('data-field-refresh')){refreshField();return;}
     const btn=event.target.closest('[data-nm-tab],[data-nm-open],[data-nm-compose],[data-nm-list]');
     if (!btn) return;
     flash='';
@@ -121,7 +157,7 @@ window.NeuroMail = (() => {
     else {
       selected=btn.dataset.nmOpen;
       if (tab==='system') {const n=data().notices.find(n=>n.id===selected);if(!n)return;n.read=true;view='detail';}
-      else {data().letters.filter(l=>l.peer===selected).forEach(l=>{l.read=true;});view='thread';}
+      else {view='thread';markThreadRead(selected);}
       save();
     }
     render();
@@ -148,9 +184,10 @@ window.NeuroMail = (() => {
     cache=seed();tab='system';view='list';selected='';flash='';save();
   }
   function switchPlayer(account){
+    cloudId=account?.id||null;received=[];fieldRevision++;fieldError='';localOnly=false;
     storageKey='neurotrace-mail-v17:'+(account?'account:'+account.id:'demo-siqi');
-    player=account?.name||'四七';contacts=[player==='小王'?'四七':'小王'];
+    player=account?.name||'试玩观测员';
     cache=null;view='list';tab='system';selected='';flash='';
   }
-  return {entry,page,notify,reset,switchPlayer};
+  return {entry,page,notify,reset,switchPlayer,refreshField,localFieldOnly:()=>localOnly};
 })();

@@ -1,0 +1,79 @@
+{
+  "database": "neurotrace",
+  "schema": "nt_identity",
+  "appliedMigrationLogAvailable": false,
+  "files": [
+    {
+      "path": "db/migrations/001_demo_schema.sql",
+      "sha256": "e612013ba000368877ab73d970ff524fb9ad8650157155c232aa0179da8bb2e5",
+      "bytes": 1400,
+      "origin": "GitHub baseline",
+      "executionInThisTask": "not-executed",
+      "status": "legacy-proposal"
+    },
+    {
+      "path": "db/migrations/002_auth_shop_proposal.sql",
+      "sha256": "195436486370dd3de0405fdf2c2853f2d3044d6da3d42b8afb2f3ff88c9170a9",
+      "bytes": 2272,
+      "origin": "GitHub baseline",
+      "executionInThisTask": "not-executed",
+      "status": "legacy-proposal"
+    },
+    {
+      "path": "db/migrations/003_cloud_accounts.sql",
+      "sha256": "29a06e2491ca18dd0bfc5925619f78a08d949b8f0429cc3fc17958e36e04c620",
+      "bytes": 5955,
+      "origin": "Existing V2.3 delivery",
+      "executionInThisTask": "not-executed",
+      "status": "historically-reported-applied; current-columns-only-inspected"
+    },
+    {
+      "path": "db/migrations/004_training_ledger.sql",
+      "sha256": "ba62643f4d42375a464f0f69652795df40d4ea4117ee5f8cc1e6628609b539fb",
+      "bytes": 3998,
+      "origin": "Existing V2.3 delivery",
+      "executionInThisTask": "not-executed",
+      "status": "historically-reported-applied; current-columns-only-inspected"
+    },
+    {
+      "path": "db/migrations/005_oauth.sql",
+      "sha256": "3747c6fb7dcda56e02dce840fb4c215dc243236243bd9e8a0df9bee7f8728f11",
+      "bytes": 3556,
+      "origin": "Existing V2.3 delivery",
+      "executionInThisTask": "not-executed",
+      "status": "historically-reported-applied; current-columns-only-inspected"
+    },
+    {
+      "path": "db/migrations/006_fieldwork.sql",
+      "sha256": "86c4f4822274327c533976f036e1adb863dbe3d1a05d2681d8910771ecbbaf4f",
+      "bytes": 8703,
+      "origin": "Existing V2.3 delivery",
+      "executionInThisTask": "not-executed",
+      "status": "historically-reported-applied; current-columns-only-inspected"
+    },
+    {
+      "path": "db/migrations/007_practice_scores.sql",
+      "sha256": "a671d5f95960bf1f4479585c2e29f22f5699794bd7a2fb4adab7d97ec48d32d5",
+      "bytes": 3601,
+      "origin": "Existing V2.3 delivery",
+      "executionInThisTask": "not-executed",
+      "status": "historically-reported-applied; current-columns-only-inspected"
+    },
+    {
+      "path": "db/migrations/008_quick_login.sql",
+      "sha256": "f41f6681813b18877446d17cf314f860910dd107a1ff66ec88d6c65498a0ca46",
+      "bytes": 2573,
+      "origin": "Existing V2.3 delivery",
+      "executionInThisTask": "not-executed",
+      "status": "historically-reported-applied; current-columns-only-inspected"
+    },
+    {
+      "path": "db/migrations/009_performance_rank.sql",
+      "sha256": "88945ba3676c40cfc0bc6baaf37f95020c82998499c6f8af529a7baf469a5358",
+      "bytes": 2690,
+      "origin": "Existing V2.3 delivery",
+      "executionInThisTask": "not-executed",
+      "status": "historically-reported-applied; current-columns-only-inspected"
+    }
+  ]
+}

@@ -1,24 +1,8 @@
 // Same-origin account API. Database permissions are held by the application role only.
-const { createHash, randomBytes } = require('node:crypto');
-const COOKIE = '__Host-nt_staff';
-const hexKey = /^[a-f0-9]{64}$/;
-const digest = value => createHash('sha256').update(value).digest('hex');
-
-async function sql(query, params = []) {
-  const connection = process.env.NEUROTRACE_DATABASE_URL;
-  const host = new URL(connection).hostname;
-  if (!/^ep-[a-z0-9-]+\..+\.neon\.tech$/.test(host)) throw new Error('db config');
-  // Neon HTTP SQL wire endpoint used by the upstream serverless driver.
-  const url = 'https://' + host.replace(/^[^.]+\./, 'api.') + '/sql';
-  const response = await fetch(url, {
-    method: 'POST', redirect: 'error', signal: AbortSignal.timeout(10000),
-    headers: {'Content-Type':'application/json','Neon-Connection-String':connection,
-              'Neon-Array-Mode':'false','Neon-Raw-Text-Output':'false'},
-    body: JSON.stringify({query, params})
-  });
-  if (!response.ok) throw new Error('db unavailable');
-  return (await response.json()).rows;
-}
+const {sql,digest,hexKey,cookie,sessionHash,randomBytes}=require('../lib/account');
+const oauth=require('../lib/oauth');
+const quickLogin=require('../lib/quick-login');
+const prices=new Map(require('../data/catalog_v16.json').map(x=>[x.id,x.cost]));
 
 function account(row) {
   if (!row) return null;
@@ -36,9 +20,6 @@ async function loadSession(hash) {
   const {cleared,...me}=row;
   return {account:account(me),cleared:typeof cleared==='string'?JSON.parse(cleared):cleared||[]};
 }
-function cookie(value, maxAge) {
-  return COOKIE+'='+value+'; Path=/; HttpOnly; Secure; SameSite=Strict; Max-Age='+maxAge;
-}
 function isTrue(v) { return v===true || v==='t' || v==='true'; }
 
 module.exports = async function identity(req,res) {
@@ -47,12 +28,15 @@ module.exports = async function identity(req,res) {
   res.setHeader('X-Content-Type-Options','nosniff');
   const send = (status, data) => res.status(status).json(data);
   const fail = (status, error) => send(status,{error});
-  const token = String(req.headers.cookie||'').split(';').map(p=>p.trim()).find(p=>p.startsWith(COOKIE+'='))?.slice(COOKIE.length+1);
-  const session = hexKey.test(token||'') ? digest(token) : null;
+  const session=sessionHash(req);
   try {
     if (req.method==='GET') {
       const view = req.query?.view || 'session';
-      if (view==='roster') return send(200,{accounts:(await sql('select * from nt_identity.roster()')).map(account)});
+      if (view==='providers') return send(200,await oauth.providers(req,session));
+      if (view==='roster'){
+        const rows=await sql("select r.*, (to_regprocedure('nt_identity.field_snapshot(text)') is not null) as ready from nt_identity.roster() r");
+        return send(200,{fieldReady:isTrue(rows[0]?.ready),accounts:rows.map(({ready,...row})=>account(row))});
+      }
       if (view==='session') {
         return send(200,await loadSession(session));
       }
@@ -67,6 +51,8 @@ module.exports = async function identity(req,res) {
     if (!/^application\/json(?:;|$)/i.test(req.headers['content-type']||'')) return fail(415,'json_required');
     const b=req.body;
     if (!b || typeof b!=='object' || Array.isArray(b)) return fail(400,'invalid_request');
+    if (b.action==='quick_login') return await quickLogin(req,res,loadSession);
+    if (b.action==='oauth') return await oauth.start(req,res,b,session);
     if (b.action==='logout') {
       if(session) await sql('select nt_identity.signout($1)',[session]);
       res.setHeader('Set-Cookie',cookie('',0));
@@ -77,8 +63,9 @@ module.exports = async function identity(req,res) {
       const grade=b.action==='grade';
       if(grade && (!['dawn','tide','parallax'].includes(b.chapter) || !Array.isArray(b.edges) || b.edges.length>200 ||
         b.edges.some(e=>!Array.isArray(e)||e.length!==2||e.some(v=>typeof v!=='string'||!(/^[a-z]:(start|end)$/).test(v))))) return fail(422,'wrong_answer');
-      if(!grade && (!['wasabi55','snack-kit','sampler','backpack'].includes(b.item) ||
+      if(!grade && (!prices.has(b.item) ||
         typeof b.requestId!=='string'|| !/^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(b.requestId))) return fail(400,'invalid_order');
+      if(!grade && b.quote!==prices.get(b.item))return fail(409,'price_changed');
       const [r]=grade ? await sql('select nt_identity.grade($1,$2,$3::jsonb) as result',[session,b.chapter,JSON.stringify(b.edges)]) :
         await sql('select nt_identity.redeem($1,$2,$3::uuid) as result',[session,b.item,b.requestId]);
       const value=Number(r.result);

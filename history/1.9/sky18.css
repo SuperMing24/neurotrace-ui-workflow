@@ -1,0 +1,14 @@
+/* A single co-registered photographic plate lives below the picked fibers. */
+#game-screen {
+  --taurus-sky: url('assets/taurus19-wide.webp');
+  background: #050b15 var(--taurus-sky) center / cover no-repeat;
+}
+#game-screen::before {
+  background: linear-gradient(180deg, #03091530, transparent 27%, transparent 71%, #02071065);
+  transform: none;
+  filter: none;
+  mask-image: none;
+}
+#game-screen .particle-layer { display: none; }
+.sky-photo-sources { margin-top: 15px; font-size: .72rem; color: #92a9be; line-height: 1.6; }
+.sky-photo-sources a { color: #b5d3e3; text-underline-offset: .2em; }

@@ -1,0 +1,17 @@
+{
+  "version": "0.3",
+  "publicData": false,
+  "meta": {
+    "label": "五屏设计评审",
+    "summary": "第三轮五屏原型与页面切换。",
+    "kind": "design",
+    "original": null,
+    "sourceArchive": "libfile_b97c056e57ec8191a1f23ad5fabb39f8",
+    "sourceEntry": "NeuroTrace_v03/preview.html"
+  },
+  "files": {
+    "screen.txt": "0dc990e56e1d592b89e7e2a42f7b0657a7ebdc07e6f926a19095529fdf818d16",
+    "index.html": "d4c42dd6c47b28f20cc9c6382d4e5cc37dffedc80621ca5cf21b47dc54688ee3"
+  },
+  "changes": {}
+}

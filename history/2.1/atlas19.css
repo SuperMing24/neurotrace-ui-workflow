@@ -1,0 +1,45 @@
+.page.normal-page:has(.a19){background:#0a1b25}
+.a19{max-width:680px;margin:0 auto;padding:19px 1px 30px;color:#dfebe6;--line:#36505a;--mint:#b6dbc9;--muted:#aec0bf;font-size:13px;line-height:1.55}
+.a19 *{box-sizing:border-box}
+.a19 button,.a19 select{font-family:inherit;cursor:pointer}
+.a19 button:focus-visible,.a19 a:focus-visible,.a19 select:focus-visible,.a19 summary:focus-visible{outline:2px solid #e8c18c;outline-offset:2px}
+.a19-title small,.a19-label,.a19-meta,.a19-ml,.a19-orient,.a19-ap{font:10px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.12em}
+.a19-title small,.a19-label{color:#9abfb5}
+.a19-title h2{font-size:34px;line-height:1.14;letter-spacing:.06em;margin:7px 0 4px;color:#e1eee5}
+.a19-title h2 span{margin-left:12px;padding-left:12px;border-left:1px solid #63817d;font-size:15px;font-weight:500;letter-spacing:.1em;color:#b4ccbf}
+.a19 p{font-size:13px;line-height:1.7;color:var(--muted);margin:7px 0 13px}
+.a19 h3{font-size:17px;color:#e5efe8;margin:15px 0 4px}
+.a19-tabs,.a19-switch,.a19-layers,.a19-lessons,.a19-regions{display:flex;align-items:stretch;gap:5px}
+.a19-tabs{margin:14px 0;border-bottom:1px solid var(--line)}
+.a19 button{color:#afc6c4;background:none;border:0;box-shadow:none}
+.a19-tabs button{flex:1;padding:9px 3px 10px;font-size:13px;border-bottom:2px solid transparent;border-radius:0;white-space:nowrap}
+.a19-tabs button[aria-pressed=true]{color:#cbe9d7;border-bottom-color:#b3d6bd;font-weight:700}
+.a19-plate{overflow:hidden;border:1px solid #41616a;border-radius:9px;background:#0d2430}
+.a19-meta{display:flex;justify-content:space-between;gap:6px;color:#b5c9c4;background:#102a33;padding:8px 10px;border-bottom:1px solid var(--line);font-size:9px;line-height:1.4}
+.a19-field,.a19-specimen,.a19-figure{background-color:#102530;background-image:linear-gradient(#819f9b13 1px,transparent 1px),linear-gradient(90deg,#819f9b13 1px,transparent 1px);background-size:17px 17px}
+.a19-field{position:relative;min-height:148px;padding:12px 10px 9px}
+.a19-brain{display:block;margin:auto;width:100%;height:clamp(150px,24vh,200px)}
+.a19-orient,.a19-ap,.a19-ml{position:absolute;color:#a7c0b7;letter-spacing:.05em;font-size:9px}
+.a19-orient{top:7px;left:9px}.a19-ap{bottom:7px;left:9px}.a19-ml{bottom:7px;right:9px}
+.a19-switch{justify-content:center;background:#112a33;border-top:1px solid #34505c;padding:3px}
+.a19-switch button,.a19-layers button,.a19-lessons button,.a19-regions button{font-size:11px;padding:8px 5px;line-height:1.35}
+.a19-switch button{flex:1;border-radius:4px}.a19-switch button[aria-pressed=true],.a19-layers button[aria-pressed=true],.a19-lessons button[aria-pressed=true]{background:#2d494e;color:#e6eee4}
+.a19-label{margin:17px 0 8px;font-weight:650;font-size:10px}
+.a19-regions{flex-wrap:wrap;gap:4px}
+.a19-regions button{border:1px solid #38505b;border-radius:16px;display:inline-flex;align-items:center;gap:4px;padding:6px 8px;white-space:nowrap}
+.a19-regions i{width:7px;height:7px;display:inline-block;border-radius:50%}
+.a19-regions button[aria-pressed=true]{color:#eef3e6;background:#253e46;border-color:#9bb9ab}
+.a19 .a19-reading{display:block;background:#142c34;border-left:2px solid #7fa89c;padding:9px 11px;margin:10px 0 15px;color:#c6d5cc;line-height:1.65;font-size:12px}
+.a19-reading b{display:block;margin-bottom:2px;color:#deeadf;font-size:12px}
+.a19-layers button,.a19-lessons button{border:1px solid var(--line);border-radius:5px;padding:7px 10px}
+.a19-ledger{margin:9px 0 13px;padding:10px 12px;border:1px solid var(--line);border-radius:5px}
+.a19-ledger strong{font-size:13px;font-weight:650}.a19-ledger p{font-size:12px;margin:4px 0}
+.a19-ledger button{padding:7px 0 0;color:#d8e7b7;font-size:12px}.a19-ledger b{padding-left:4px}
+.a19 a{color:#bbe1d5;text-decoration-thickness:1px;text-underline-offset:3px}
+.a19-notes{font-size:12px;padding-top:5px}.a19-notes summary{cursor:pointer;color:#a6bdb4}.a19-notes p,.a19-notes a{font-size:11px;line-height:1.65}
+.a19-select{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:9px;margin-bottom:12px;font-size:12px;color:var(--muted)}
+.a19-select select{min-width:0;max-width:100%;padding:7px;border:1px solid var(--line);border-radius:4px;background:#162d37;color:#d5e7d9;font-size:12px}
+.a19-specimen svg,.a19-figure{display:block;width:100%;height:165px}
+.a19-lessons{margin-bottom:12px}.a19-lessons button{flex:1;white-space:nowrap;padding:8px 4px}
+.a19-sources{display:grid;gap:7px;font-size:12px}
+@media(max-width:350px){.a19-regions button{padding:6px}.a19-title h2{font-size:29px}}

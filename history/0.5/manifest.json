@@ -1,0 +1,17 @@
+{
+  "version": "0.5",
+  "publicData": false,
+  "meta": {
+    "label": "研究大厅",
+    "summary": "查看首次公开上线的大厅和沉浸式任务。",
+    "kind": "release",
+    "original": "https://neurotrace-ui-demo-a7pwson47-superming96-9947.vercel.app",
+    "sourceDeployment": "dpl_DaJjRiFu7MbEpiC35WeHikvsb5ga",
+    "sourceDate": "2026-11-01T14:08:48.466000+08:00"
+  },
+  "files": {
+    "screen.txt": "654eef980a1b402350e3c26a6b71932814ddaf4175bc41d61ff07367fc55b36e",
+    "index.html": "d4c42dd6c47b28f20cc9c6382d4e5cc37dffedc80621ca5cf21b47dc54688ee3"
+  },
+  "changes": {}
+}

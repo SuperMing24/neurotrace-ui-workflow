@@ -1,0 +1,17 @@
+{
+  "version": "0.4",
+  "publicData": false,
+  "meta": {
+    "label": "首个交互演示",
+    "summary": "进入最早可操作的连线演示。",
+    "kind": "prototype",
+    "original": null,
+    "sourceArchive": "libfile_89bcf6d846d48191a61321781a74478e",
+    "sourceEntry": "NeuroTrace_V04_OfflineDemo.html"
+  },
+  "files": {
+    "screen.txt": "e17947a387c6e3f038b72974f5afe76e04c0d46cc6332c37d0b7a204ecbddedb",
+    "index.html": "d4c42dd6c47b28f20cc9c6382d4e5cc37dffedc80621ca5cf21b47dc54688ee3"
+  },
+  "changes": {}
+}

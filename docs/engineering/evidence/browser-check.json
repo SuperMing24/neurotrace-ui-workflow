@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-07",
+  "origin": "http://127.0.0.1:8766",
+  "mode": "local guest only; preview APIs disabled",
+  "viewports": [
+    {
+      "width": 320,
+      "height": 740,
+      "overflowX": false,
+      "oneSelector": true,
+      "widthMatches": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflowX": false,
+      "oneSelector": true,
+      "widthMatches": true,
+      "keyboardOpen": true
+    },
+    {
+      "width": 1440,
+      "height": 980,
+      "oneSelector": true,
+      "insideWorkflow": true,
+      "insideInspector": false,
+      "cardWidth": 319.5182189941406,
+      "peerWidth": 319.5182189941406,
+      "summaryHeight": 56.640625,
+      "peerSummaryHeight": 56.640625
+    }
+  ],
+  "historySelection": "2.3 -> 2.2 -> 2.3",
+  "compare": {
+    "a": "2.2",
+    "b": "2.3",
+    "aNavigatesIndependently": true
+  },
+  "gameNavigation": "research -> civilization -> research",
+  "console": "Captured errors originate from an unrelated browser extension; no site JavaScript error observed.",
+  "screenshots": [
+    "desktop.jpg",
+    "mobile.jpg",
+    "compare.jpg"
+  ],
+  "productionAuthOrWritesTested": false
+}

@@ -1,0 +1,17 @@
+{
+  "version": "0.7",
+  "publicData": false,
+  "meta": {
+    "label": "三大主页面",
+    "summary": "研究、文明、群星和各自的二级页面。",
+    "kind": "release",
+    "original": "https://neurotrace-ui-demo-i7xcnnb23-superming96-9947.vercel.app",
+    "sourceDeployment": "dpl_3jKowBpSWA8Sv3nDW6WEaHFZff7u",
+    "sourceDate": "2026-11-01T23:10:02.169000+08:00"
+  },
+  "files": {
+    "screen.txt": "8da457a837090a721d5935216898f2e4ba1b78c1fd89cf2688ec2951d17c612f",
+    "index.html": "d4c42dd6c47b28f20cc9c6382d4e5cc37dffedc80621ca5cf21b47dc54688ee3"
+  },
+  "changes": {}
+}

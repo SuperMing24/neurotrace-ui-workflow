@@ -1,0 +1,17 @@
+{
+  "version": "0.8",
+  "publicData": false,
+  "meta": {
+    "label": "位图素材试验",
+    "summary": "界面加入图像素材，可对照按钮和导航的呈现。",
+    "kind": "release",
+    "original": "https://neurotrace-ui-demo-8zb295hvx-superming96-9947.vercel.app",
+    "sourceDeployment": "dpl_8KGYzWbFX5ZB9zGhvkbe7LR9fYJU",
+    "sourceDate": "2026-11-02T00:07:38.714000+08:00"
+  },
+  "files": {
+    "screen.txt": "f3052208d1ccd01ef6574f5a8b2a1f6c49ff2740862da68a7e12e3b9359d1325",
+    "index.html": "d4c42dd6c47b28f20cc9c6382d4e5cc37dffedc80621ca5cf21b47dc54688ee3"
+  },
+  "changes": {}
+}

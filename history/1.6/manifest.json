@@ -1,0 +1,24 @@
+{
+  "version": "1.6",
+  "publicData": false,
+  "meta": {
+    "label": "身份与补给",
+    "summary": "试玩身份、积分、商店与榜单。",
+    "kind": "release",
+    "original": "https://neurotrace-ui-demo-qdxomflbr-superming96-9947.vercel.app",
+    "sourceDeployment": "dpl_B5cy8DG71i55RHfGzEBoXSiGoUU3",
+    "sourceDate": "2026-11-05T03:55:46.750000+08:00"
+  },
+  "files": {
+    "assets/music/check1.flac": "d9779ffddcb8fb6b3b911646e346165583c72df73ec81bf1558ed3b0b9a7cdd1",
+    "screen.txt": "87fa21713b56fb4cbad5a8ab51018e645dd51196015ecaa616232b10b39308d7",
+    "workflow.html": "47fc4d1c65d0edb4a0a676d73131378d1958930a6a465d86b7a3839da139ae33",
+    "index.html": "d4c42dd6c47b28f20cc9c6382d4e5cc37dffedc80621ca5cf21b47dc54688ee3"
+  },
+  "changes": {
+    "workflow.html": {
+      "originalSHA256": "6794bf94265dd37c01819352abdaf713b85104c95cc855f9dd8cff0a15663a07",
+      "reason": "返回链接指向本版。"
+    }
+  }
+}

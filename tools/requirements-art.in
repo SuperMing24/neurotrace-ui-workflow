@@ -1,0 +1,4 @@
+# Optional art regeneration only. Original environment lock was not recovered.
+numpy
+Pillow
+scipy

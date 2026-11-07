@@ -1,0 +1,14 @@
+{
+  "existingDeliveryVersion": "2.3.0",
+  "recoveredDeliveryFiles": 644,
+  "unchangedFromOriginalDelivery": 641,
+  "changedExistingDeliveryFiles": [
+    "README.md",
+    "review/shell.css",
+    "review/shell.js"
+  ],
+  "newEngineeringMaterial": "Additional documentation, provenance indices, local check/build/preview tools, synthetic fixture and curated browser evidence.",
+  "remotePushed": false,
+  "deployed": false,
+  "newVersionOrTag": false
+}

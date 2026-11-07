@@ -1,0 +1,17 @@
+{
+  "version": "0.2",
+  "publicData": false,
+  "meta": {
+    "label": "四屏设计评审",
+    "summary": "查看第二轮四屏工作台与原始页面排布。",
+    "kind": "design",
+    "original": null,
+    "sourceArchive": "libfile_b212dfd24e9c819195381955c12d8611",
+    "sourceEntry": "preview.html"
+  },
+  "files": {
+    "screen.txt": "209ee4c0cacb7e7262bd9fb3f9c0e432ff91d7ce8c3bacacd81013f8247616eb",
+    "index.html": "d4c42dd6c47b28f20cc9c6382d4e5cc37dffedc80621ca5cf21b47dc54688ee3"
+  },
+  "changes": {}
+}

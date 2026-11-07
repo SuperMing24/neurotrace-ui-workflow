@@ -2,25 +2,25 @@
   {
     "id": "wasabi55",
     "name": "沃集鲜 芥末海苔味三文鱼脆片",
-    "cost": 60,
+    "cost": 600,
     "asset": "shop-wasabi-salmon.webp"
   },
   {
     "id": "snack-kit",
     "name": "星海零食双份补给",
-    "cost": 140,
+    "cost": 1400,
     "asset": "shop-neural-snack-kit.webp"
   },
   {
     "id": "sampler",
     "name": "神经探索海味零食礼篮",
-    "cost": 220,
+    "cost": 2200,
     "asset": "shop-seafood-sampler.webp"
   },
   {
     "id": "backpack",
     "name": "星图研究背包",
-    "cost": 880,
+    "cost": 8800,
     "asset": "shop-neural-backpack.webp"
   }
 ]

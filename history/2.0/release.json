@@ -1,0 +1,8 @@
+{
+  "version":"2.0.0","date":"2026-11-06","public_site":"https://neurotrace-ui-demo.vercel.app",
+  "features":["April 23 Shenzhen sky geometry","scrollable leaderboard with personal position","neuroscience atlas tabs","public archive and account-scoped automatic private correspondence"],
+  "milestones":{"exterior01":["C-101","V-426","T-315"],"fieldpair":["H-204","D-537"]},
+  "economy":{"salmon":600,"chapterRewards":[600,800,1000],"openingBalances":{"siqi":56328,"xiaowang":40584}},
+  "database":"005 and updated 006 applied in production on 2026-11-06; training and exchange use one official ledger.",
+  "oauth":"Implementation available. Public WeChat and QQ sign-in require approved platform credentials."
+}

@@ -1,0 +1,75 @@
+{
+  "version": "2.2.0",
+  "date": "2026-11-07",
+  "public_site": "https://neurotrace-ui-demo.vercel.app",
+  "features": [
+    "Archive chapters illustrated from the original plate references",
+    "Reframed Taurus view and research controls",
+    "Cloud account picker with device-bound PIN sign-in",
+    "Weekly, monthly and all-time points and performance rankings"
+  ],
+  "milestones": {
+    "exterior01": [
+      "C-101",
+      "V-426",
+      "T-315"
+    ],
+    "fieldpair": [
+      "H-204",
+      "D-537"
+    ]
+  },
+  "economy": {
+    "salmon": 600,
+    "chapterRewards": [
+      600,
+      800,
+      1000
+    ],
+    "openingBalances": {
+      "siqi": 56328,
+      "xiaowang": 40584
+    }
+  },
+  "database": "005–006 in V2.0, 007 in V2.1, 008–009 in V2.2 (device-bound account sign-in and calendar-period training leaderboards).",
+  "oauth": "Implementation available. Public WeChat and QQ sign-in require approved platform credentials.",
+  "archive": {
+    "exterior01": [
+      "C-101",
+      "V-426",
+      "T-315"
+    ],
+    "exterior02": [
+      "R-608"
+    ],
+    "exterior03": [
+      "M-712"
+    ],
+    "exterior04": [
+      "J-834"
+    ]
+  },
+  "practice": {
+    "gate": {
+      "exterior01": "completed",
+      "distinct_samples": 4,
+      "minimum_best": 85
+    },
+    "sample_type": "synthetic authored training",
+    "review_notes": "account-scoped browser storage"
+  },
+  "rankings": {
+    "points": [
+      "week",
+      "month",
+      "all"
+    ],
+    "performance": [
+      "week",
+      "month",
+      "all"
+    ],
+    "timezone": "Asia/Shanghai",
+    "performance_history": "Undated legacy best scores contribute only to all-time results."
+  }
+}

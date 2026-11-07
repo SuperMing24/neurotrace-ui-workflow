@@ -1,0 +1,933 @@
+{
+  "observedDate": "2026-11-07",
+  "repository": {
+    "url": "https://github.com/SuperMing24/neurotrace-ui-workflow",
+    "baselineCommit": "afda85250f14ee7c8bd2fec26691c13bc3464fc9",
+    "commits": 37,
+    "branches": [
+      "main"
+    ],
+    "tags": [],
+    "githubReleases": [],
+    "visibility": "public"
+  },
+  "vercel": {
+    "projectId": "prj_rltLMiGve1xnjVgoXp2XALNvcspx",
+    "teamId": "team_8p2UchCd10odjkArWG7L0sEC",
+    "name": "neurotrace-ui-demo",
+    "productionDeploymentId": "dpl_3NGqNE2yX9JdYkjVahPA4Vdku779",
+    "url": "https://neurotrace-ui-demo.vercel.app",
+    "createdAt": 1794006337996,
+    "readyState": "READY",
+    "gitSourceReturned": false,
+    "gitMeta": {},
+    "repoUrlFilterMatches": 0,
+    "inference": "No active Git association was returned by the repo URL filter; no settings were changed."
+  },
+  "neon": {
+    "projectId": "patient-heart-34552041",
+    "databaseName": "neurotrace",
+    "productionBranch": "br-wandering-rice-ao6o0idu",
+    "previewBranch": "br-aged-union-aorlespe",
+    "productionColumns": [
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "accounts",
+        "column_name": "id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "accounts",
+        "column_name": "handle",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "accounts",
+        "column_name": "name",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 3
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "accounts",
+        "column_name": "title",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 4
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "accounts",
+        "column_name": "role",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 5
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "accounts",
+        "column_name": "activation_hash",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "ordinal_position": 6
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "accounts",
+        "column_name": "activation_expiry",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "YES",
+        "ordinal_position": 7
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "accounts",
+        "column_name": "login_hash",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "ordinal_position": 8
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "admin_events",
+        "column_name": "occurred_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "admin_events",
+        "column_name": "actor",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "admin_events",
+        "column_name": "target",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 3
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "admin_events",
+        "column_name": "event",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 4
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "external_ids",
+        "column_name": "provider",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "external_ids",
+        "column_name": "subject_hash",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "external_ids",
+        "column_name": "account_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 3
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_letters",
+        "column_name": "account_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_letters",
+        "column_name": "milestone",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_letters",
+        "column_name": "sent_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "ordinal_position": 3
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_letters",
+        "column_name": "read_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "YES",
+        "ordinal_position": 4
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_reports",
+        "column_name": "account_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_reports",
+        "column_name": "sample",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_reports",
+        "column_name": "kind",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 3
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_reports",
+        "column_name": "edges",
+        "data_type": "jsonb",
+        "is_nullable": "NO",
+        "ordinal_position": 4
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_reports",
+        "column_name": "filed_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "ordinal_position": 5
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_reports",
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "ordinal_position": 6
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "oauth_requests",
+        "column_name": "state_hash",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "oauth_requests",
+        "column_name": "provider",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "oauth_requests",
+        "column_name": "bind_session",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "ordinal_position": 3
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "oauth_requests",
+        "column_name": "expires_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "ordinal_position": 4
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "point_events",
+        "column_name": "event_id",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "point_events",
+        "column_name": "account_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "point_events",
+        "column_name": "occurred_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "ordinal_position": 3
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "point_events",
+        "column_name": "delta",
+        "data_type": "integer",
+        "is_nullable": "NO",
+        "ordinal_position": 4
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "point_events",
+        "column_name": "chapter",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "ordinal_position": 5
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "point_events",
+        "column_name": "item",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "ordinal_position": 6
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "point_events",
+        "column_name": "request_id",
+        "data_type": "uuid",
+        "is_nullable": "YES",
+        "ordinal_position": 7
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "practice_period_bests",
+        "column_name": "period",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "practice_period_bests",
+        "column_name": "starts_on",
+        "data_type": "date",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "practice_period_bests",
+        "column_name": "account_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 3
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "practice_period_bests",
+        "column_name": "sample",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 4
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "practice_period_bests",
+        "column_name": "best_score",
+        "data_type": "smallint",
+        "is_nullable": "NO",
+        "ordinal_position": 5
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "practice_scores",
+        "column_name": "account_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "practice_scores",
+        "column_name": "sample",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "practice_scores",
+        "column_name": "first_score",
+        "data_type": "smallint",
+        "is_nullable": "NO",
+        "ordinal_position": 3
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "practice_scores",
+        "column_name": "best_score",
+        "data_type": "smallint",
+        "is_nullable": "NO",
+        "ordinal_position": 4
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "practice_scores",
+        "column_name": "last_score",
+        "data_type": "smallint",
+        "is_nullable": "NO",
+        "ordinal_position": 5
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "practice_scores",
+        "column_name": "hits",
+        "data_type": "smallint",
+        "is_nullable": "NO",
+        "ordinal_position": 6
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "practice_scores",
+        "column_name": "extra",
+        "data_type": "smallint",
+        "is_nullable": "NO",
+        "ordinal_position": 7
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "practice_scores",
+        "column_name": "missing",
+        "data_type": "smallint",
+        "is_nullable": "NO",
+        "ordinal_position": 8
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "quick_credentials",
+        "column_name": "token_hash",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "quick_credentials",
+        "column_name": "account_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "quick_credentials",
+        "column_name": "verifier",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 3
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "quick_credentials",
+        "column_name": "purpose",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 4
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "quick_credentials",
+        "column_name": "expires_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "ordinal_position": 5
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "quick_credentials",
+        "column_name": "failures",
+        "data_type": "integer",
+        "is_nullable": "NO",
+        "ordinal_position": 6
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "quick_credentials",
+        "column_name": "locked_until",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "YES",
+        "ordinal_position": 7
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "sessions",
+        "column_name": "token_hash",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "sessions",
+        "column_name": "account_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "sessions",
+        "column_name": "expires_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "ordinal_position": 3
+      }
+    ],
+    "previewColumns": [
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "accounts",
+        "column_name": "id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "accounts",
+        "column_name": "handle",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "accounts",
+        "column_name": "name",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 3
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "accounts",
+        "column_name": "title",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 4
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "accounts",
+        "column_name": "role",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 5
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "accounts",
+        "column_name": "activation_hash",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "ordinal_position": 6
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "accounts",
+        "column_name": "activation_expiry",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "YES",
+        "ordinal_position": 7
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "accounts",
+        "column_name": "login_hash",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "ordinal_position": 8
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "admin_events",
+        "column_name": "occurred_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "admin_events",
+        "column_name": "actor",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "admin_events",
+        "column_name": "target",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 3
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "admin_events",
+        "column_name": "event",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 4
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "external_ids",
+        "column_name": "provider",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "external_ids",
+        "column_name": "subject_hash",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "external_ids",
+        "column_name": "account_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 3
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_letters",
+        "column_name": "account_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_letters",
+        "column_name": "milestone",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_letters",
+        "column_name": "sent_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "ordinal_position": 3
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_letters",
+        "column_name": "read_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "YES",
+        "ordinal_position": 4
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_reports",
+        "column_name": "account_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_reports",
+        "column_name": "sample",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_reports",
+        "column_name": "kind",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 3
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_reports",
+        "column_name": "edges",
+        "data_type": "jsonb",
+        "is_nullable": "NO",
+        "ordinal_position": 4
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_reports",
+        "column_name": "filed_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "ordinal_position": 5
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "field_reports",
+        "column_name": "updated_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "ordinal_position": 6
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "oauth_requests",
+        "column_name": "state_hash",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "oauth_requests",
+        "column_name": "provider",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "oauth_requests",
+        "column_name": "bind_session",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "ordinal_position": 3
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "oauth_requests",
+        "column_name": "expires_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "ordinal_position": 4
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "point_events",
+        "column_name": "event_id",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "point_events",
+        "column_name": "account_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "point_events",
+        "column_name": "occurred_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "ordinal_position": 3
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "point_events",
+        "column_name": "delta",
+        "data_type": "integer",
+        "is_nullable": "NO",
+        "ordinal_position": 4
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "point_events",
+        "column_name": "chapter",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "ordinal_position": 5
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "point_events",
+        "column_name": "item",
+        "data_type": "text",
+        "is_nullable": "YES",
+        "ordinal_position": 6
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "point_events",
+        "column_name": "request_id",
+        "data_type": "uuid",
+        "is_nullable": "YES",
+        "ordinal_position": 7
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "sessions",
+        "column_name": "token_hash",
+        "data_type": "text",
+        "is_nullable": "NO",
+        "ordinal_position": 1
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "sessions",
+        "column_name": "account_id",
+        "data_type": "uuid",
+        "is_nullable": "NO",
+        "ordinal_position": 2
+      },
+      {
+        "database_name": "neurotrace",
+        "table_schema": "nt_identity",
+        "table_name": "sessions",
+        "column_name": "expires_at",
+        "data_type": "timestamp with time zone",
+        "is_nullable": "NO",
+        "ordinal_position": 3
+      }
+    ],
+    "inspection": "information_schema.columns only; no application rows or secrets were read; no SQL writes"
+  },
+  "sourceArchive": {
+    "libraryUrl": "https://chatgpt.com/library?file_id=libfile_fe4833e5016881918c356bf9ebd56c38&account_id=personal",
+    "filename": "NeuroTrace_V2.3.zip",
+    "sha256": "5339ee367ed4f3b634b15e4e3e235e0561dafe4c0e3b4c195a91204e965864b0"
+  },
+  "scope": {
+    "localOnly": true,
+    "newRelease": false,
+    "tagsCreated": false,
+    "versionBump": false,
+    "pushed": false,
+    "deployed": false
+  }
+}

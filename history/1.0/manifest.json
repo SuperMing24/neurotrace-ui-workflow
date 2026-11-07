@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "publicData": false,
+  "meta": {
+    "label": "视觉皮肤",
+    "summary": "查看贴图按钮、导航和早期交互皮肤。",
+    "kind": "release",
+    "original": "https://neurotrace-ui-demo-g26dhbjly-superming96-9947.vercel.app",
+    "sourceDeployment": "dpl_8ZZ67suSgEw96diFjYyZCTmghmXD",
+    "sourceDate": "2026-11-02T00:47:13.062000+08:00"
+  },
+  "files": {
+    "screen.txt": "0b92e13f89d57dddbadf89fdbcd4842535c00ba94587c54df32d5027c3b79ea3",
+    "workflow.html": "8199facb3ae060161c8b8aae7bfac05b2737b94b3151a30c9e112401b9e69f5f",
+    "index.html": "d4c42dd6c47b28f20cc9c6382d4e5cc37dffedc80621ca5cf21b47dc54688ee3"
+  },
+  "changes": {
+    "workflow.html": {
+      "originalSHA256": "5f88edc8be25fc9cc4a439656d3aaa273ff9f8595c101b487779b469a2a2ac46",
+      "reason": "返回链接指向本版。"
+    }
+  }
+}

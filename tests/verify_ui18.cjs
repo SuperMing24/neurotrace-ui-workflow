@@ -121,9 +121,12 @@ test('one wallet and the shared resource SVGs reach HUD, profile and all three s
   assert.doesNotMatch(board,/我的试玩积分/);
 });
 
-test('chapter, specimen metadata and mode note occupy separate normal-flow grid cells',()=>{
-  const css=read('ui18.css');
-  assert.match(html, /<div class="scene-readout">\$\{NeuroStory.gameChip\(\)\}<div class="nerve-scene-badge">[\s\S]*?<div class="nerve-scene-note">/);
-  assert.match(css,/\.scene-readout\s*\{[^}]*display:\s*grid/);
-  assert.match(css,/\.scene-readout \.case-chip,\s*#game-screen \.scene-readout \.nerve-scene-badge,\s*#game-screen \.scene-readout \.nerve-scene-note\s*\{[^}]*position:\s*static/);
+test('chapter goal, selection count and specimen tools have distinct regions; selection advice is contextual',()=>{
+  const css=read('research21.css');
+  assert.ok(html.includes('<div class="scene-readout">${NeuroStory.gameChip()}<div class="sample-line">'));
+  assert.match(html, /<div class="sample-caption">[\s\S]*?<div class="lens-tools"/);
+  assert.match(css,/\.sample-line\{display:flex/);
+  const fn=html.slice(html.indexOf('function selectionNote()'),html.indexOf('function supplySheet()'));
+  const env={state:{selectedNodes:[]},esc:String};vm.runInNewContext(fn,env);
+  assert.equal(env.selectionNote(),'');env.state.selectedNodes=['a:end'];assert.match(env.selectionNote(),/再选一个端点/);
 });

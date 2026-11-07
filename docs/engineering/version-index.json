@@ -1,0 +1,410 @@
+{
+  "currentExistingVersion": "2.3",
+  "newVersionCreated": false,
+  "versions": [
+    {
+      "id": "2.3",
+      "label": "版本回看与星空",
+      "summary": "金牛座宽高缩小 20%，版本菜单支持固定链接与并排对照。",
+      "kind": "release",
+      "original": null,
+      "manifest": "history/2.3/manifest.json",
+      "manifestSHA256": "6dcfe8c88ef12bdcb37328d0ee828b58b858c0f3df225a1b6931fd6c572cf802",
+      "files": 76,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {
+        "workflow.html": {
+          "originalSHA256": "6794bf94265dd37c01819352abdaf713b85104c95cc855f9dd8cff0a15663a07",
+          "reason": "返回链接指向本版。"
+        }
+      }
+    },
+    {
+      "id": "2.2",
+      "label": "档案原画与双榜",
+      "summary": "故事章节重绘、双榜单、账号卡与独立现场按钮。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-a0ejzdhxj-superming96-9947.vercel.app",
+      "manifest": "history/2.2/manifest.json",
+      "manifestSHA256": "a6a2b8de055c81ce1595d6ed132095c132d8cc4efe8e67a943190d377285967e",
+      "files": 75,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {
+        "workflow.html": {
+          "originalSHA256": "6794bf94265dd37c01819352abdaf713b85104c95cc855f9dd8cff0a15663a07",
+          "reason": "返回链接指向本版。"
+        }
+      }
+    },
+    {
+      "id": "2.1",
+      "label": "四章外景",
+      "summary": "查看当时的金牛近景和三张简化插画。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-8zyzxlc3b-superming96-9947.vercel.app",
+      "manifest": "history/2.1/manifest.json",
+      "manifestSHA256": "4e7bf43977e84c9770fc5aa17d37c8451b331c07ff5f027fc6eea89df29cd736",
+      "files": 71,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {
+        "workflow.html": {
+          "originalSHA256": "6794bf94265dd37c01819352abdaf713b85104c95cc855f9dd8cff0a15663a07",
+          "reason": "返回链接指向本版。"
+        }
+      }
+    },
+    {
+      "id": "2.0",
+      "label": "观星方位",
+      "summary": "查看广角天空、原始地平构图及首章剧情训练。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-3lzaivx1y-superming96-9947.vercel.app",
+      "manifest": "history/2.0/manifest.json",
+      "manifestSHA256": "38e4e9dc10e19cdd555839886764aef5e66c164bd1611d45c9f5c3d2bae72df3",
+      "files": 64,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {
+        "workflow.html": {
+          "originalSHA256": "6794bf94265dd37c01819352abdaf713b85104c95cc855f9dd8cff0a15663a07",
+          "reason": "返回链接指向本版。"
+        }
+      }
+    },
+    {
+      "id": "1.9",
+      "label": "鼠脑图谱",
+      "summary": "查看鼠脑图谱、剧情档案与任务的联动。",
+      "kind": "release",
+      "original": null,
+      "manifest": "history/1.9/manifest.json",
+      "manifestSHA256": "956fc823022acf90e8cf33d427f153c85c223980a76ccd7f6c4c7be4089c1616",
+      "files": 60,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {
+        "mail17.js": {
+          "originalSHA256": "7da7f64e48ff57bd9b7e86f1959627ab69aada46a47e5ec3105d3a68648874ab",
+          "reason": "账号私信不随公开试玩归档。"
+        },
+        "workflow.html": {
+          "originalSHA256": "6794bf94265dd37c01819352abdaf713b85104c95cc855f9dd8cff0a15663a07",
+          "reason": "返回链接指向本版。"
+        }
+      }
+    },
+    {
+      "id": "1.8",
+      "label": "账号与训练账本",
+      "summary": "回看当时的登录入口、资源徽章与训练页面。",
+      "kind": "release",
+      "original": null,
+      "manifest": "history/1.8/manifest.json",
+      "manifestSHA256": "cf73a8233371eadccb3403be51f90c19c54a123da91d23243ec9aa2915a5ce37",
+      "files": 55,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {
+        "mail17.js": {
+          "originalSHA256": "b17ba9315e53e2e6b31c3888e8dc565243920471fedd43d58b1d3a174870f298",
+          "reason": "账号私信不随公开试玩归档。"
+        },
+        "workflow.html": {
+          "originalSHA256": "6794bf94265dd37c01819352abdaf713b85104c95cc855f9dd8cff0a15663a07",
+          "reason": "返回链接指向本版。"
+        }
+      }
+    },
+    {
+      "id": "1.7",
+      "label": "剧情训练",
+      "summary": "回声档案、三维训练和观测站信箱。",
+      "kind": "release",
+      "original": null,
+      "manifest": "history/1.7/manifest.json",
+      "manifestSHA256": "7f19a825a48ed1154ee15833d2d1e622361d201c025fbba079bd0369b7f90ed7",
+      "files": 42,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {
+        "mail17.js": {
+          "originalSHA256": "46e7fa600f0c2859fb90f13c637fe1eafa3980c376577febd6ed6d9725ded99a",
+          "reason": "账号私信不随公开试玩归档。"
+        },
+        "workflow.html": {
+          "originalSHA256": "6794bf94265dd37c01819352abdaf713b85104c95cc855f9dd8cff0a15663a07",
+          "reason": "返回链接指向本版。"
+        }
+      }
+    },
+    {
+      "id": "1.6",
+      "label": "身份与补给",
+      "summary": "试玩身份、积分、商店与榜单。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-qdxomflbr-superming96-9947.vercel.app",
+      "manifest": "history/1.6/manifest.json",
+      "manifestSHA256": "7dd1f1c2ef6a456120f159b75617a0df885a5d3596add0ee82379505621ca78f",
+      "files": 4,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {
+        "workflow.html": {
+          "originalSHA256": "6794bf94265dd37c01819352abdaf713b85104c95cc855f9dd8cff0a15663a07",
+          "reason": "返回链接指向本版。"
+        }
+      }
+    },
+    {
+      "id": "1.5.1",
+      "label": "背景音乐",
+      "summary": "可与 V1.5 对照查看这一修订版。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-nyau73szr-superming96-9947.vercel.app",
+      "manifest": "history/1.5.1/manifest.json",
+      "manifestSHA256": "74bba228b0d198338c841c464172591284607ab450aee31a18a0336f9be6bec3",
+      "files": 4,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {
+        "workflow.html": {
+          "originalSHA256": "0c5101973040111433c9985e4f87aa6cef6c076f92358a062f317f10b5d95738",
+          "reason": "返回链接指向本版。"
+        }
+      }
+    },
+    {
+      "id": "1.5",
+      "label": "研究视图",
+      "summary": "查看当时的研究页与视图设置。原部署未附授权音轨。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-3rdf7j3yq-superming96-9947.vercel.app",
+      "manifest": "history/1.5/manifest.json",
+      "manifestSHA256": "be9b34048f67a24e45191c6790a32eca00c0f03cb4efe900e3ae7be1e5f3cfb9",
+      "files": 3,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {
+        "workflow.html": {
+          "originalSHA256": "7594ee1238fe9052e0bb410b2ac86a09a0f13f243ebbb58e789ac5767b31edbb",
+          "reason": "返回链接指向本版。"
+        }
+      }
+    },
+    {
+      "id": "1.4",
+      "label": "金牛星空",
+      "summary": "查看早期金牛背景和三维神经纤维。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-1wauzeswj-superming96-9947.vercel.app",
+      "manifest": "history/1.4/manifest.json",
+      "manifestSHA256": "ad5c53796583fbdec012d283c1c2ae5f6be5933ed800a252128253e05254430f",
+      "files": 3,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {
+        "workflow.html": {
+          "originalSHA256": "23591ce6f0a4fe2ae8d317216d8a620a550ecc8176e0ecb4ccb3f49b105953d2",
+          "reason": "返回链接指向本版。"
+        }
+      }
+    },
+    {
+      "id": "1.3",
+      "label": "骨架选取",
+      "summary": "查看原始骨架选取、视图及底部操作。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-7yq1bj69j-superming96-9947.vercel.app",
+      "manifest": "history/1.3/manifest.json",
+      "manifestSHA256": "67d8662d928ece56c627c26c56b07fbe50bc7d04ea9d054a3aef670b89803ab1",
+      "files": 3,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {
+        "workflow.html": {
+          "originalSHA256": "12f9cebf59a9eae7479c20a7f731e9716c6f51fe6212dde8a534ab3034d3f5ee",
+          "reason": "返回链接指向本版。"
+        }
+      }
+    },
+    {
+      "id": "1.2",
+      "label": "多样本工作台",
+      "summary": "多样本三维现场与连线编辑工具。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-80bfbnfyn-superming96-9947.vercel.app",
+      "manifest": "history/1.2/manifest.json",
+      "manifestSHA256": "3fc855ee0209e4c1789059cd7cb6d0a760c923c7d15d03948d3da8277a9dcb7a",
+      "files": 3,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {
+        "workflow.html": {
+          "originalSHA256": "7ab0d64a203b9dcddd428f3fcc76e00988ce2e97031e997c6eee791f0fbf835d",
+          "reason": "返回链接指向本版。"
+        }
+      }
+    },
+    {
+      "id": "1.1",
+      "label": "三维连线现场",
+      "summary": "查看三维骨架、相机与端点选择。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-6nj8jn149-superming96-9947.vercel.app",
+      "manifest": "history/1.1/manifest.json",
+      "manifestSHA256": "12b3c310387f7a999138c04efab456152e9135b1112e4cd7625bf3d150caf5aa",
+      "files": 3,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {
+        "workflow.html": {
+          "originalSHA256": "94bc0bf2b9de66706a605e23ab2747c3e45b06309b38b12f697d8998bee8e5ca",
+          "reason": "返回链接指向本版。"
+        }
+      }
+    },
+    {
+      "id": "1.0",
+      "label": "视觉皮肤",
+      "summary": "查看贴图按钮、导航和早期交互皮肤。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-g26dhbjly-superming96-9947.vercel.app",
+      "manifest": "history/1.0/manifest.json",
+      "manifestSHA256": "d99b76fd983bbbd5d46819f5e48f08496995a3a73f67b086c3a6f9809a0ec6ee",
+      "files": 3,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {
+        "workflow.html": {
+          "originalSHA256": "5f88edc8be25fc9cc4a439656d3aaa273ff9f8595c101b487779b469a2a2ac46",
+          "reason": "返回链接指向本版。"
+        }
+      }
+    },
+    {
+      "id": "0.9",
+      "label": "工作流评审栏",
+      "summary": "查看左侧制作流程、交互原型和状态栏。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-7cees22iu-superming96-9947.vercel.app",
+      "manifest": "history/0.9/manifest.json",
+      "manifestSHA256": "7c8c589f3c3151bacf6234e75e26ef906cf312302b9c2398d974a8b4489af4c0",
+      "files": 3,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {
+        "workflow.html": {
+          "originalSHA256": "7c37d8c33d3095a0b581929e32abbd9467687530c376ea56449e2e6ccea365dc",
+          "reason": "返回链接指向本版。"
+        }
+      }
+    },
+    {
+      "id": "0.8",
+      "label": "位图素材试验",
+      "summary": "界面加入图像素材，可对照按钮和导航的呈现。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-8zb295hvx-superming96-9947.vercel.app",
+      "manifest": "history/0.8/manifest.json",
+      "manifestSHA256": "7894ee57907dc7d26f6849cbc2b29f96141240105f8023e728c586c8257aedf4",
+      "files": 2,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {}
+    },
+    {
+      "id": "0.7",
+      "label": "三大主页面",
+      "summary": "研究、文明、群星和各自的二级页面。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-i7xcnnb23-superming96-9947.vercel.app",
+      "manifest": "history/0.7/manifest.json",
+      "manifestSHA256": "0f55370e0dc3aa8661c9c208952397971d063b01eb166ff6f671fab85198e7c9",
+      "files": 2,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {}
+    },
+    {
+      "id": "0.6",
+      "label": "导航调整",
+      "summary": "查看早期游戏操作与导航布局。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-94ka19bx4-superming96-9947.vercel.app",
+      "manifest": "history/0.6/manifest.json",
+      "manifestSHA256": "b0e78d819e21902f1c9963b0abb015574facbdd373055e163cca837536b76755",
+      "files": 2,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {}
+    },
+    {
+      "id": "0.5",
+      "label": "研究大厅",
+      "summary": "查看首次公开上线的大厅和沉浸式任务。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-a7pwson47-superming96-9947.vercel.app",
+      "manifest": "history/0.5/manifest.json",
+      "manifestSHA256": "2f05f3422428ab53a5eeba0d711fc20fdb0e1aa1eca1bac76c047cd959cfea71",
+      "files": 2,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {}
+    },
+    {
+      "id": "0.4",
+      "label": "首个交互演示",
+      "summary": "进入最早可操作的连线演示。",
+      "kind": "prototype",
+      "original": null,
+      "manifest": "history/0.4/manifest.json",
+      "manifestSHA256": "0889f545a67ffe37c030616ac9bc1b5f987a130e58598788edddf706cfa0d30a",
+      "files": 2,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {}
+    },
+    {
+      "id": "0.3",
+      "label": "五屏设计评审",
+      "summary": "第三轮五屏原型与页面切换。",
+      "kind": "design",
+      "original": null,
+      "manifest": "history/0.3/manifest.json",
+      "manifestSHA256": "6af300017dd612cdc20d66bb21659a0f4ca720b8b1ec1b1c06e93ff0050b240b",
+      "files": 2,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {}
+    },
+    {
+      "id": "0.2",
+      "label": "四屏设计评审",
+      "summary": "查看第二轮四屏工作台与原始页面排布。",
+      "kind": "design",
+      "original": null,
+      "manifest": "history/0.2/manifest.json",
+      "manifestSHA256": "e19538fa53a7dfd8cf83443067babd562c24db33249c2313f72822d8edea1550",
+      "files": 2,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {}
+    },
+    {
+      "id": "0.1",
+      "label": "三屏视觉原型",
+      "summary": "初版任务页、视图工具与排行榜设计稿。",
+      "kind": "design",
+      "original": null,
+      "manifest": "history/0.1/manifest.json",
+      "manifestSHA256": "d86923107df052ff7be254065f49b868eb52847d30907edad4b1b8472b0b2663",
+      "files": 2,
+      "gitReleaseTag": null,
+      "githubRelease": null,
+      "historicalTransformations": {}
+    }
+  ]
+}

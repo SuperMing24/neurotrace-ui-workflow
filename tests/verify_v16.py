@@ -18,7 +18,7 @@ def verify(page,loc):
     assert page.locator('#game-screen').count()==1
     assert page.locator('.nav-item').count()==3
     t=page.evaluate('''NeuroTrace3D.TASKS.map((t,i)=>({id:t.id,terminals:t.boundaryTerminals.length}))''')
-    assert len(t)==5 and all(v['terminals']>=3 for v in t)
+    assert len(t)==8 and all(v['terminals']>=3 for v in t)
     assert page.evaluate('NeuroTrace3D.connectionExists(0,[],"a:start","a:end")')=='boundary'
     assert page.evaluate('NeuroTrace3D.connectionExists(0,[],"a:end","a:start")')=='boundary'
     # Clicking boundary terminal can inspect, but cannot count as connectable node
@@ -75,7 +75,7 @@ def verify(page,loc):
     assert page.evaluate('neurotraceDemo.state.shopOrders.length')==1
     page.screenshot(path=str(ROOT/f'screenshot-game-{loc}.png'))
     assert not errors, errors
-    print(loc,'PASS: 5 tasks, boundary, camera, 4 products, redemption, logout/login, pending OAuth, stable state')
+    print(loc,'PASS: 8 tasks, boundary, camera, 4 products, redemption, logout/login, pending OAuth, stable state')
 
 with sync_playwright() as p:
     browser=p.chromium.launch(executable_path='/usr/bin/chromium',headless=True,args=['--no-sandbox','--disable-dev-shm-usage','--autoplay-policy=no-user-gesture-required'])

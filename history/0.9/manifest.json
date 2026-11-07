@@ -1,0 +1,23 @@
+{
+  "version": "0.9",
+  "publicData": false,
+  "meta": {
+    "label": "工作流评审栏",
+    "summary": "查看左侧制作流程、交互原型和状态栏。",
+    "kind": "release",
+    "original": "https://neurotrace-ui-demo-7cees22iu-superming96-9947.vercel.app",
+    "sourceDeployment": "dpl_5wy1Ms12Lt7AFBH94XwE2XTiF3on",
+    "sourceDate": "2026-11-02T00:24:19.693000+08:00"
+  },
+  "files": {
+    "screen.txt": "fe20ec1c385aa06cf6c2c07a19a2dcff8e55fc0a9d230e51b1a35f38df8adf33",
+    "workflow.html": "e77c90882fce05cc18667449da7cfaf7ffe6964f27712cf86807f443e7fffa40",
+    "index.html": "d4c42dd6c47b28f20cc9c6382d4e5cc37dffedc80621ca5cf21b47dc54688ee3"
+  },
+  "changes": {
+    "workflow.html": {
+      "originalSHA256": "7c37d8c33d3095a0b581929e32abbd9467687530c376ea56449e2e6ccea365dc",
+      "reason": "返回链接指向本版。"
+    }
+  }
+}

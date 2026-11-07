@@ -1,0 +1,26 @@
+{
+  "roster": {
+    "accounts": [
+      {
+        "id": "975dc343-4c9b-48d9-9224-69231d4ac047",
+        "name": "四七",
+        "handle": "siqi",
+        "title": "破壁人",
+        "points": 56328,
+        "weekPoints": 0,
+        "monthPoints": 0
+      },
+      {
+        "id": "bf5d8f84-2d8b-418b-9d47-2f1ecb64d249",
+        "name": "小王",
+        "handle": "xiaowang",
+        "title": "面壁者",
+        "points": 40584,
+        "weekPoints": 0,
+        "monthPoints": 0
+      }
+    ],
+    "fieldReady": true
+  },
+  "capturedAt": "2026-11-06T22:46:04+00:00"
+}

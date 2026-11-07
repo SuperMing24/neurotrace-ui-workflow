@@ -1,0 +1,173 @@
+{
+  "current": "2.3",
+  "versions": [
+    {
+      "id": "2.3",
+      "label": "版本回看与星空",
+      "summary": "金牛座宽高缩小 20%，版本菜单支持固定链接与并排对照。",
+      "kind": "release",
+      "original": null
+    },
+    {
+      "id": "2.2",
+      "label": "档案原画与双榜",
+      "summary": "故事章节重绘、双榜单、账号卡与独立现场按钮。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-a0ejzdhxj-superming96-9947.vercel.app"
+    },
+    {
+      "id": "2.1",
+      "label": "四章外景",
+      "summary": "查看当时的金牛近景和三张简化插画。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-8zyzxlc3b-superming96-9947.vercel.app"
+    },
+    {
+      "id": "2.0",
+      "label": "观星方位",
+      "summary": "查看广角天空、原始地平构图及首章剧情训练。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-3lzaivx1y-superming96-9947.vercel.app"
+    },
+    {
+      "id": "1.9",
+      "label": "鼠脑图谱",
+      "summary": "查看鼠脑图谱、剧情档案与任务的联动。",
+      "kind": "release",
+      "original": null
+    },
+    {
+      "id": "1.8",
+      "label": "账号与训练账本",
+      "summary": "回看当时的登录入口、资源徽章与训练页面。",
+      "kind": "release",
+      "original": null
+    },
+    {
+      "id": "1.7",
+      "label": "剧情训练",
+      "summary": "回声档案、三维训练和观测站信箱。",
+      "kind": "release",
+      "original": null
+    },
+    {
+      "id": "1.6",
+      "label": "身份与补给",
+      "summary": "试玩身份、积分、商店与榜单。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-qdxomflbr-superming96-9947.vercel.app"
+    },
+    {
+      "id": "1.5.1",
+      "label": "背景音乐",
+      "summary": "可与 V1.5 对照查看这一修订版。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-nyau73szr-superming96-9947.vercel.app"
+    },
+    {
+      "id": "1.5",
+      "label": "研究视图",
+      "summary": "查看当时的研究页与视图设置。原部署未附授权音轨。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-3rdf7j3yq-superming96-9947.vercel.app"
+    },
+    {
+      "id": "1.4",
+      "label": "金牛星空",
+      "summary": "查看早期金牛背景和三维神经纤维。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-1wauzeswj-superming96-9947.vercel.app"
+    },
+    {
+      "id": "1.3",
+      "label": "骨架选取",
+      "summary": "查看原始骨架选取、视图及底部操作。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-7yq1bj69j-superming96-9947.vercel.app"
+    },
+    {
+      "id": "1.2",
+      "label": "多样本工作台",
+      "summary": "多样本三维现场与连线编辑工具。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-80bfbnfyn-superming96-9947.vercel.app"
+    },
+    {
+      "id": "1.1",
+      "label": "三维连线现场",
+      "summary": "查看三维骨架、相机与端点选择。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-6nj8jn149-superming96-9947.vercel.app"
+    },
+    {
+      "id": "1.0",
+      "label": "视觉皮肤",
+      "summary": "查看贴图按钮、导航和早期交互皮肤。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-g26dhbjly-superming96-9947.vercel.app"
+    },
+    {
+      "id": "0.9",
+      "label": "工作流评审栏",
+      "summary": "查看左侧制作流程、交互原型和状态栏。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-7cees22iu-superming96-9947.vercel.app"
+    },
+    {
+      "id": "0.8",
+      "label": "位图素材试验",
+      "summary": "界面加入图像素材，可对照按钮和导航的呈现。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-8zb295hvx-superming96-9947.vercel.app"
+    },
+    {
+      "id": "0.7",
+      "label": "三大主页面",
+      "summary": "研究、文明、群星和各自的二级页面。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-i7xcnnb23-superming96-9947.vercel.app"
+    },
+    {
+      "id": "0.6",
+      "label": "导航调整",
+      "summary": "查看早期游戏操作与导航布局。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-94ka19bx4-superming96-9947.vercel.app"
+    },
+    {
+      "id": "0.5",
+      "label": "研究大厅",
+      "summary": "查看首次公开上线的大厅和沉浸式任务。",
+      "kind": "release",
+      "original": "https://neurotrace-ui-demo-a7pwson47-superming96-9947.vercel.app"
+    },
+    {
+      "id": "0.4",
+      "label": "首个交互演示",
+      "summary": "进入最早可操作的连线演示。",
+      "kind": "prototype",
+      "original": null
+    },
+    {
+      "id": "0.3",
+      "label": "五屏设计评审",
+      "summary": "第三轮五屏原型与页面切换。",
+      "kind": "design",
+      "original": null
+    },
+    {
+      "id": "0.2",
+      "label": "四屏设计评审",
+      "summary": "查看第二轮四屏工作台与原始页面排布。",
+      "kind": "design",
+      "original": null
+    },
+    {
+      "id": "0.1",
+      "label": "三屏视觉原型",
+      "summary": "初版任务页、视图工具与排行榜设计稿。",
+      "kind": "design",
+      "original": null
+    }
+  ]
+}

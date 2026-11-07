@@ -1,0 +1,190 @@
+{
+  "baseline": "afda85250f14ee7c8bd2fec26691c13bc3464fc9",
+  "commits": [
+    {
+      "sha": "84b94415ad6159e506275e9e3e416720e45a1730",
+      "authorDate": "2026-11-02T04:35:59+08:00",
+      "subject": "docs: initialize NeuroTrace V1.2 synthetic UI workflow baseline"
+    },
+    {
+      "sha": "365b1c293cbcbbf76af203e527b67b41de512e09",
+      "authorDate": "2026-11-02T04:36:35+08:00",
+      "subject": "feat: import NeuroTrace V1.2 index.html"
+    },
+    {
+      "sha": "cf3eb619e83d8d95086e0c6f5b33d31a64f3b46b",
+      "authorDate": "2026-11-02T04:36:40+08:00",
+      "subject": "feat: import NeuroTrace V1.2 workflow.html"
+    },
+    {
+      "sha": "d5d17f2a646e93d07e7e60e939b6239c3f1bae3e",
+      "authorDate": "2026-11-02T04:37:52+08:00",
+      "subject": "docs: record durable NeuroTrace project and Neon schema baseline"
+    },
+    {
+      "sha": "f41d64a5501c7679ae6a624f1e66098af81fe7bd",
+      "authorDate": "2026-11-02T04:37:55+08:00",
+      "subject": "docs: record durable NeuroTrace project and Neon schema baseline"
+    },
+    {
+      "sha": "2c4f1640731198c8f2159a41640af83777f2932c",
+      "authorDate": "2026-11-02T04:37:57+08:00",
+      "subject": "docs: record durable NeuroTrace project and Neon schema baseline"
+    },
+    {
+      "sha": "ae5c6f2aef3e1776e53a83f8f9c4b68fa5f79ddf",
+      "authorDate": "2026-11-02T04:38:00+08:00",
+      "subject": "docs: record durable NeuroTrace project and Neon schema baseline"
+    },
+    {
+      "sha": "9d498157ef2123370951ec185cab6ae645bc6956",
+      "authorDate": "2026-11-02T05:04:56+08:00",
+      "subject": "feat(ui): V1.3 concept-art leaderboard archive and original-segment endpoint inspector"
+    },
+    {
+      "sha": "d5853dbcfeb4ac5c3396ad9eaa5e7aa4884cffdb",
+      "authorDate": "2026-11-02T05:05:14+08:00",
+      "subject": "docs: update visual UI workflow tutorial for V1.3"
+    },
+    {
+      "sha": "2f9325250abbd0f91a247e422d33ad9b67a5b595",
+      "authorDate": "2026-11-02T05:06:24+08:00",
+      "subject": "fix(ui): show V1.3 release on review panel"
+    },
+    {
+      "sha": "a0039b551c3338053b57869823505770fb675fc6",
+      "authorDate": "2026-11-02T05:06:27+08:00",
+      "subject": "feat(3d): preserve reusable V1.3 geometry and segment picking source"
+    },
+    {
+      "sha": "41897687602449488eb14f13d2f4ff06c27cf57f",
+      "authorDate": "2026-11-02T05:07:07+08:00",
+      "subject": "docs: document V1.3 concept fidelity, 3D original segment endpoints and two display modes"
+    },
+    {
+      "sha": "40aa0516086e5eb4f3ef4250494594d45332a779",
+      "authorDate": "2026-11-02T05:07:10+08:00",
+      "subject": "docs: advance cross-session project status to deployed V1.3"
+    },
+    {
+      "sha": "c69eee6cfc44c2e1fcf2433c64995f804c88447b",
+      "authorDate": "2026-11-02T05:49:21+08:00",
+      "subject": "feat: V1.4 Taurus starfield, direct 3D picking, topology validation and live ambient music"
+    },
+    {
+      "sha": "fcfab52bdc3f094542f385753e36be15139abd86",
+      "authorDate": "2026-11-02T05:51:02+08:00",
+      "subject": "fix: deploy tested V1.4 build with actual ImageGen Taurus art and geometry rules"
+    },
+    {
+      "sha": "b0f0357c75007e6652e97b7c04977de3f18ec4fe",
+      "authorDate": "2026-11-02T05:51:52+08:00",
+      "subject": "docs: document V1.4 release and music rights"
+    },
+    {
+      "sha": "a393fa075f994bc3627c9066438066a6ccc4c816",
+      "authorDate": "2026-11-02T05:51:55+08:00",
+      "subject": "docs: advance NeuroTrace project status to V1.4"
+    },
+    {
+      "sha": "f36e3c73f060b31bef062c3cbb232bbf889dc6bf",
+      "authorDate": "2026-11-02T06:22:13+08:00",
+      "subject": "feat(ui): release V1.5 mobile Taurus backdrop, overall ranks and app navigation"
+    },
+    {
+      "sha": "80548144c54a99f3ee9b4c4f0909b5f2a170b8c8",
+      "authorDate": "2026-11-02T06:22:30+08:00",
+      "subject": "docs: align live workflow page with V1.5 UI"
+    },
+    {
+      "sha": "05c98be3eb669d6013c59161450c44d1ab5d928e",
+      "authorDate": "2026-11-02T06:22:32+08:00",
+      "subject": "docs: record V1.5 release and audio distribution boundary"
+    },
+    {
+      "sha": "fc20cf3ca08ae00217c4e9f7b0beb2c5bea3daa3",
+      "authorDate": "2026-11-02T06:23:01+08:00",
+      "subject": "docs: update durable V1.5 deploy and private audio status"
+    },
+    {
+      "sha": "1bd413db51272a5366be7b3f27e67849b32d8e77",
+      "authorDate": "2026-11-02T06:23:43+08:00",
+      "subject": "docs: add V1.5 Taurus, leaderboard and audio publishing notes"
+    },
+    {
+      "sha": "e5a65d5c1d97b13f0ba3d1b8695da8c5cf7389c8",
+      "authorDate": "2026-11-02T06:24:40+08:00",
+      "subject": "docs: record final V1.5 production deployment"
+    },
+    {
+      "sha": "6cb765ef3e7973e53a6ddd13f5da3202e2ca948f",
+      "authorDate": "2026-11-02T06:41:00+08:00",
+      "subject": "feat: v1.5.1 centered Taurus, consistent leaderboard and public music playback"
+    },
+    {
+      "sha": "9baf35b122dd106e08dbd06a0ab71caf7ab29158",
+      "authorDate": "2026-11-02T06:41:41+08:00",
+      "subject": "docs: record v1.5.1 audio deployment, UI changes and asset provenance"
+    },
+    {
+      "sha": "dfe0f7f71e8e240dbd773717a2640491455e729f",
+      "authorDate": "2026-11-05T03:56:57+08:00",
+      "subject": "feat: V1.6 interactive demo login, reward shop and boundary endpoint rules"
+    },
+    {
+      "sha": "0446e8094502fa442dfa07365cffb9e57df059c7",
+      "authorDate": "2026-11-05T03:57:14+08:00",
+      "subject": "docs: V1.6 interactive workflow tutorial"
+    },
+    {
+      "sha": "3ed175f1391694c1b5c50fc15184fec80ba8aa35",
+      "authorDate": "2026-11-05T03:57:17+08:00",
+      "subject": "feat: add V1.6 scene3d.js"
+    },
+    {
+      "sha": "d8ecd849c53e7cad4be011755c583d1a25090ed0",
+      "authorDate": "2026-11-05T03:57:20+08:00",
+      "subject": "feat: add V1.6 db/migrations/002_auth_shop_proposal.sql"
+    },
+    {
+      "sha": "872cba12ee4674a25b8ad331b356b6b665284106",
+      "authorDate": "2026-11-05T03:57:23+08:00",
+      "subject": "feat: add V1.6 docs/V16_IMPLEMENTATION.md"
+    },
+    {
+      "sha": "0e99e933d6ac100615fc79a29b0178c9bbb214ab",
+      "authorDate": "2026-11-05T03:57:25+08:00",
+      "subject": "feat: add V1.6 data/catalog_v16.json"
+    },
+    {
+      "sha": "da39af721f7a34aaaef7e42bad8abf3579fc2346",
+      "authorDate": "2026-11-05T03:59:25+08:00",
+      "subject": "chore: persist V1.6 README.md"
+    },
+    {
+      "sha": "628a72896b922640ecf174934975216cf29d9025",
+      "authorDate": "2026-11-05T03:59:28+08:00",
+      "subject": "chore: persist V1.6 tests/verify_v16.py"
+    },
+    {
+      "sha": "09fc10d054aabd7dcb0bcaafff7175c892e82f04",
+      "authorDate": "2026-11-05T03:59:31+08:00",
+      "subject": "chore: persist V1.6 data/synthetic_tasks.json"
+    },
+    {
+      "sha": "d8455d3a90420fd1adc3182916e7cd41095ada0e",
+      "authorDate": "2026-11-05T03:59:34+08:00",
+      "subject": "chore: persist V1.6 release.json"
+    },
+    {
+      "sha": "7a9c4842946846aa3767e300025262b94c345764",
+      "authorDate": "2026-11-06T04:02:22+08:00",
+      "subject": "Build playable Echo Archive chapters, station growth and local mailbox"
+    },
+    {
+      "sha": "afda85250f14ee7c8bd2fec26691c13bc3464fc9",
+      "authorDate": "2026-11-06T04:53:07+08:00",
+      "subject": "Ship grounded Taurus photography, Echo Archive art, clearer tracing and verified cloud accounts"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+.resource-amount{display:inline-flex;gap:.3em;align-items:center;color:#f4d39b;vertical-align:middle;font-variant-numeric:tabular-nums;white-space:nowrap}
+.resource-amount b{font:inherit;font-weight:680}.resource-icon{width:1.3em;height:1.3em;vertical-align:-.25em;flex:none;overflow:visible}
+.energy-symbol .resource-amount,.resource-amount:has(.resource-energy){color:#9bebe4}.identity-resources .resource-icon{font-size:12px}
+.identity-resources{gap:9px}.profile-metrics .resource-icon{width:19px;height:19px}
+#game-screen .scene-readout{position:absolute;z-index:5;top:144px;left:17px;right:17px;display:grid;gap:5px;pointer-events:none}
+#game-screen .scene-readout .case-chip,#game-screen .scene-readout .nerve-scene-badge,#game-screen .scene-readout .nerve-scene-note{position:static;inset:auto;min-width:0;margin:0;line-height:1.4}
+#game-screen .scene-readout .case-chip{gap:5px;align-items:center}#game-screen .scene-readout .case-chip>span{white-space:nowrap}
+#game-screen .scene-readout .nerve-scene-badge{justify-self:start;padding:2px 7px;border:0;background:#061321b8;color:#adc3ce;border-radius:5px}
+#game-screen .scene-readout .nerve-scene-note{padding-left:3px;font-size:10px;max-width:100%;color:#abc2c8}
+.view-legend{display:flex;justify-content:space-between;width:100%;font-size:11px;color:#c5d6dc;gap:3px}
+.view-legend span{display:inline-flex;gap:4px;align-items:center}.view-legend i{width:19px;border-top:2px solid var(--line-color);display:block}.view-legend .new-edge{border-top-style:dashed}
+.view-legend .selected-edge{border-top-width:4px}.view18-preview{height:57px;width:100%;border-radius:7px;background:#0d2230;display:block}
+.r18{padding:10px 4px 15px;color:#e1edf1}.r18>header{padding:14px 12px 7px}.r18>header small{font:9px ui-monospace,monospace;letter-spacing:.17em;color:#89b7bd}.r18 h2{font-size:30px;margin:6px 0 0;letter-spacing:.15em;color:#f0e0ba}.r18>header p,.r18-note,.r18-empty{font-size:12px;color:#a9c2cb;line-height:1.6}.r18 .rank-tabs{position:static}
+.rank18-podium{display:flex;gap:10px;margin:10px 0 18px}.rank18-card{display:grid;justify-items:center;gap:3px;text-align:center;padding:14px 6px;flex:1;border:1px solid #466576;background:linear-gradient(155deg,#203747,#0a1b2c);border-radius:14px}.rank18-card img{width:60px;height:60px;object-fit:contain}.rank18-card>small,.r18-head small{font-size:10px;color:#adc2ce}.rank18-card>span:not(.resource-amount){font-size:11px;color:#c6b689}.rank18-card .resource-amount{margin-top:5px}
+.r18-head,.r18-row,.r18-wallet{display:flex;align-items:center;gap:14px}.r18-head{justify-content:space-between;padding:0 6px 9px;font-size:13px;border-bottom:1px solid #394b5d}.r18-row,.r18-wallet{padding:13px 8px;border-bottom:1px solid #273f50}.r18-row>span:first-child{width:20px;font:12px ui-monospace;color:#aec6d4}.r18-row>div,.r18-wallet>div{display:grid;gap:3px}.r18-row small,.r18-wallet small{font-size:10px;color:#9db5bf}.r18-row b,.r18-wallet b{font-size:14px}.r18-row .resource-amount,.r18-wallet .resource-amount{margin-left:auto}.r18-wallet{border:1px solid #836d4f;border-radius:12px;background:#302c2d;margin:14px 0 0;padding:14px}.r18-note{font-size:11px}
+
+.rank-page.main-tab-page{padding:12px 9px 2px!important}
+.nt-rank{display:flex;flex-direction:column;height:100%;min-height:0;overflow:hidden;gap:5px}
+.nt-rank .v13-podium{width:100%;margin:0 auto;height:170px;align-items:flex-end}
+.nt-rank .v13-podium-card{height:135px}.nt-rank .v13-podium-1{height:162px}
+.nt-rank .nt-vacant{opacity:.39}.nt-vacant .v13-podium-glass{padding:12px}
+.nt-rank .v13-rank-tabs{position:static;flex:none;margin:0!important}
+.nt-rank-caption{display:flex;justify-content:space-between;color:#a8ced5;font-size:11px;padding:6px 20px 4px 12px}
+.nt-rank-center{display:flex;flex:1;min-height:0;gap:2px;background:#04111cca;border:1px solid #225067;border-radius:7px}
+.nt-rank .v13-leader-list{border:0;overflow-x:hidden;overscroll-behavior:contain;touch-action:pan-y;scrollbar-width:none}
+.nt-rank .v13-leader-list::-webkit-scrollbar{display:none}
+#nt-rank-slider{writing-mode:vertical-lr;direction:ltr;width:22px;min-height:0;align-self:stretch;margin:3px 2px;accent-color:#74b4c6;cursor:ns-resize;touch-action:none}
+.nt-rank-row{display:grid;grid-template-columns:32px 1fr max-content;align-items:center;gap:4px;min-height:47px;padding:4px 7px;border-bottom:1px solid #21374b}
+.nt-rank-row>span:first-child{font:12px ui-monospace,monospace;color:#94bccb;text-align:center}
+.nt-rank-row div,.nt-rank-self div{display:grid;gap:2px}.nt-rank-row b{font-size:14px}.nt-rank-row small,.nt-rank-self small{font-size:10px;color:#a4bfca}
+.nt-rank-row.is-mine{background:#284351;box-shadow:inset 2px 0 #dfbd78}.nt-rank-self{width:100%;color:#f1e2c1;text-align:left;gap:12px;padding:7px 12px}
+.nt-rank-self:disabled{opacity:1}.nt-rank-self .resource-amount{margin-left:auto}.nt-rank-self i{font:10px system-ui;color:#e9ce9d}.nt-rank-empty{padding:10px;color:#b7d2e0}
+
+.nt22-rank-head{display:flex;justify-content:space-between;align-items:center;gap:6px;padding:10px 4px 6px}
+.nt22-rank-head h2{margin:2px 0;color:#efdfbc;font:700 25px/1.25 'Noto Serif SC','Songti SC',serif;letter-spacing:.08em}
+.nt22-rank-head>div>small{font:650 8px/1.5 ui-monospace,monospace;letter-spacing:.14em;color:#9ebfc2}
+.nt22-metrics,.nt22-periods{display:flex;align-items:stretch;gap:3px}
+.nt22-metrics{padding:3px;background:#091c29;border:1px solid #55737a;border-radius:7px}
+.nt22-metrics button,.nt22-periods button{border:0;cursor:pointer;background:transparent;color:#b9cfd5;font:650 12px system-ui}
+.nt22-metrics button{padding:8px 10px;border-radius:4px}
+.nt22-metrics button[aria-pressed=true]{background:#ddc69a;color:#1e3438}
+.nt22-periods{border-bottom:1px solid #43616c}
+.nt22-periods button{flex:1;min-height:38px;color:#b4cbd1;border-bottom:2px solid transparent}
+.nt22-periods button[aria-pressed=true]{color:#b8efe3;border-color:#8bd1c6;background:#1a3b4666}
+.nt22-range{display:flex;justify-content:space-between;align-items:center;padding:5px 8px 0;color:#d5e5e4;font:12px ui-monospace,monospace}
+.nt22-range small,.nt22-rank-desc{font:11px/1.45 system-ui;color:#a2c2ca}
+.nt22-rank-desc{margin:0;padding:0 8px 3px}.nt22-grade{font:650 15px ui-monospace,monospace;color:#b4e6cf}.nt22-grade small{font-size:10px}
+.nt-rank-self .nt22-grade{margin-left:auto}.nt-rank-empty{margin:0;padding:22px 13px;line-height:1.7;font-size:13px}
+.nt-rank-empty button{display:inline-block;color:#bce4e3;padding:6px;background:#152f3d;border:1px solid #4a687a;border-radius:4px}
