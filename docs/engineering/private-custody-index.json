@@ -1,0 +1,52 @@
+{
+  "date": "2026-11-07",
+  "projectId": "patient-heart-34552041",
+  "branchId": "br-aged-union-aorlespe",
+  "branchName": "preview-1-8",
+  "bucket": "neurotrace-engineering-vault",
+  "access": "private",
+  "objects": [
+    {
+      "key": "custody/sha256/1e41ce22c8ba0949adc722b3fbad2380d83d44d5b5bc116339c6e636014c6b68/private-overlay.zip",
+      "sha256": "1e41ce22c8ba0949adc722b3fbad2380d83d44d5b5bc116339c6e636014c6b68",
+      "bytes": 6548,
+      "roundTripVerified": true,
+      "anonymousStatus": 403
+    },
+    {
+      "key": "custody/sha256/26aa24919a697bbdabc7a8dea6bd25f50fb11130693a89b0f4afdcad25e3298f/available-original-art.zip",
+      "sha256": "26aa24919a697bbdabc7a8dea6bd25f50fb11130693a89b0f4afdcad25e3298f",
+      "bytes": 1728886,
+      "roundTripVerified": true,
+      "anonymousStatus": 403
+    },
+    {
+      "key": "custody/sha256/5339ee367ed4f3b634b15e4e3e235e0561dafe4c0e3b4c195a91204e965864b0/NeuroTrace_V2.3.zip",
+      "sha256": "5339ee367ed4f3b634b15e4e3e235e0561dafe4c0e3b4c195a91204e965864b0",
+      "bytes": 43598009,
+      "roundTripVerified": true,
+      "anonymousStatus": 403
+    },
+    {
+      "key": "custody/sha256/f93f59814bd185bbbeecc5d32dd733582636cb7b00df4ec06c6039595e13fc65/NeuroTrace_V05_Figma_OneShot.zip",
+      "sha256": "f93f59814bd185bbbeecc5d32dd733582636cb7b00df4ec06c6039595e13fc65",
+      "bytes": 18378,
+      "roundTripVerified": true,
+      "anonymousStatus": 403
+    }
+  ],
+  "templateCount": 4,
+  "localAccess": [
+    "CurrentWindowsUser",
+    "SYSTEM"
+  ],
+  "signedUrlsPersisted": false,
+  "databaseWrites": false,
+  "productionChanges": false,
+  "runtimeTemplatesChanged": false,
+  "missingOriginalMasters": [
+    "early GUI source images and skin crop manifests",
+    "V2.2 six generation masters and per-image prompts",
+    "historical three original photographic JPEG inputs and hashes"
+  ]
+}

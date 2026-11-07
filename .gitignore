@@ -36,3 +36,9 @@ tests/verify_private20.cjs
 *.sqlite3
 storage-state*.json
 browser-profile/
+# Defense if custody output is accidentally relocated into this checkout.
+private-vault/
+.private-vault/
+custody-local.json
+remote-verification.json
+download-only-verification.json

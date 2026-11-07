@@ -4,6 +4,8 @@
 
 后续获准的 GitHub 同步见 [同步记录](GITHUB_SYNC.md)。提交与推送工程资料不发布游戏版本，Git 自动部署保持禁用。
 
+私信模板及原始资料的实际私有保管位置、四份对象校验结果和恢复流程见 [私有保管说明](PRIVATE_CUSTODY.md) 与 [对象索引](private-custody-index.json)。正文和原包不进入公共 Git。
+
 | 要找的内容 | 入口 |
 | --- | --- |
 | 当前状态、来源与限制 | [项目状态](../PROJECT_STATUS.md)、[恢复说明](RECOVERY.md)、[只读证据](evidence-2026-11-07.json) |
