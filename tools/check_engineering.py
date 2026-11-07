@@ -75,6 +75,7 @@ def main():
     documents = [*DOCS.glob('*.md'), ROOT/'README.md', ROOT/'CONTRIBUTING.md', ROOT/'SECURITY.md',
                  ROOT/'THIRD_PARTY_NOTICES.md', ROOT/'CHANGELOG.md', ROOT/'docs/DESIGN_BRIEF.md',
                  ROOT/'docs/CODEX_HANDOFF.md', ROOT/'docs/PROJECT_STATUS.md', ROOT/'docs/HANDOFF_NEXT_SESSION.md',
+                 ROOT/'docs/CHATGPT_NEXT_ITERATION.md',
                  ROOT/'db/README.md', ROOT/'db/seeds/README.md']
     for p in documents:
         check(p.is_file(), f'Missing maintained document: {p.relative_to(ROOT)}')

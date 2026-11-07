@@ -6,7 +6,7 @@
 
 - 目标：`SuperMing24/neurotrace-ui-workflow` 的 `main`；原基线 `afda85250f14ee7c8bd2fec26691c13bc3464fc9`。不强推、不重写历史。
 - 按 GitHub 仓库 ID `1442204806` 查询所属 Vercel 团队，返回零个关联项目；已知项目仍是 `neurotrace-ui-demo`。
-- 当前仓库没有 `.github/workflows`。完整待提交文件清单还需进行私信／秘密／媒体检查。
+- 当前仓库没有 `.github/workflows`。每次工程提交前检查暂存文件的私信／秘密／媒体边界。
 - `vercel.json` 明确设置 `git.deploymentEnabled: false`，禁止所有分支的 Git 自动部署。依据 [Vercel 官方 Git 配置](https://vercel.com/docs/project-configuration/git-configuration#turning-off-all-automatic-deployments)。这不暂停或替换现有线上部署。
 - 推送后核对远端提交和 Vercel 部署列表，结果在本次聊天交付中给出；不调用发布、迁移或权限变更操作。
 
@@ -18,8 +18,8 @@
 
 ## 保管边界
 
-`api/letters.js`、`tests/verify_private20.cjs` 和根／历史目录中的音轨被 Git 忽略；它们只保存在本机与原交付参照中。密钥、授权卡、数据库备份和构建目录不提交。现有 Git 历史和既有资料保留。
+`api/letters.js`、`tests/verify_private20.cjs` 和根／历史目录中的音轨被 Git 忽略；它们保存在本机、原交付参照及独立私有档案库中；旧 Neon 副本保留。密钥、授权卡、数据库备份和构建目录不提交。现有 Git 历史和既有资料保留。
 
 `release.json` 保持上一轮已经恢复的原包 `2.3.0`，本次同步不再改动它。相对旧 GitHub 基线的版本差异来自既有 V2.3 资料恢复，不是本次发布新版本。24 份历史清单不变。
 
-此前文档中的“未提交／未推送”描述对应首轮本地整理阶段，作为历史验收记录保留。本次 GitHub 同步是后续获得授权的独立动作；线上界面仍使用原部署。
+初次同步提交为 `42b67a7`，首批保管提交为 `5d4a553`；本次独立保管与接续追加为后续工程提交，具体身份以 Git 日志／交接包清单为准。当前入口已更新为同步后的事实；最初只读证据及历史文件仍保留原快照。线上界面继续原部署，原因和下一轮带入方法见 [资料对齐](SOURCE_ALIGNMENT.md)。

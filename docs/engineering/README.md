@@ -1,8 +1,8 @@
 # NeuroTrace 工程资料入口
 
-整理日期：2026-11-07（北京时间）。本轮是既有 V2.3 的源码恢复、界面整理与资产治理，尚未发布。
+整理日期：2026-11-07（北京时间）。本轮完成既有 V2.3 的工程同步、界面整理、独立私有保管和接续准备，没有新产品版本或部署。
 
-后续获准的 GitHub 同步见 [同步记录](GITHUB_SYNC.md)。提交与推送工程资料不发布游戏版本，Git 自动部署保持禁用。
+已经完成的工程 GitHub 同步见 [同步记录](GITHUB_SYNC.md)。提交与推送工程资料不发布游戏版本，Git 自动部署保持禁用。
 
 私信模板及原始资料的实际私有保管位置、四份对象校验结果和恢复流程见 [私有保管说明](PRIVATE_CUSTODY.md) 与 [对象索引](private-custody-index.json)。正文和原包不进入公共 Git。
 
@@ -14,6 +14,7 @@
 | 数据库结构、迁移与合成种子 | [数据库说明](DATABASE.md)、[迁移校验清单](migration-inventory.json)、[数据库目录](../../db/README.md) |
 | 已有各版与 Git 对照 | [版本索引](VERSION_INDEX.md)、[治理规则](VERSION_GOVERNANCE.md)、[未发布变更](../../CHANGELOG.md) |
 | 本地运行、测试、构建与未来部署 | [操作说明](BUILD_AND_DEPLOY.md)、[本轮检查结果](VALIDATION.md) |
+| 回到 ChatGPT 继续迭代 | [接续步骤与提示词](../CHATGPT_NEXT_ITERATION.md)、[来源对齐](SOURCE_ALIGNMENT.md) |
 | 后续接手与未解决事项 | [缺口表](GAPS.md)、[接手说明](../CODEX_HANDOFF.md)、[贡献规范](../../CONTRIBUTING.md) |
 
 文档里的历史部署、归档和旧测试通过记录均有自己的时间范围；本轮未登录正式账号、修改积分、执行 SQL 迁移、变更权限或部署站点。

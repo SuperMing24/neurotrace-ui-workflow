@@ -36,14 +36,17 @@ def pack(output):
     result={'files':[{'localPath':str(p),**record(p,p.name)} for p in originals],'templateCount':4,'missingOriginalMasters':['early GUI source images and skin crop manifests','V2.2 six generation masters and per-image prompts','historical three original photographic JPEG inputs and hashes']}
     (output/'custody-local.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({'archives':len(originals),'templates':4,'localManifest':str(output/'custody-local.json')},ensure_ascii=False))
-def restore(archive,dest):
+def restore(archive,dest,kind='private'):
     if dest.exists():raise ValueError('Restore destination must be new; never overwrite live source')
+    manifest_name='manifest.json' if kind=='private' else 'custody-manifest.json'
+    allowed={'api/letters.js','tests/verify_private20.cjs','templates.json'} if kind=='private' else {'docs/echo18-artboard.webp','docs/echo18-ui-concept.webp','docs/NeuroTrace_V17_preview.jpg','docs/NeuroTrace_V18_preview.jpg','docs/NeuroTrace_V18_Archive_Design.zip','docs/ECHO_ARCHIVE_V18.md'}
     with zipfile.ZipFile(archive) as z:
-        manifest=json.loads(z.read('manifest.json'))
+        manifest=json.loads(z.read(manifest_name))
         names=z.namelist()
         if len(names)!=len(set(names)):raise ValueError('Duplicate archive entries')
         expected={x['path']:x for x in manifest['files']}
-        if set(names)!=set(expected)|{'manifest.json'}:raise ValueError('Unexpected archive member')
+        if set(expected)!=allowed or len(expected)!=len(manifest['files']):raise ValueError('Unexpected recovery file list')
+        if set(names)!=set(expected)|{manifest_name}:raise ValueError('Unexpected archive member')
         payloads={}
         for name,rec in expected.items():
             path=(dest/name).resolve()
@@ -59,6 +62,7 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();s=p.add_subparsers(dest='action',required=True)
     a=s.add_parser('pack');a.add_argument('output',type=Path)
     a=s.add_parser('restore');a.add_argument('archive',type=Path);a.add_argument('destination',type=Path)
+    a=s.add_parser('restore-art');a.add_argument('archive',type=Path);a.add_argument('destination',type=Path)
     a=p.parse_args()
     if a.action=='pack':pack(a.output)
-    else:restore(a.archive,a.destination)
+    else:restore(a.archive,a.destination,'art' if a.action=='restore-art' else 'private')

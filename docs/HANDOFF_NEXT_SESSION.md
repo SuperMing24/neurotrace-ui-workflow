@@ -1,10 +1,10 @@
-# 下一次接手
+# 下一次接续
 
-本轮为 2026-11-07 本地工程整理。先读 [CODEX_HANDOFF](CODEX_HANDOFF.md) 与 [工程入口](engineering/README.md)。
+工程资料已整理并同步 GitHub；产品仍为既有 V2.3。下一轮回到 ChatGPT 原迭代对话，附上本轮生成的公开工程接续 ZIP，并复制 [完整提示词](CHATGPT_NEXT_ITERATION.md)，在末尾写入新的要求和交付／上线范围。
 
-- 保留本地恢复、未提交修改、原包参照和既有历史。
-- 不因旧文档落后而再创建 Neon／Vercel 项目；不自动执行迁移或改积分／认证。
-- 不在没有独立授权的情况下 push、建 Release、打 tag、关联 Git 部署或发布预览／生产。
-- 本机私有覆盖和音轨不进公共 Git，具体缺口见 [GAPS](engineering/GAPS.md)。
+- 先读 [当前状态](PROJECT_STATUS.md) 与 [资料对齐](engineering/SOURCE_ALIGNMENT.md)。
+- 沿用 `review/shell.js` 与 `review/shell.css` 的左栏整理，下一次获准上线时一起带入实际部署。
+- 私人资料从 [独立保管](engineering/PRIVATE_CUSTODY.md) 按需恢复；旧副本继续保留。
+- 未取回的历史母图从原 ChatGPT 对话继续索引；不以无关缺口阻挡当前需求。
 
-旧接手文档保存为 [历史快照](history/github-afda852/HANDOFF_NEXT_SESSION.md)。
+更早的接手说明保存在 [历史快照](history/github-afda852/HANDOFF_NEXT_SESSION.md)。

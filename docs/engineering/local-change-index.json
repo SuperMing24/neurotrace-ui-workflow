@@ -8,7 +8,13 @@
     "review/shell.js"
   ],
   "newEngineeringMaterial": "Additional documentation, provenance indices, local check/build/preview tools, synthetic fixture and curated browser evidence.",
-  "remotePushed": false,
+  "remotePushed": true,
   "deployed": false,
-  "newVersionOrTag": false
+  "newVersionOrTag": false,
+  "engineeringCommitsBeforeIndependentMigration": [
+    "42b67a72e5e870e1fb350eea4637e9234d2bd779",
+    "5d4a553e5acc084dadc5fc6f18587c9c6d2e975d"
+  ],
+  "independentArchive": "store_1JC9tZvU20AfIzbz",
+  "handoff": "docs/CHATGPT_NEXT_ITERATION.md"
 }

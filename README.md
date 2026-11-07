@@ -1,16 +1,14 @@
 # NeuroTrace · 工程入口
 
-后续同步：本轮工程整理现按用户授权提交至 GitHub；Git 自动部署已在仓库配置中禁用。首次本地验收阶段与本次同步的边界见 [GitHub 同步说明](docs/engineering/GITHUB_SYNC.md)。不创建新版本或 tag，线上继续使用既有部署。
+当前工作基线为既有 **V2.3（2.3.0）**。2026-11-07 这轮完成 GitHub 工程同步、历史恢复、左栏整理、独立私有保管和 ChatGPT 接续准备；未发布新版本、未改版本号、未打 tag、未部署。
 
-当前工作基线为既有 **V2.3（2.3.0）**。2026-11-07 这轮恢复工程资料、调整评审栏并补齐资产治理，尚未发布、推送或创建新版本。
-
-[工程资料总入口](docs/engineering/README.md) · [本轮未发布变更](CHANGELOG.md) · [当前状态](docs/PROJECT_STATUS.md) · [验证结果](docs/engineering/VALIDATION.md) · [未解决缺口](docs/engineering/GAPS.md)
+[回到 ChatGPT 继续迭代](docs/CHATGPT_NEXT_ITERATION.md) · [工程资料入口](docs/engineering/README.md) · [当前状态](docs/PROJECT_STATUS.md) · [资料对齐](docs/engineering/SOURCE_ALIGNMENT.md) · [独立私有保管](docs/engineering/PRIVATE_CUSTODY.md)
 
 ## 本轮整理
 
 “版本回看”已作为折叠条目移入左侧“从设计到上线”的流程列表，同宽、同间距。桌面中间仍为实时交互原型，右侧仍为交互状态。窄屏在统一的“从设计到上线”入口展开流程与版本工具。
 
-从原有 `NeuroTrace_V2.3.zip` 恢复 GitHub 缺失的 V2.x 源码、003–009 迁移、测试、工具和 24 版历史。605 个部署源文件已与 Vercel 源清单逐字节校验。GitHub 基线仍为 `afda85250f14ee7c8bd2fec26691c13bc3464fc9`；本轮恢复和维护改动留在本地，未自动同步到远端。
+从原有 `NeuroTrace_V2.3.zip` 恢复 GitHub 缺失的 V2.x 源码、003–009 迁移、测试、工具和 24 版历史。605 个部署源文件已与 Vercel 源清单逐字节校验。工程改动已提交并同步 GitHub；`afda852` 是整理前的审计起点。正式站仍服务原部署，所以暂未显示左栏调整；下一轮获准上线时应一并带入。
 
 [原包与恢复来源](docs/engineering/RECOVERY.md) · [24 版索引](docs/engineering/VERSION_INDEX.md) · [版本治理](docs/engineering/VERSION_GOVERNANCE.md) · [资产保管](docs/engineering/ASSET_POLICY.md) · [设计与阶段交付](docs/engineering/DESIGN_AND_DELIVERABLES.md)
 
